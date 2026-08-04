@@ -6,7 +6,6 @@ import { ArrowRight } from "lucide-react";
 
 import { hero } from "@/data/hero";
 
-import { Button } from "@/components/ui/button";
 import { SectionBadge } from "@/components/common/section-badge";
 import { LinkButton } from "@/components/common/link-button";
 
