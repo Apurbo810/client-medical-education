@@ -12,6 +12,7 @@ import { Container } from "./container";
 import { NavigationLinks } from "./navigation-links";
 import { MobileNavbar } from "./mobile-navbar";
 
+
 export function Navbar() {
   const { isScrolled } = useScroll();
 

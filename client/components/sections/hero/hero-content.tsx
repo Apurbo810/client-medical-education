@@ -8,6 +8,7 @@ import { hero } from "@/data/hero";
 
 import { Button } from "@/components/ui/button";
 import { SectionBadge } from "@/components/common/section-badge";
+import { LinkButton } from "@/components/common/link-button";
 
 export function HeroContent() {
   const {
@@ -23,7 +24,7 @@ export function HeroContent() {
   const titleParts = title.split(highlighted);
 
   return (
-    <div className="flex max-w-xl flex-col">
+    <div className="relative z-20 flex max-w-lg flex-col">
       {/* Badge */}
       <SectionBadge>{badge}</SectionBadge>
 
@@ -41,23 +42,14 @@ export function HeroContent() {
 
       {/* Buttons */}
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Button
-          size="lg"
-          className="rounded-xl"
-          render={<Link href={primaryButton.href} />}
-        >
+        <LinkButton href={primaryButton.href} size="lg" className="rounded-xl">
           {primaryButton.label}
           <ArrowRight className="ml-2 size-4" />
-        </Button>
+        </LinkButton>
 
-        <Button
-          variant="outline"
-          size="lg"
-          className="rounded-xl"
-          render={<Link href={secondaryButton.href} />}
-        >
+        <LinkButton href={primaryButton.href} size="lg" className="rounded-xl">
           {secondaryButton.label}
-        </Button>
+        </LinkButton>
       </div>
 
       {/* Students */}

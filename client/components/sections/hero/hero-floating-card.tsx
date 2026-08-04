@@ -18,11 +18,12 @@ export function HeroFloatingCard({
   return (
     <div
       className={cn(
-        "flex w-72 items-start gap-4 rounded-2xl border border-border/60 bg-background/90 p-4 shadow-2xl backdrop-blur-xl",
+        "hero-card-shadow flex w-80 items-start gap-4 rounded-3xl border border-border/50 bg-background/85 p-5 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1",
         className,
       )}
     >
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+        {" "}
         {icon}
       </div>
 

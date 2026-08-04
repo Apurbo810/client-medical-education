@@ -9,10 +9,10 @@ export function Hero() {
   return (
     <Section className="overflow-hidden pt-36">
       <Container>
-        <SectionGrid columns={2}>
+        <div className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.25fr]">
           <HeroContent />
           <HeroImage />
-        </SectionGrid>
+        </div>
       </Container>
     </Section>
   );
