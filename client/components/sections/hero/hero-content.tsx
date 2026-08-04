@@ -53,31 +53,17 @@ export function HeroContent() {
       </div>
 
       {/* Students */}
+      {/* Students */}
       <div className="mt-10 flex items-center gap-4">
         <div className="flex -space-x-3">
-          <Image
-            src="/images/avatars/avatar-1.jpg"
-            alt="Student"
-            width={44}
-            height={44}
-            className="rounded-full border-2 border-background object-cover"
-          />
-
-          <Image
-            src="/images/avatars/avatar-2.jpg"
-            alt="Student"
-            width={44}
-            height={44}
-            className="rounded-full border-2 border-background object-cover"
-          />
-
-          <Image
-            src="/images/avatars/avatar-3.jpg"
-            alt="Student"
-            width={44}
-            height={44}
-            className="rounded-full border-2 border-background object-cover"
-          />
+          {["A", "M", "S"].map((letter, index) => (
+            <div
+              key={index}
+              className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-background bg-primary text-sm font-semibold text-primary-foreground shadow-sm"
+            >
+              {letter}
+            </div>
+          ))}
         </div>
 
         <p className="text-sm leading-6 text-muted-foreground">
