@@ -7,7 +7,7 @@ import { HeroImage } from "./hero-image";
 
 export function Hero() {
   return (
-    <Section className="overflow-hidden pt-36">
+    <Section spacing="none" className="overflow-hidden pt-10">
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.25fr]">
           <HeroContent />

@@ -11,44 +11,42 @@ import { Button } from "@/components/ui/button";
 import { Container } from "./container";
 import { NavigationLinks } from "./navigation-links";
 import { MobileNavbar } from "./mobile-navbar";
-
+import { Section } from "../common/section";
 
 export function Navbar() {
   const { isScrolled } = useScroll();
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "border-b bg-background/80 shadow-sm backdrop-blur-xl"
-          : "bg-transparent",
-      )}
-    >
-      <Container>
-        <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
-          <Logo />
+  <header
+  className={cn(
+    "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+    isScrolled
+      ? "border-b bg-background/80 shadow-sm backdrop-blur-xl"
+      : "bg-transparent",
+  )}
+>
+  <Container>
+    <div className="flex h-20 items-center justify-between">
+      {/* Logo */}
+      <Logo />
 
-          {/* Desktop Navigation */}
-          <NavigationLinks />
+      {/* Desktop Navigation */}
+      <NavigationLinks />
 
-          {/* Desktop Actions */}
-          <div className="hidden items-center gap-2 lg:flex">
-            {/* Theme Toggle (Coming Soon) */}
+      {/* Desktop Actions */}
+      <div className="hidden items-center gap-2 lg:flex">
+        <Button variant="ghost">Login</Button>
 
-            <Button variant="ghost">Login</Button>
+        <Button className="rounded-xl">
+          Get Started
+          <ArrowRight className="ml-2 size-4" />
+        </Button>
+      </div>
 
-            <Button className="rounded-xl">
-              Get Started
-              <ArrowRight className="ml-2 size-4" />
-            </Button>
-          </div>
-
-          {/* Mobile */}
-          <MobileNavbar />
-        </div>
-      </Container>
-    </header>
+      {/* Mobile */}
+      <MobileNavbar />
+    </div>
+  </Container>
+</header>
   );
 }

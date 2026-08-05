@@ -281,3 +281,19 @@ img {
 ::selection {
   @apply bg-primary/20 text-foreground;
 }
+
+@utility section-surface {
+  @apply rounded-3xl border border-border bg-card shadow-sm;
+}
+
+@utility section-surface-primary {
+  @apply rounded-3xl bg-primary text-primary-foreground shadow-xl;
+}
+
+@utility stats-bar {
+  @apply rounded-3xl bg-primary text-primary-foreground shadow-xl;
+}
+
+@utility stats-item {
+  @apply flex items-center gap-4 px-6 py-8 transition-all duration-300;
+}
