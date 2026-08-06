@@ -463,3 +463,45 @@ img {
 @utility process-line {
   @apply absolute left-1/2 top-8 hidden h-px w-full -translate-x-1/2 bg-border xl:block;
 }
+
+
+
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+@utility testimonial-grid {
+  @apply mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3;
+}
+
+@utility testimonial-card {
+  @apply flex h-full flex-col rounded-3xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-xl;
+}
+
+@utility testimonial-quote {
+  @apply mb-6 text-primary/40 transition-all duration-300 group-hover:rotate-6 group-hover:text-primary;
+}
+
+@utility testimonial-content {
+  @apply flex-1 text-base leading-8 text-foreground;
+}
+
+@utility testimonial-stars {
+  @apply mt-6 flex gap-1 text-amber-400;
+}
+
+@utility testimonial-footer {
+  @apply mt-6 flex items-center gap-4 border-t border-border pt-5;
+}
+
+@utility testimonial-avatar {
+  @apply flex h-12 w-12 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground;
+}
+
+@utility testimonial-name {
+  @apply font-semibold text-foreground;
+}
+
+@utility testimonial-role {
+  @apply text-sm text-muted-foreground;
+}

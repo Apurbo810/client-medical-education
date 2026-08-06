@@ -4,6 +4,8 @@ import { FeaturedCourses } from "@/components/sections/featured-courses";
 import { Features } from "@/components/sections/features"
 import { WhyChooseUs } from "@/components/sections/why-choose-us"
 import { LearningProcess } from "@/components/sections/learning-process"
+import { Testimonials } from "@/components/sections/testimonials"
+
 export default function HomePage() {
   return (
     <>
@@ -13,6 +15,7 @@ export default function HomePage() {
       <Features />
       <WhyChooseUs />
       <LearningProcess />
+      <Testimonials />
     </>
   );
 }
