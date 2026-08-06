@@ -4,7 +4,9 @@ interface SectionHeadingProps {
   badge?: string;
   title: string;
   description?: string;
+  highlighted?: string;
   align?: "left" | "center";
+  size?: "md" | "lg" ;
   className?: string;
 }
 
@@ -13,28 +15,35 @@ export function SectionHeading({
   title,
   description,
   align = "center",
+  size = "lg",
   className,
 }: SectionHeadingProps) {
   return (
     <div
       className={cn(
-        "max-w-3xl space-y-4",
-        align === "center" ? "mx-auto text-center" : "text-left",
+        "max-w-3xl space-y-5",
+        align === "center"
+          ? "mx-auto text-center"
+          : "text-left",
         className,
       )}
     >
       {badge && (
-        <span className="inline-flex rounded-full border bg-muted px-4 py-1 text-sm font-medium text-muted-foreground">
+        <span className="inline-flex rounded-full border border-border bg-muted px-4 py-1.5 text-sm font-medium text-muted-foreground">
           {badge}
         </span>
       )}
 
-      <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+      <h2
+        className={cn(
+          size === "lg" ? "heading-lg" : "heading-md"
+        )}
+      >
         {title}
       </h2>
 
       {description && (
-        <p className="text-base leading-7 text-muted-foreground md:text-lg">
+        <p className="paragraph mx-auto max-w-2xl">
           {description}
         </p>
       )}

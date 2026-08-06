@@ -198,15 +198,19 @@
 }
 
 @utility heading-xl {
-  @apply text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl;
+  @apply text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl;
 }
 
 @utility heading-lg {
-  @apply text-3xl font-bold tracking-tight md:text-4xl;
+  @apply text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl;
 }
 
 @utility heading-md {
-  @apply text-2xl font-semibold tracking-tight;
+  @apply text-2xl font-bold tracking-tight md:text-3xl;
+}
+
+@utility heading-sm {
+  @apply text-xl font-semibold tracking-tight;
 }
 
 @utility paragraph {
@@ -298,6 +302,7 @@ img {
   @apply flex items-center gap-4 px-6 py-8 transition-all duration-300;
 }
 
+
 /* =========================================================
    COURSES
 ========================================================= */
@@ -338,4 +343,123 @@ img {
 
 @utility course-button {
   @apply inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all duration-300 group-hover:gap-3;
+}
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+@utility feature-card {
+  @apply rounded-3xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl;
+}
+
+@utility feature-icon {
+  @apply mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110;
+}
+
+@utility feature-title {
+  @apply text-xl font-bold leading-tight text-foreground;
+}
+
+@utility feature-description {
+  @apply mt-4 text-base leading-7 text-muted-foreground;
+}
+
+@utility feature-grid {
+  @apply mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3;
+}
+
+
+
+/* =========================================================
+   WHY CHOOSE US
+========================================================= */
+
+@utility why-grid {
+  @apply grid items-center gap-16 lg:grid-cols-[0.9fr_1.1fr];
+}
+
+@utility why-content {
+  @apply max-w-xl;
+}
+
+@utility why-list {
+  @apply mt-10 space-y-6;
+}
+
+@utility why-item {
+  @apply flex items-start gap-5;
+}
+
+@utility why-icon {
+  @apply flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300;
+}
+
+@utility why-title {
+  @apply text-xl font-semibold text-foreground;
+}
+
+@utility why-description {
+  @apply mt-1 text-base leading-7 text-muted-foreground;
+}
+
+@utility why-image {
+  @apply relative overflow-hidden rounded-[2rem];
+}
+
+@utility why-image-frame {
+  @apply relative aspect-[5/4] rounded-[2rem];
+}
+
+@utility why-image-hover {
+  @apply object-cover transition-transform duration-700 hover:scale-105;
+}
+
+@utility why-review-card {
+  @apply absolute -bottom-6 -left-4 min-h-35 rounded-3xl border border-border bg-card p-6 shadow-2xl;
+}
+
+@utility why-card-stars {
+  @apply flex items-center gap-1 text-amber-400;
+}
+
+@utility why-glow {
+  @apply absolute rounded-full bg-primary/10 blur-[120px];
+}
+
+
+/* =========================================================
+   LEARNING PROCESS
+========================================================= */
+
+@utility process-grid {
+  @apply relative mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-4;
+}
+
+@utility process-card {
+  @apply relative flex h-full flex-col rounded-3xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-xl;
+}
+
+@utility process-step {
+  @apply absolute right-6 top-6 text-5xl font-extrabold tracking-tight text-primary/15 transition-all duration-300 group-hover:text-primary/25;
+}
+
+@utility process-icon {
+  @apply mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground;
+}
+
+@utility process-title {
+  @apply heading-sm max-w-[14rem];
+}
+
+@utility process-description {
+  @apply mt-4 paragraph text-sm;
+}
+
+@utility process-arrow {
+  @apply absolute right-[-1.5rem] top-1/2 hidden -translate-y-1/2 text-primary/30 xl:flex;
+}
+
+@utility process-line {
+  @apply absolute left-1/2 top-8 hidden h-px w-full -translate-x-1/2 bg-border xl:block;
 }

@@ -28,7 +28,7 @@ export function HeroContent() {
       <SectionBadge>{badge}</SectionBadge>
 
       {/* Heading */}
-      <h1 className="mt-6 text-5xl font-extrabold leading-[1.08] tracking-tight lg:text-6xl">
+      <h1 className="heading-lg mt-6 leading-[1.08]">
         {titleParts[0]}
         <span className="text-primary">{highlighted}</span>
         {titleParts[1]}
@@ -51,7 +51,6 @@ export function HeroContent() {
         </LinkButton>
       </div>
 
-      {/* Students */}
       {/* Students */}
       <div className="mt-10 flex items-center gap-4">
         <div className="flex -space-x-3">
