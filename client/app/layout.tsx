@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -88,7 +89,7 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans text-foreground antialiased",
         ].join(" ")}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
