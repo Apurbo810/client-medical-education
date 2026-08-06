@@ -1,17 +1,17 @@
 export const statistics = [
   {
     value: "25K+",
-    label: "Students Enrolled",
+    label: "Students",
     icon: "users",
   },
   {
     value: "5K+",
-    label: "Practice Questions",
+    label: "Questions",
     icon: "clipboard",
   },
   {
     value: "150+",
-    label: "Video Lessons",
+    label: "Lessons",
     icon: "book",
   },
   {

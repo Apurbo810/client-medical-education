@@ -149,6 +149,7 @@
   --sidebar-ring: var(--ring);
 }
 
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -556,11 +557,11 @@ img {
 ========================================================= */
 
 @utility pricing-grid {
-  @apply mt-14 grid gap-8 lg:grid-cols-3;
+  @apply mt-12 grid gap-6 lg:grid-cols-3;
 }
 
 @utility pricing-card {
-  @apply relative flex h-full flex-col rounded-3xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-xl;
+  @apply relative flex h-full flex-col rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-xl;
 }
 
 @utility pricing-card-popular {
@@ -568,27 +569,27 @@ img {
 }
 
 @utility pricing-badge {
-  @apply absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground shadow-lg;
+  @apply absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-lg;
 }
 
 @utility pricing-title {
-  @apply heading-sm;
+  @apply text-2xl font-bold;
 }
 
 @utility pricing-description {
-  @apply mt-2 text-sm text-muted-foreground;
+  @apply mt-2 text-sm leading-6 text-muted-foreground;
 }
 
 @utility pricing-price {
-  @apply mt-8 flex items-end gap-2;
+  @apply mt-6 flex items-end gap-2;
 }
 
 @utility pricing-currency {
-  @apply text-3xl font-bold text-primary;
+  @apply text-2xl font-bold text-primary;
 }
 
 @utility pricing-amount {
-  @apply text-5xl font-extrabold tracking-tight text-foreground;
+  @apply text-4xl font-extrabold tracking-tight text-foreground lg:text-5xl;
 }
 
 @utility pricing-billing {
@@ -596,11 +597,11 @@ img {
 }
 
 @utility pricing-duration {
-  @apply mt-4 inline-flex w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary;
+  @apply mt-3 inline-flex w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary;
 }
 
 @utility pricing-features {
-  @apply mt-8 flex flex-1 flex-col gap-4;
+  @apply mt-6 flex flex-1 flex-col gap-3;
 }
 
 @utility pricing-feature {
@@ -612,13 +613,12 @@ img {
 }
 
 @utility pricing-footer {
-  @apply mt-8;
+  @apply mt-6;
 }
 
 @utility pricing-button {
-  @apply w-full rounded-xl;
+  @apply h-11 w-full rounded-xl;
 }
-
 
 /* =========================================================
    CTA
@@ -739,4 +739,31 @@ img {
 
 @utility footer-bottom-link {
   @apply transition-colors duration-300 hover:text-primary;
+}
+
+
+/* =========================================================
+   GSAP
+========================================================= */
+
+@utility gsap-reveal {
+  will-change: transform, opacity;
+}
+
+@utility gsap-floating {
+  will-change: transform;
+}
+
+@utility gsap-parallax {
+  will-change: transform;
+}
+
+@utility gsap-gpu {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@utility gsap-hidden {
+  opacity: 0;
 }

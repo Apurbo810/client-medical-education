@@ -12,7 +12,7 @@ export function Features() {
       <Container>
         <SectionHeading
           badge="Features"
-          title="Everything You Need to Pass with Confidence"
+          title="Everything You Need to Succeed"
           highlighted="Pass with Confidence"
           description="A complete, all-in-one NCLEX preparation ecosystem designed by nurses, for nurses."
           align="center"

@@ -1,10 +1,11 @@
+import { forwardRef, type ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface SectionProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   id?: string;
-  as?: React.ElementType;
   spacing?: "none" | "sm" | "md" | "lg";
 }
 
@@ -15,19 +16,29 @@ const spacingVariants = {
   lg: "py-20 md:py-24 lg:py-28",
 };
 
-export function Section({
-  children,
-  className,
-  id,
-  as: Component = "section",
-  spacing = "lg",
-}: SectionProps) {
-  return (
-    <Component
-      id={id}
-      className={cn(spacingVariants[spacing], className)}
-    >
-      {children}
-    </Component>
-  );
-}
+export const Section = forwardRef<HTMLElement, SectionProps>(
+  (
+    {
+      children,
+      className,
+      id,
+      spacing = "lg",
+    },
+    ref,
+  ) => {
+    return (
+      <section
+        ref={ref}
+        id={id}
+        className={cn(
+          spacingVariants[spacing],
+          className,
+        )}
+      >
+        {children}
+      </section>
+    );
+  },
+);
+
+Section.displayName = "Section";

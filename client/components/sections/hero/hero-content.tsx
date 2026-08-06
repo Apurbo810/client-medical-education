@@ -24,23 +24,23 @@ export function HeroContent() {
   return (
     <div className="relative z-20 flex max-w-md flex-col lg:max-w-lg">
       {/* Badge */}
-      <SectionBadge>{badge}</SectionBadge>
+      <SectionBadge data-hero-el="badge">{badge}</SectionBadge>
 
       {/* Heading */}
-      <h1 className="heading-lg mt-4 sm:mt-6 leading-[1.08]">
+      <h1 data-hero-el="heading" className="heading-lg mt-4 sm:mt-6 leading-[1.08] ">
         {titleParts[0]}
         <span className="text-primary">{highlighted}</span>
         {titleParts[1]}
       </h1>
 
       {/* Description */}
-      <p className="mt-5 max-w-md text-sm leading-6 text-black/90 sm:mt-6 sm:max-w-lg sm:text-base sm:leading-7 lg:text-muted-foreground">        
+      <p data-hero-el="description" className="mt-5 max-w-md text-sm leading-6 text-black/90 sm:mt-6 sm:max-w-lg sm:text-base sm:leading-7 lg:text-muted-foreground">        
         
         {description}
       </p>
 
       {/* Buttons */}
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div data-hero-el="buttons" className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
 
         <LinkButton href={primaryButton.href} size="lg" className="w-full rounded-xl sm:w-auto">
 
@@ -54,7 +54,7 @@ export function HeroContent() {
       </div>
 
       {/* Students */}
-      <div className="mt-8 flex items-center gap-2 sm:mt-10 sm:gap-4">
+      <div data-hero-el="students" className="mt-8 flex items-center gap-2 sm:mt-10 sm:gap-4">
         <div className="flex -space-x-3">
           {["A", "M", "S"].map((letter, index) => (
             <div

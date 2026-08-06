@@ -36,7 +36,7 @@ export function HeroImage() {
         <div className="absolute right-6 top-8 h-[620px] w-[500px] rounded-[48px] bg-gradient-to-b from-white via-[#FCFCFD] to-[#F7F9FC] opacity-90" />
 
         {/* Hero Image */}
-        <div className="relative right-10 z-10 h-[760px] w-[650px] overflow-hidden hero-image-mask xl:w-[700px] xl:translate-x-16">
+        <div data-hero-el="image" className="relative right-10 z-10 h-[760px] w-[650px] overflow-hidden hero-image-mask xl:w-[700px] xl:translate-x-16">
           <Image
             src="/images/hero/hero.webp"
             alt="Medical Student"
@@ -51,14 +51,14 @@ export function HeroImage() {
         </div>
 
         {/* Quote */}
-        <div className="absolute right-20 top-12 z-30 hidden max-w-[220px] text-center xl:block">
+        <div data-hero-el="quote" className="absolute right-20 top-12 z-30 hidden max-w-[220px] text-center xl:block">
           <p className="font-serif text-lg italic leading-8 text-foreground/70">
             Every step you take today brings you closer to saving lives.
           </p>
         </div>
 
         {/* Floating Cards */}
-        <div className="absolute right-[-70px] top-40 z-30 hidden space-y-6 xl:block">
+        <div data-hero-card className="absolute right-[-70px] top-40 z-30 hidden space-y-6 xl:block">
           {heroCards.map((card) => (
             <HeroFloatingCard
               key={card.title}
