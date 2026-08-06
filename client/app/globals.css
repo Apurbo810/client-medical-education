@@ -505,3 +505,48 @@ img {
 @utility testimonial-role {
   @apply text-sm text-muted-foreground;
 }
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+@utility faq-wrapper {
+  @apply mx-auto mt-14 max-w-4xl;
+}
+
+@utility faq-list {
+  @apply space-y-4;
+}
+
+@utility faq-item {
+  @apply rounded-3xl border border-border bg-card shadow-sm transition-all duration-300;
+}
+
+@utility faq-item-open {
+  @apply border-primary/20 shadow-lg;
+}
+
+@utility faq-trigger {
+  @apply flex w-full items-center justify-between gap-6 p-6 text-left transition-colors duration-300;
+}
+
+@utility faq-question {
+  @apply text-lg font-semibold text-foreground;
+}
+
+@utility faq-icon {
+  @apply shrink-0 rounded-full bg-primary/10 p-2 text-primary transition-all duration-300;
+}
+
+@utility faq-content {
+  @apply overflow-hidden;
+}
+
+@utility faq-answer {
+  @apply px-6 pb-6 paragraph;
+}
+
+@utility faq-divider {
+  @apply border-t border-border;
+}
