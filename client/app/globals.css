@@ -550,3 +550,193 @@ img {
 @utility faq-divider {
   @apply border-t border-border;
 }
+
+/* =========================================================
+   PRICING
+========================================================= */
+
+@utility pricing-grid {
+  @apply mt-14 grid gap-8 lg:grid-cols-3;
+}
+
+@utility pricing-card {
+  @apply relative flex h-full flex-col rounded-3xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-xl;
+}
+
+@utility pricing-card-popular {
+  @apply border-primary shadow-xl ring-2 ring-primary/10;
+}
+
+@utility pricing-badge {
+  @apply absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground shadow-lg;
+}
+
+@utility pricing-title {
+  @apply heading-sm;
+}
+
+@utility pricing-description {
+  @apply mt-2 text-sm text-muted-foreground;
+}
+
+@utility pricing-price {
+  @apply mt-8 flex items-end gap-2;
+}
+
+@utility pricing-currency {
+  @apply text-3xl font-bold text-primary;
+}
+
+@utility pricing-amount {
+  @apply text-5xl font-extrabold tracking-tight text-foreground;
+}
+
+@utility pricing-billing {
+  @apply mb-1 text-sm text-muted-foreground;
+}
+
+@utility pricing-duration {
+  @apply mt-4 inline-flex w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary;
+}
+
+@utility pricing-features {
+  @apply mt-8 flex flex-1 flex-col gap-4;
+}
+
+@utility pricing-feature {
+  @apply flex items-center gap-3 text-sm text-muted-foreground;
+}
+
+@utility pricing-feature-icon {
+  @apply shrink-0 text-primary;
+}
+
+@utility pricing-footer {
+  @apply mt-8;
+}
+
+@utility pricing-button {
+  @apply w-full rounded-xl;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+@utility cta-wrapper {
+  @apply relative overflow-hidden rounded-[2rem] bg-primary px-8 py-16 text-center text-primary-foreground shadow-2xl md:px-16 lg:py-20;
+}
+
+@utility cta-pattern {
+  @apply absolute inset-0 opacity-10;
+  background-image: radial-gradient(
+    currentColor 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+@utility cta-content {
+  @apply relative z-10 mx-auto max-w-3xl;
+}
+
+@utility cta-title {
+  @apply text-4xl font-extrabold tracking-tight md:text-5xl;
+}
+
+@utility cta-description {
+  @apply mx-auto mt-6 max-w-2xl text-lg leading-8 text-primary-foreground/85;
+}
+
+@utility cta-actions {
+  @apply mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row;
+}
+
+@utility cta-primary {
+  @apply rounded-xl;
+}
+
+@utility cta-secondary {
+  @apply rounded-xl border-white/20 bg-white/10 text-primary-foreground backdrop-blur-md hover:bg-white/20;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+@utility footer {
+  @apply border-t border-border bg-card;
+}
+
+@utility footer-container {
+  @apply py-16;
+}
+
+@utility footer-grid {
+  @apply grid gap-12 lg:grid-cols-[1.5fr_repeat(4,1fr)];
+}
+
+@utility footer-brand {
+  @apply max-w-sm;
+}
+
+@utility footer-description {
+  @apply mt-6 text-base leading-7 text-muted-foreground;
+}
+
+@utility footer-socials {
+  @apply mt-8 flex items-center gap-3;
+}
+
+@utility footer-social {
+  @apply flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-primary-foreground;
+}
+
+@utility footer-column {
+  @apply space-y-5;
+}
+
+@utility footer-heading {
+  @apply text-lg font-semibold text-foreground;
+}
+
+@utility footer-links {
+  @apply space-y-3;
+}
+
+@utility footer-link {
+  @apply text-muted-foreground transition-colors duration-300 hover:text-primary;
+}
+
+@utility footer-newsletter {
+  @apply space-y-5;
+}
+
+@utility footer-newsletter-text {
+  @apply text-muted-foreground;
+}
+
+@utility footer-input-group {
+  @apply flex items-center gap-3;
+}
+
+@utility footer-input {
+  @apply h-12 flex-1 rounded-xl border border-border bg-background px-4 text-sm outline-none transition-all duration-300 placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20;
+}
+
+@utility footer-button {
+  @apply h-12 rounded-xl px-5;
+}
+
+@utility footer-bottom {
+  @apply mt-16 flex flex-col items-center justify-between gap-6 border-t border-border pt-8 text-sm text-muted-foreground md:flex-row;
+}
+
+@utility footer-bottom-links {
+  @apply flex flex-wrap items-center gap-6;
+}
+
+@utility footer-bottom-link {
+  @apply transition-colors duration-300 hover:text-primary;
+}

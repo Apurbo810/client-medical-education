@@ -6,7 +6,8 @@ import { WhyChooseUs } from "@/components/sections/why-choose-us"
 import { LearningProcess } from "@/components/sections/learning-process"
 import { Testimonials } from "@/components/sections/testimonials"
 import { FAQ } from "@/components/sections/faq"
-
+import { Pricing } from "@/components/sections/pricing"
+import { CTA } from "@/components/sections/cta"
 export default function HomePage() {
   return (
     <>
@@ -18,6 +19,8 @@ export default function HomePage() {
       <LearningProcess />
       <Testimonials />
       <FAQ />
+      <Pricing />
+      <CTA />
     </>
   );
 }
