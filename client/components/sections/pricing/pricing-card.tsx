@@ -14,6 +14,7 @@ export function PricingCard({
 }: PricingCardProps) {
   return (
     <article
+      data-animate
       className={cn(
         "pricing-card",
         plan.popular && "pricing-card-popular",

@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* =========================================================
+   THEME
+========================================================= */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -149,6 +153,9 @@
   --sidebar-ring: var(--ring);
 }
 
+/* =========================================================
+   BASE
+========================================================= */
 
 @layer base {
   * {
@@ -157,11 +164,15 @@
 
   html {
     @apply scroll-smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background font-sans text-foreground antialiased;
     text-rendering: optimizeLegibility;
+    min-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
 
   h1,
@@ -178,6 +189,10 @@
   }
 }
 
+/* =========================================================
+   LAYOUT
+========================================================= */
+
 @utility container {
   @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
 }
@@ -190,6 +205,10 @@
   @apply py-16 lg:py-20;
 }
 
+/* =========================================================
+   EFFECTS
+========================================================= */
+
 @utility card-hover {
   @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
 }
@@ -197,6 +216,10 @@
 @utility glass {
   @apply bg-white/70 backdrop-blur-xl border border-white/60;
 }
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
 
 @utility heading-xl {
   @apply text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl;
@@ -217,6 +240,18 @@
 @utility paragraph {
   @apply text-base leading-7 text-muted-foreground;
 }
+
+@utility heading-highlight {
+  @apply text-primary;
+
+  text-shadow:
+    0 0 10px rgb(59 130 246 / 0.18),
+    0 0 24px rgb(59 130 246 / 0.08);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
 
 @utility hero-image-mask {
   -webkit-mask-image:
@@ -255,9 +290,11 @@
 
   mask-composite: intersect;
 }
+
 @utility hero-glow {
   @apply absolute rounded-full bg-primary/8 blur-[140px];
 }
+
 @utility hero-card-shadow {
   box-shadow:
     0 40px 80px rgba(15, 23, 42, 0.08),
@@ -286,17 +323,10 @@ img {
 ::selection {
   @apply bg-primary/20 text-foreground;
 }
+
 /* =========================================================
-   TYPOGRAPHY
+   SURFACES
 ========================================================= */
-
-@utility heading-highlight {
-  @apply text-primary;
-
-  text-shadow:
-    0 0 10px rgb(59 130 246 / 0.18),
-    0 0 24px rgb(59 130 246 / 0.08);
-}
 
 @utility section-surface {
   @apply rounded-3xl border border-border bg-card shadow-sm;
@@ -314,12 +344,9 @@ img {
   @apply flex items-center gap-4 px-6 py-8 transition-all duration-300;
 }
 
-
 /* =========================================================
    COURSES
 ========================================================= */
-
-
 
 @utility course-image {
   @apply mt-auto relative aspect-[4/3] overflow-hidden bg-muted;
@@ -385,8 +412,6 @@ img {
   @apply mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3;
 }
 
-
-
 /* =========================================================
    WHY CHOOSE US
 ========================================================= */
@@ -443,7 +468,6 @@ img {
   @apply absolute rounded-full bg-primary/10 blur-[120px];
 }
 
-
 /* =========================================================
    LEARNING PROCESS
 ========================================================= */
@@ -479,12 +503,6 @@ img {
 @utility process-line {
   @apply absolute left-1/2 top-8 hidden h-px w-full -translate-x-1/2 bg-border xl:block;
 }
-
-
-
-/* =========================================================
-   TESTIMONIALS
-========================================================= */
 
 /* =========================================================
    TESTIMONIALS
@@ -526,7 +544,6 @@ img {
   @apply text-xs md:text-sm text-muted-foreground;
 }
 
-
 /* =========================================================
    FAQ
 ========================================================= */
@@ -535,7 +552,6 @@ img {
   @apply mx-auto mt-12 max-w-5xl;
 }
 
-
 @utility faq-list {
   @apply grid items-start gap-5 lg:grid-cols-2;
 }
@@ -543,7 +559,6 @@ img {
 @utility faq-item {
   @apply self-start rounded-2xl border border-border bg-card shadow-sm transition-all duration-300;
 }
-
 
 @utility faq-item-open {
   @apply border-primary/30 shadow-lg;
@@ -569,6 +584,7 @@ img {
   @apply grid overflow-hidden transition-all duration-300 ease-in-out;
   grid-template-rows: 0fr;
 }
+
 @utility faq-content-open {
   grid-template-rows: 1fr;
 }
@@ -663,10 +679,7 @@ img {
 
 @utility cta-pattern {
   @apply absolute inset-0 opacity-10;
-  background-image: radial-gradient(
-    currentColor 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
@@ -722,10 +735,6 @@ img {
   @apply mt-8 flex items-center gap-3;
 }
 
-@utility feature-icon {
-  @apply mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-all duration-300 ease-out;
-}
-
 @utility footer-column {
   @apply space-y-5;
 }
@@ -773,7 +782,6 @@ img {
 @utility footer-bottom-link {
   @apply transition-colors duration-300 hover:text-primary;
 }
-
 
 /* =========================================================
    GSAP

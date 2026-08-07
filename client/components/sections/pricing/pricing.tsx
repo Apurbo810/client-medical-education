@@ -1,3 +1,7 @@
+"use client";
+
+import { useStagger } from "@/hooks/gsap";
+
 import { pricingPlans } from "@/data/pricing";
 
 import { Container } from "@/components/layout/container";
@@ -7,6 +11,11 @@ import { SectionHeading } from "@/components/common/section-heading/section-head
 import { PricingCard } from "./pricing-card";
 
 export function Pricing() {
+  const gridRef = useStagger({
+    y: 30,
+    stagger: 0.12,
+  });
+
   return (
     <Section>
       <Container>
@@ -18,7 +27,10 @@ export function Pricing() {
           animated
         />
 
-        <div className="pricing-grid">
+        <div
+          ref={gridRef}
+          className="pricing-grid"
+        >
           {pricingPlans.map((plan) => (
             <PricingCard
               key={plan.id}

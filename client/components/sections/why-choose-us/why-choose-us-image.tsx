@@ -11,7 +11,7 @@ export function WhyChooseUsImage() {
   });
 
   return (
-    <div ref={imageRef}>
+    <div ref={imageRef} className="why-image">
       <div className="why-image-frame">
         <Image
           src="/images/why-choose-us/team.webp"
