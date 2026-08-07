@@ -1,11 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import { Star } from "lucide-react";
 
-export function WhyChooseUsImage() {
-  return (
-    <div className="why-image">
-      <div className="why-glow top-12 left-8 h-44 w-44" />
+import { useReveal } from "@/hooks/gsap";
 
+export function WhyChooseUsImage() {
+  const imageRef = useReveal({
+    x: 40,
+  });
+
+  return (
+    <div ref={imageRef}>
       <div className="why-image-frame">
         <Image
           src="/images/why-choose-us/team.webp"

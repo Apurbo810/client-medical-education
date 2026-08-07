@@ -3,14 +3,16 @@ import type { WhyChooseItem as WhyChooseItemType } from "@/types/why-choose-us";
 interface WhyChooseItemProps {
   item: WhyChooseItemType;
 }
-
 export function WhyChooseItem({
   item,
 }: WhyChooseItemProps) {
   const Icon = item.icon;
 
   return (
-    <div className="why-item">
+    <div
+      data-animate
+      className="why-item"
+    >
       <div className="why-icon">
         <Icon className="size-6" />
       </div>

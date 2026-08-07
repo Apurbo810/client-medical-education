@@ -10,7 +10,10 @@ export function FeatureCard({
   const Icon = feature.icon;
 
   return (
-    <article className="group feature-card">
+    <article
+      data-animate
+      className="feature-card"
+    >
       <div className="feature-icon">
         <Icon className="size-7" />
       </div>

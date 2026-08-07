@@ -1,3 +1,7 @@
+"use client";
+
+import { useStagger } from "@/hooks/gsap";
+
 import { features } from "@/data/features";
 
 import { Container } from "@/components/layout/container";
@@ -7,20 +11,26 @@ import { SectionHeading } from "@/components/common/section-heading/section-head
 import { FeatureCard } from "./feature-card";
 
 export function Features() {
+  const gridRef = useStagger({
+    y: 30,
+    stagger: 0.08,
+  });
+
   return (
-    <Section spacing="none">
+    <Section id="features">
       <Container>
         <SectionHeading
-          badge="Features"
-          title="Everything You Need to Succeed"
-          highlighted="Pass with Confidence"
-          description="A complete, all-in-one NCLEX preparation ecosystem designed by nurses, for nurses."
-          align="center"
-          size="lg"
           animated
+          badge="Why Choose Us"
+          title="Why Students Choose Medix"
+          highlighted="Choose Medix"
+          description="Discover the features that make our NCLEX preparation courses trusted by aspiring nurses worldwide."
         />
 
-        <div className="feature-grid">
+        <div
+          ref={gridRef}
+          className="feature-grid"
+        >
           {features.map((feature) => (
             <FeatureCard
               key={feature.title}

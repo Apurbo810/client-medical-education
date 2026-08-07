@@ -37,28 +37,28 @@ export function useStagger<
 
       if (!elements.length) return;
 
-gsap.fromTo(
-  elements,
-  {
-    opacity: 0,
-    y,
-    x,
-  },
-  {
-    opacity: 1,
-    y: 0,
-    x: 0,
-    duration,
-    stagger,
-    ease: ANIMATION.stagger.ease,
-    scrollTrigger: {
-      trigger: ref.current,
-      start,
-      once,
-    },
-    clearProps: "opacity,transform",
-  },
-);
+    gsap.fromTo(
+      elements,
+      {
+        opacity: 0,
+        y,
+        x,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        duration,
+        stagger,
+        ease: ANIMATION.stagger.ease,
+        scrollTrigger: {
+          trigger: ref.current,
+          start,
+          once,
+        },
+        clearProps: "opacity,transform",
+      },
+    );
     },
     {
       scope: ref,

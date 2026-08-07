@@ -1,3 +1,7 @@
+"use client";
+
+import { useStagger } from "@/hooks/gsap";
+
 import { whyChooseUs } from "@/data/why-choose-us";
 
 import { SectionHeading } from "@/components/common/section-heading/section-heading";
@@ -5,18 +9,26 @@ import { SectionHeading } from "@/components/common/section-heading/section-head
 import { WhyChooseItem } from "./why-choose-item";
 
 export function WhyChooseUsContent() {
+  const listRef = useStagger({
+    y: 24,
+    stagger: 0.1,
+  });
+
   return (
-    <div className="why-content">
+    <div>
       <SectionHeading
-        badge="Why Choose Us"
-        title="Built on Proven Outcomes"
-        highlighted="Proven Outcomes"
-        description="We don't just teach content—we engineer success. Every feature is designed around how nurses actually pass the NCLEX."
-        size="md"
         animated
+        badge="Why Choose Us"
+        title="Everything You Need to Succeed"
+        highlighted="Need to Succeed"
+        description="Discover why thousands of nursing students trust Medix for their NCLEX preparation."
+        align="left"
       />
 
-      <div className="why-list">
+      <div
+        ref={listRef}
+        className="why-list"
+      >
         {whyChooseUs.map((item) => (
           <WhyChooseItem
             key={item.title}

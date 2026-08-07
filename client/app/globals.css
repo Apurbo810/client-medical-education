@@ -370,7 +370,7 @@ img {
 }
 
 @utility feature-icon {
-  @apply mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110;
+  @apply mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-all duration-300 ease-out group-hover:scale-110 group-hover:rotate-3;
 }
 
 @utility feature-title {
@@ -486,40 +486,44 @@ img {
    TESTIMONIALS
 ========================================================= */
 
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
 @utility testimonial-grid {
-  @apply mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3;
+  @apply mt-12 grid gap-6 md:mt-14 md:gap-8 md:grid-cols-2 xl:grid-cols-3;
 }
 
 @utility testimonial-card {
-  @apply flex h-full flex-col rounded-3xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-xl;
+  @apply flex h-full flex-col rounded-2xl md:rounded-3xl border border-border bg-card p-5 md:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/20 hover:shadow-xl;
 }
 
 @utility testimonial-quote {
-  @apply mb-6 text-primary/40 transition-all duration-300 group-hover:rotate-6 group-hover:text-primary;
+  @apply mb-4 md:mb-6 text-primary/25 transition-all duration-300 hover:text-primary/60;
 }
 
 @utility testimonial-content {
-  @apply flex-1 text-base leading-8 text-foreground;
+  @apply flex-1 text-sm leading-7 md:text-base md:leading-8 text-foreground;
 }
 
 @utility testimonial-stars {
-  @apply mt-6 flex gap-1 text-amber-400;
+  @apply mt-5 md:mt-6 flex gap-1 text-amber-400;
 }
 
 @utility testimonial-footer {
-  @apply mt-6 flex items-center gap-4 border-t border-border pt-5;
+  @apply mt-5 md:mt-6 flex items-center gap-3 md:gap-4 border-t border-border pt-4 md:pt-5;
 }
 
 @utility testimonial-avatar {
-  @apply flex h-12 w-12 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground;
+  @apply flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-primary text-xs md:text-sm font-bold text-primary-foreground;
 }
 
 @utility testimonial-name {
-  @apply font-semibold text-foreground;
+  @apply text-sm md:text-base font-semibold text-foreground;
 }
 
 @utility testimonial-role {
-  @apply text-sm text-muted-foreground;
+  @apply text-xs md:text-sm text-muted-foreground;
 }
 
 
@@ -528,43 +532,57 @@ img {
 ========================================================= */
 
 @utility faq-wrapper {
-  @apply mx-auto mt-14 max-w-4xl;
+  @apply mx-auto mt-12 max-w-5xl;
 }
 
+
 @utility faq-list {
-  @apply space-y-4;
+  @apply grid items-start gap-5 lg:grid-cols-2;
 }
 
 @utility faq-item {
-  @apply rounded-3xl border border-border bg-card shadow-sm transition-all duration-300;
+  @apply self-start rounded-2xl border border-border bg-card shadow-sm transition-all duration-300;
 }
 
+
 @utility faq-item-open {
-  @apply border-primary/20 shadow-lg;
+  @apply border-primary/30 shadow-lg;
 }
 
 @utility faq-trigger {
-  @apply flex w-full items-center justify-between gap-6 p-6 text-left transition-colors duration-300;
+  @apply flex w-full items-start justify-between gap-4 p-5 text-left;
 }
 
 @utility faq-question {
-  @apply text-lg font-semibold text-foreground;
+  @apply text-base font-semibold leading-6 text-foreground;
 }
 
 @utility faq-icon {
-  @apply shrink-0 rounded-full bg-primary/10 p-2 text-primary transition-all duration-300;
+  @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-all duration-300;
+}
+
+@utility faq-icon-open {
+  @apply rotate-180;
 }
 
 @utility faq-content {
-  @apply overflow-hidden;
+  @apply grid overflow-hidden transition-all duration-300 ease-in-out;
+  grid-template-rows: 0fr;
+}
+@utility faq-content-open {
+  grid-template-rows: 1fr;
+}
+
+@utility faq-content-inner {
+  @apply min-h-0 overflow-hidden;
 }
 
 @utility faq-answer {
-  @apply px-6 pb-6 paragraph;
+  @apply overflow-hidden px-5 pb-5 text-sm leading-7 text-muted-foreground;
 }
 
 @utility faq-divider {
-  @apply border-t border-border;
+  @apply mx-5 border-t border-border;
 }
 
 /* =========================================================
@@ -704,8 +722,8 @@ img {
   @apply mt-8 flex items-center gap-3;
 }
 
-@utility footer-social {
-  @apply flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-primary-foreground;
+@utility feature-icon {
+  @apply mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-all duration-300 ease-out;
 }
 
 @utility footer-column {

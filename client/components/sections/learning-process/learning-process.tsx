@@ -1,3 +1,7 @@
+"use client";
+
+import { useStagger } from "@/hooks/gsap";
+
 import { learningProcess } from "@/data/learning-process";
 
 import { Container } from "@/components/layout/container";
@@ -7,18 +11,26 @@ import { SectionHeading } from "@/components/common/section-heading/section-head
 import { ProcessCard } from "./process-card";
 
 export function LearningProcess() {
+  const gridRef = useStagger({
+    y: 30,
+    stagger: 0.12,
+  });
+
   return (
     <Section>
       <Container>
         <SectionHeading
-          badge="Learning Process"
-          title="Your 4-Step Path to Licensure"
-          highlighted="4-Step Path" 
-          description="A structured, proven learning journey that takes you from assessment to exam-day confidence."
           animated
-       />
+          badge="Learning Process"
+          title="Your Path to NCLEX Success"
+          highlighted="NCLEX Success"
+          description="Follow our proven step-by-step learning process designed to maximize your confidence and exam performance."
+        />
 
-        <div className="process-grid">
+        <div
+          ref={gridRef}
+          className="process-grid"
+        >
           {learningProcess.map((process, index) => (
             <ProcessCard
               key={process.step}

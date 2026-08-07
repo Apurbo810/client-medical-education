@@ -10,8 +10,8 @@ export function TestimonialCard({
   testimonial,
 }: TestimonialCardProps) {
   return (
-    <article className="group testimonial-card">
-      <Quote className="testimonial-quote size-10" />
+    <article data-animate className="group testimonial-card">
+      <Quote className="testimonial-quote size-7 md:size-9 lg:size-10" />
 
       <p className="testimonial-content">
         "{testimonial.quote}"

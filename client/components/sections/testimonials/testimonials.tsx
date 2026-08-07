@@ -1,3 +1,7 @@
+"use client";
+
+import { useStagger } from "@/hooks/gsap";
+
 import { testimonials } from "@/data/testimonials";
 
 import { Container } from "@/components/layout/container";
@@ -7,18 +11,26 @@ import { SectionHeading } from "@/components/common/section-heading/section-head
 import { TestimonialCard } from "./testimonial-card";
 
 export function Testimonials() {
+  const gridRef = useStagger({
+    y: 30,
+    stagger: 0.08,
+  });
+
   return (
     <Section>
       <Container>
         <SectionHeading
-          badge="Testimonials"
-          title="Nurses Who Made It"
-          highlighted="Nurses"
-          description="Real stories from students who trusted Booster Prep to achieve their NCLEX success."
           animated
+          badge="Testimonials"
+          title="What Our Students Say"
+          highlighted="Students Say"
+          description="Hear from successful nursing graduates who trusted Medix for their NCLEX preparation."
         />
 
-        <div className="testimonial-grid">
+        <div
+          ref={gridRef}
+          className="testimonial-grid"
+        >
           {testimonials.map((testimonial) => (
             <TestimonialCard
               key={testimonial.name}

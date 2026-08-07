@@ -14,7 +14,7 @@ export function ProcessCard({
   const Icon = process.icon;
 
   return (
-    <article className="group process-card">
+    <article data-animate className="group process-card">
       {/* Step Number */}
       <span className="process-step">
         {process.step}

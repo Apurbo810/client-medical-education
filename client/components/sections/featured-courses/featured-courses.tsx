@@ -1,5 +1,7 @@
 "use client";
 
+import { useStagger } from "@/hooks/gsap";
+
 import { courses } from "@/data/courses";
 
 import { Container } from "@/components/layout/container";
@@ -7,10 +9,15 @@ import { Section } from "@/components/common/section";
 import { SectionHeading } from "@/components/common/section-heading/section-heading";
 
 import { CourseCard } from "./course-card";
-import { useCoursesAnimation } from "./animations/useCoursesAnimation";
 
 export function FeaturedCourses() {
-  const { gridRef } = useCoursesAnimation();
+
+  const gridRef = useStagger({
+      y: 30,
+      stagger: 0.08,
+    });
+
+
 
   return (
     <Section id="courses">
