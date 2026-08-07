@@ -25,7 +25,10 @@ export function useAppGSAP<T extends HTMLElement = HTMLElement>(
     () => {
       if (disabled) return;
 
+      if (!scope.current) return;
+
       animation();
+
     },
     {
       scope,

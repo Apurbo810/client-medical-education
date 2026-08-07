@@ -1,24 +1,32 @@
+"use client";
+
 import { courses } from "@/data/courses";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/common/section";
-import { SectionHeading } from "@/components/common/section-heading";
+import { SectionHeading } from "@/components/common/section-heading/section-heading";
 
 import { CourseCard } from "./course-card";
+import { useCoursesAnimation } from "./animations/useCoursesAnimation";
 
 export function FeaturedCourses() {
+  const { gridRef } = useCoursesAnimation();
+
   return (
-    <Section spacing="sm">
+    <Section id="courses">
       <Container>
         <SectionHeading
-          badge="Featured Courses"
-          title="Choose Your Learning Path"
-          description="Comprehensive NCLEX preparation courses designed to help you succeed with confidence."
-          align="center"
-          size="lg"
+          badge="Courses"
+          title="Everything You Need to Pass"
+          highlighted="Need to Pass"
+          description="Explore our complete NCLEX preparation courses designed to help you study smarter and pass with confidence."
+          animated
         />
 
-        <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+        <div
+          ref={gridRef}
+          className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-4"
+        >
           {courses.map((course) => (
             <CourseCard
               key={course.title}

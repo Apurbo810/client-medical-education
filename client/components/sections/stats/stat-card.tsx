@@ -1,8 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-
 import {
   Users,
   BookOpen,
@@ -10,6 +7,7 @@ import {
   Award,
 } from "lucide-react";
 
+import { useCounter } from "@/hooks/gsap";
 import { cn } from "@/lib/utils";
 import type { Statistic } from "@/types/statistic";
 
@@ -29,46 +27,27 @@ export function StatCard({
   statistic,
   className,
 }: StatCardProps) {
-  const valueRef = useRef<HTMLHeadingElement>(null);
-
   const Icon = icons[statistic.icon];
 
-  useEffect(() => {
-    if (!valueRef.current) return;
-
-    const number = Number(
-      statistic.value.replace(/[^\d.]/g, "")
-    );
-
-    if (Number.isNaN(number)) return;
-
-    const counter = { value: 0 };
-
-    gsap.to(counter, {
-      value: number,
-      duration: 2,
-      ease: "power3.out",
-      onUpdate: () => {
-        if (!valueRef.current) return;
-
-        valueRef.current.textContent =
-          statistic.value.replace(
-            /[0-9,.]+/,
-            Math.round(counter.value).toLocaleString()
-          );
-      },
-    });
-  }, [statistic.value]);
+  const valueRef = useCounter(
+    Number(statistic.value.replace(/[^\d.]/g, "")),
+    (value) =>
+      statistic.value.replace(
+        /\d[\d,.]*/,
+        value.toLocaleString(),
+      ),
+  );
 
   return (
     <div
+      data-animate
       className={cn(
-         "group flex flex-col items-center justify-center gap-3 p-5 text-center transition-all duration-300 hover:bg-white/5 md:flex-row md:items-center md:justify-start md:gap-4 md:p-6 md:text-left",
-        className
+        "group flex flex-col items-center justify-center gap-3 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:bg-white/5 md:flex-row md:items-center md:justify-start md:gap-4 md:p-6 md:text-left",
+        className,
       )}
     >
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-transform duration-300 group-hover:scale-110 md:h-14 md:w-14">
-        <Icon  className="size-6 text-white md:size-7"  />
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 md:h-14 md:w-14">
+        <Icon className="size-6 text-white md:size-7" />
       </div>
 
       <div>

@@ -2,7 +2,7 @@ import { features } from "@/data/features";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/common/section";
-import { SectionHeading } from "@/components/common/section-heading";
+import { SectionHeading } from "@/components/common/section-heading/section-heading";
 
 import { FeatureCard } from "./feature-card";
 
@@ -17,6 +17,7 @@ export function Features() {
           description="A complete, all-in-one NCLEX preparation ecosystem designed by nurses, for nurses."
           align="center"
           size="lg"
+          animated
         />
 
         <div className="feature-grid">

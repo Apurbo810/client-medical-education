@@ -2,7 +2,7 @@ import { faqs } from "@/data/faq";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/common/section";
-import { SectionHeading } from "@/components/common/section-heading";
+import { SectionHeading } from "@/components/common/section-heading/section-heading";
 
 import { FAQItem } from "./faq-item";
 
@@ -13,7 +13,9 @@ export function FAQ() {
         <SectionHeading
           badge="FAQ"
           title="Frequently Asked Questions"
+          highlighted="Questions"
           description="Everything you need to know before starting your NCLEX preparation."
+          animated
         />
 
         <div className="faq-wrapper">

@@ -13,7 +13,7 @@ export function CourseCard({
   course,
 }: CourseCardProps) {
   return (
-    <article className="group course-card flex h-full flex-col">
+    <article data-animate className="group course-card flex h-full flex-col">
       <CourseImage
         image={course.image}
         title={course.title}

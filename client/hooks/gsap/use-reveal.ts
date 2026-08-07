@@ -31,19 +31,28 @@ export function useReveal<
     () => {
       if (!ref.current) return;
 
-      gsap.from(ref.current, {
+    gsap.fromTo(
+    ref.current,
+    {
         opacity: 0,
         y,
         x,
+    },
+    {
+        opacity: 1,
+        y: 0,
+        x: 0,
         duration,
         delay,
         ease: ANIMATION.reveal.ease,
+        clearProps: "opacity,transform",
         scrollTrigger: {
-          trigger: ref.current,
-          start,
-          once,
+        trigger: ref.current,
+        start,
+        once,
         },
-      });
+    },
+    );
     },
     {
       scope: ref,
