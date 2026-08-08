@@ -808,3 +808,106 @@ img {
 @utility gsap-hidden {
   opacity: 0;
 }
+
+
+/* =========================================================
+   AUTH / OTP
+========================================================= */
+
+@utility auth-page {
+  @apply flex min-h-screen flex-col bg-background;
+}
+
+@utility auth-header {
+  @apply border-b border-border/60;
+}
+
+@utility auth-header-inner {
+  @apply mx-auto flex h-20 w-full max-w-7xl items-center px-6 sm:px-8;
+}
+
+@utility auth-content {
+  @apply flex flex-1 items-center justify-center px-6 py-12 sm:px-8;
+}
+
+@utility auth-container {
+  @apply w-full max-w-md;
+}
+
+@utility auth-back-link {
+  @apply mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground;
+}
+
+@utility auth-icon {
+  @apply mb-6 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary;
+}
+
+@utility auth-heading {
+  @apply font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl;
+}
+
+@utility auth-description {
+  @apply mt-3 text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+@utility auth-email {
+  @apply mt-3 text-sm font-semibold text-foreground;
+}
+
+/* =========================================================
+   OTP
+========================================================= */
+
+@utility otp-form {
+  @apply mt-8;
+}
+
+@utility otp-label {
+  @apply mb-3 block text-sm font-semibold text-foreground;
+}
+
+@utility otp-inputs {
+  @apply flex justify-center gap-2 sm:gap-3;
+}
+
+@utility otp-input {
+  @apply h-12 w-11 shrink-0 rounded-xl border border-border bg-card text-center text-lg font-bold  text-foreground shadow-sm outline-none transition-all placeholder:text-muted-foreground hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 sm:h-12 sm:w-12;
+}
+
+@utility otp-submit-wrapper {
+  @apply flex justify-center;
+}
+
+@utility otp-submit {
+  @apply mt-8 h-12 w-[150px] rounded-xl font-semibold;
+}
+
+@utility otp-resend {
+  @apply mt-7 text-center;
+}
+
+@utility otp-resend-text {
+  @apply text-sm text-muted-foreground;
+}
+
+@utility otp-resend-countdown {
+  @apply mt-1 text-sm font-medium text-muted-foreground;
+}
+
+@utility otp-resend-button {
+  @apply mt-1 text-sm font-semibold text-primary transition-colors hover:text-primary/80 hover:underline;
+}
+
+/* =========================================================
+   AUTH FOOTER
+========================================================= */
+
+@utility auth-footer-link {
+  @apply mt-8 text-center text-sm text-muted-foreground;
+}
+
+@utility auth-link {
+  @apply font-semibold text-primary transition-colors hover:text-primary/80 hover:underline;
+}
+
+
