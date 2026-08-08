@@ -14,6 +14,7 @@ import {
   SheetHeader,
 } from "@/components/ui/sheet";
 
+
 export function MobileNavbar() {
   return (
     <div className="lg:hidden">
@@ -41,13 +42,24 @@ export function MobileNavbar() {
             ))}
           </nav>
 
-          <div className="space-y-3 border-t pt-6">
-            <Button variant="outline" className="w-full">
-              Login
-            </Button>
+            <div className="space-y-3 border-t pt-6">
+              <Button
+                variant="outline"
+                className="w-full"
+                nativeButton={false}
+                render={<Link href="/login" />}
+              >
+                Login
+              </Button>
 
-            <Button className="w-full">Start Learning →</Button>
-          </div>
+              <Button
+                className="w-full"
+                nativeButton={false}
+                render={<Link href="/register" />}
+              >
+                Start Learning →
+              </Button>
+            </div>
         </SheetContent>
       </Sheet>
     </div>

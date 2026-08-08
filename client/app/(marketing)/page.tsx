@@ -8,6 +8,9 @@ import { Testimonials } from "@/components/sections/testimonials"
 import { FAQ } from "@/components/sections/faq"
 import { Pricing } from "@/components/sections/pricing"
 import { CTA } from "@/components/sections/cta"
+
+
+import { faqs  } from "@/data/faq/faq";
 export default function HomePage() {
   return (
     <>
@@ -18,7 +21,12 @@ export default function HomePage() {
       <WhyChooseUs />
       <LearningProcess />
       <Testimonials />
-      <FAQ />
+            <FAQ
+              title="Pricing Questions"
+              highlighted="Questions"
+              description="Find answers to the most common questions."
+              faqs={faqs}
+            />
       <Pricing />
       <CTA />
     </>

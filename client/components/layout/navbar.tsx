@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "./container";
 import { NavigationLinks } from "./navigation-links";
 import { MobileNavbar } from "./mobile-navbar";
-import { Section } from "../common/section";
+import Link from "next/link";
 
 export function Navbar() {
   const { isScrolled } = useScroll();
@@ -35,9 +35,19 @@ export function Navbar() {
 
       {/* Desktop Actions */}
       <div className="hidden items-center gap-2 lg:flex">
-        <Button variant="ghost">Login</Button>
+        <Button
+          variant="ghost"
+          nativeButton={false}
+          render={<Link href="/login" />}
+        >
+          Login
+        </Button>
 
-        <Button className="rounded-xl">
+        <Button
+          className="rounded-xl"
+          nativeButton={false}
+          render={<Link href="/register" />}
+        >
           Get Started
           <ArrowRight className="ml-2 size-4" />
         </Button>

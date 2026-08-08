@@ -1,0 +1,232 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import {
+  ArrowRight,
+  Eye,
+  EyeOff,
+  LockKeyhole,
+  Mail,
+  UserRound,
+} from "lucide-react";
+
+import { Logo } from "@/components/common/logo";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+export function RegisterForm() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  return (
+    <section className="flex min-h-screen items-center justify-center bg-background px-6 py-10 sm:px-8 lg:px-12">
+      <div className="w-full max-w-md">
+        {/* Mobile Logo */}
+        <div className="mb-10 lg:hidden">
+          <Logo />
+        </div>
+
+        {/* Heading */}
+        <div>
+          <h1 className="font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+            Create your account
+          </h1>
+
+          <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+            Start your NCLEX journey today. It's free to begin.
+          </p>
+        </div>
+
+        <form className="mt-7 space-y-4">
+          {/* First + Last Name */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-2">
+              <label
+                htmlFor="firstName"
+                className="text-sm font-semibold text-foreground"
+              >
+                First Name
+              </label>
+
+              <div className="relative">
+                <UserRound className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+
+                <Input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  placeholder="Sarah"
+                  autoComplete="given-name"
+                  className="h-12 rounded-xl pl-11"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label
+                htmlFor="lastName"
+                className="text-sm font-semibold text-foreground"
+              >
+                Last Name
+              </label>
+
+              <Input
+                id="lastName"
+                name="lastName"
+                type="text"
+                placeholder="Mitchell"
+                autoComplete="family-name"
+                className="h-12 rounded-xl"
+              />
+            </div>
+          </div>
+
+          {/* Email */}
+          <div className="space-y-2">
+            <label
+              htmlFor="email"
+              className="text-sm font-semibold text-foreground"
+            >
+              Email Address
+            </label>
+
+            <div className="relative">
+              <Mail className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
+
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                autoComplete="email"
+                className="h-12 rounded-xl pl-12"
+              />
+            </div>
+          </div>
+
+          {/* Password */}
+          <div className="space-y-2">
+            <label
+              htmlFor="password"
+              className="text-sm font-semibold text-foreground"
+            >
+              Password
+            </label>
+
+            <div className="relative">
+              <LockKeyhole className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
+
+              <Input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Create a password"
+                autoComplete="new-password"
+                className="h-12 rounded-xl pl-12 pr-12"
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword((value) => !value)}
+                aria-label={
+                  showPassword ? "Hide password" : "Show password"
+                }
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {showPassword ? (
+                  <EyeOff className="size-5" />
+                ) : (
+                  <Eye className="size-5" />
+                )}
+              </button>
+            </div>
+
+            {/* Password Requirements */}
+            <div className="space-y-1 pt-1 text-xs">
+              <p className="text-emerald-600">
+                ✓ At least 8 characters
+              </p>
+
+              <p className="text-muted-foreground">
+                ◉ One uppercase letter
+              </p>
+
+              <p className="text-muted-foreground">
+                ◉ One number
+              </p>
+            </div>
+          </div>
+
+          {/* Terms */}
+          <label className="flex cursor-pointer items-start gap-2.5 pt-1 text-xs leading-5 text-muted-foreground">
+            <input
+              type="checkbox"
+              name="terms"
+              className="mt-0.5 size-4 shrink-0 rounded border-border accent-primary"
+            />
+
+            <span>
+              I agree to the{" "}
+              <Link
+                href="/terms"
+                className="font-medium text-primary hover:underline"
+              >
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/privacy"
+                className="font-medium text-primary hover:underline"
+              >
+                Privacy Policy
+              </Link>
+            </span>
+          </label>
+
+          {/* Create Account */}
+          <Button
+            type="submit"
+            className="h-12 w-full rounded-xl text-sm font-semibold"
+          >
+            Create Account
+            <ArrowRight className="ml-2 size-4" />
+          </Button>
+        </form>
+
+        {/* Divider */}
+        <div className="my-6 flex items-center gap-4">
+          <div className="h-px flex-1 bg-border" />
+
+          <span className="text-xs text-muted-foreground">
+            or sign up with
+          </span>
+
+          <div className="h-px flex-1 bg-border" />
+        </div>
+
+        {/* Google */}
+        <Button
+          type="button"
+          variant="outline"
+          className="h-12 w-full rounded-xl bg-card font-semibold"
+        >
+          <span className="mr-2 font-bold text-[#4285F4]">
+            G
+          </span>
+          Sign up with Google
+        </Button>
+
+        {/* Login */}
+        <p className="mt-7 text-center text-sm text-muted-foreground">
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            className="font-semibold text-primary hover:underline"
+          >
+            Sign in
+          </Link>
+        </p>
+      </div>
+    </section>
+  );
+}
