@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { AlertCircle, ArrowLeft, ArrowRight, MailCheck } from "lucide-react";
+import { AlertCircle, ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Logo } from "@/components/common/logo";
 import { Button } from "@/components/ui/button";
-import { ApiRequestError, resendOtpRequest, verifyRegistrationOtpRequest } from "@/lib/api/auth";
+import { ApiRequestError, forgotPasswordRequest, verifyResetOtpRequest } from "@/lib/api/auth";
 
 const OTP_LENGTH = 6;
 const RESEND_SECONDS = 30;
@@ -17,10 +17,10 @@ function readSessionValue(key: string) {
   return window.sessionStorage.getItem(key);
 }
 
-export function VerifyOtpForm() {
+export function VerifyResetOtpForm() {
   const router = useRouter();
 
-  const [email] = useState<string | null>(() => readSessionValue("pendingVerifyEmail"));
+  const [email] = useState<string | null>(() => readSessionValue("pendingResetEmail"));
   const [otp, setOtp] = useState<string[]>(Array(OTP_LENGTH).fill(""));
   const [countdown, setCountdown] = useState(RESEND_SECONDS);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,7 +32,7 @@ export function VerifyOtpForm() {
 
   useEffect(() => {
     if (!email) {
-      router.replace("/register");
+      router.replace("/forgot-password");
     }
   }, [email, router]);
 
@@ -97,7 +97,7 @@ export function VerifyOtpForm() {
     focusInput(0);
 
     try {
-      await resendOtpRequest(email);
+      await forgotPasswordRequest(email);
       setCountdown(RESEND_SECONDS);
     } catch (err) {
       setFormError(
@@ -114,9 +114,9 @@ export function VerifyOtpForm() {
 
     setIsSubmitting(true);
     try {
-      await verifyRegistrationOtpRequest(email, otpValue);
-      sessionStorage.removeItem("pendingVerifyEmail");
-      router.push("/login");
+      const res = await verifyResetOtpRequest(email, otpValue);
+      sessionStorage.setItem("resetToken", res.data.resetToken);
+      router.push("/reset-password");
     } catch (err) {
       setFormError(
         err instanceof ApiRequestError ? err.message : "Something went wrong. Please try again."
@@ -138,20 +138,19 @@ export function VerifyOtpForm() {
 
       <div className="auth-content">
         <div className="auth-container">
-          <Link href="/register" className="auth-back-link">
+          <Link href="/forgot-password" className="auth-back-link">
             <ArrowLeft className="size-4" />
-            Back to registration
+            Back
           </Link>
 
           <div className="auth-icon">
-            <MailCheck className="size-7" />
+            <ShieldCheck className="size-7" />
           </div>
 
           <div>
-            <h1 className="auth-heading">Verify your email</h1>
+            <h1 className="auth-heading">Enter verification code</h1>
             <p className="auth-description">
-              We&apos;ve sent a 6-digit verification code to your email address. Enter the code
-              below to continue.
+              If an account exists for this email, a 6-digit code has been sent to it.
             </p>
             {email && <p className="auth-email">{email}</p>}
           </div>
@@ -194,7 +193,7 @@ export function VerifyOtpForm() {
                 disabled={otpValue.length !== OTP_LENGTH || isSubmitting}
                 className="otp-submit"
               >
-                {isSubmitting ? "Verifying..." : "Verify Email"}
+                {isSubmitting ? "Verifying..." : "Verify Code"}
                 {!isSubmitting && <ArrowRight className="ml-2 size-4" />}
               </Button>
             </div>
@@ -214,7 +213,7 @@ export function VerifyOtpForm() {
           </div>
 
           <p className="auth-footer-link">
-            Already have an account?{" "}
+            Remember your password?{" "}
             <Link href="/login" className="auth-link">
               Sign in
             </Link>
