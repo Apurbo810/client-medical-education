@@ -7,11 +7,15 @@ export interface Course {
   image: string;
 
   category: string;
-
+  level: string;
 
   lessons: number;
   duration: string;
   rating: number;
+  students: number;
+
   price: string;
   href: string;
+
+  featured: boolean;
 }

@@ -17,8 +17,6 @@ export function FeaturedCourses() {
       stagger: 0.08,
     });
 
-
-
   return (
     <Section id="courses">
       <Container>
@@ -34,7 +32,9 @@ export function FeaturedCourses() {
           ref={gridRef}
           className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-4"
         >
-          {courses.map((course) => (
+        {courses
+          .filter((course) => course.featured)
+          .map((course) => (
             <CourseCard
               key={course.title}
               course={course}

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { ArrowRight } from "lucide-react";
 
 import type { Course } from "@/types/course";
@@ -36,15 +38,14 @@ export function CourseCard({
           {course.description}
         </p>
 
-        <div className="course-footer">
-          <span className="course-price">
-            {course.price}
-          </span>
-
-          <button className="course-button">
+        <div className="course-footer justify-end">
+          <Link
+            href={`/courses/${course.id}`}
+            className="course-button"
+          >
             Learn More
             <ArrowRight className="size-4" />
-          </button>
+          </Link>
         </div>
       </div>
     </article>

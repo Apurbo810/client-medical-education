@@ -10,14 +10,6 @@ export const navigation: NavigationItem[] = [
     href: "/courses",
   },
   {
-    title: "Practice",
-    href: "/practice",
-  },
-  {
-    title: "Resources",
-    href: "/resources",
-  },
-  {
     title: "Pricing",
     href: "/pricing",
   },
@@ -25,4 +17,8 @@ export const navigation: NavigationItem[] = [
     title: "About",
     href: "/about",
   },
+  {
+    title: "Contact",
+    href: "/contact",
+  }
 ];

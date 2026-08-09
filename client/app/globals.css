@@ -389,6 +389,89 @@ img {
 }
 
 /* =========================================================
+   COURSES PAGE
+========================================================= */
+
+@utility courses-page {
+  @apply py-20 md:py-24;
+}
+
+@utility courses-page-header {
+  @apply mx-auto max-w-3xl text-center;
+}
+
+@utility courses-page-grid {
+  @apply mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3;
+}
+
+@utility course-level {
+  @apply absolute right-4 top-4 rounded-full bg-background/80 px-3 py-1 text-xs font-semibold text-primary shadow-sm backdrop-blur-sm;
+}
+
+@utility course-meta {
+  @apply mb-3 flex items-center justify-between gap-4 text-xs text-muted-foreground;
+}
+
+@utility course-meta-left {
+  @apply flex items-center gap-4;
+}
+
+@utility course-meta-item {
+  @apply inline-flex items-center gap-1.5;
+}
+
+@utility course-rating {
+  @apply inline-flex items-center gap-1 font-medium text-amber-500;
+}
+
+@utility course-students {
+  @apply inline-flex items-center gap-1.5 text-xs text-muted-foreground;
+}
+
+@utility course-enroll {
+  @apply inline-flex items-center rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-300 hover:bg-primary/90;
+}
+
+
+/* =========================================================
+   COURSES PAGE FILTER
+========================================================= */
+
+@utility courses-filter {
+  @apply mt-10 flex flex-wrap items-center justify-center gap-2;
+}
+
+@utility courses-filter-button {
+  @apply rounded-xl border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary;
+}
+
+@utility courses-filter-button-active {
+  @apply border-primary bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground;
+}
+
+
+/* =========================================================
+   COURSES PAGE PAGINATION
+========================================================= */
+
+@utility courses-pagination {
+  @apply mt-12 flex items-center justify-center gap-2;
+}
+
+@utility courses-pagination-button {
+  @apply flex size-10 items-center justify-center rounded-xl border border-border bg-card text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary;
+}
+
+@utility courses-pagination-button-active {
+  @apply border-primary bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground;
+}
+
+@utility courses-pagination-button-disabled {
+  @apply pointer-events-none opacity-40;
+}
+
+
+/* =========================================================
    FEATURES
 ========================================================= */
 
@@ -809,6 +892,178 @@ img {
   opacity: 0;
 }
 
+/* =========================================================
+   COURSE DETAIL PAGE
+========================================================= */
+
+@utility course-detail-page {
+  @apply bg-background;
+}
+
+
+/* =========================================================
+   COURSE DETAIL HERO
+========================================================= */
+
+@utility course-detail-hero {
+  @apply border-b border-border bg-secondary/30 py-12 md:py-16;
+}
+
+@utility course-detail-back {
+  @apply mb-10 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary;
+}
+
+@utility course-detail-hero-grid {
+  @apply grid items-center gap-10 lg:grid-cols-2 lg:gap-16;
+}
+
+@utility course-detail-hero-content {
+  @apply max-w-2xl;
+}
+
+@utility course-detail-badges {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+@utility course-detail-badge {
+  @apply rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary;
+}
+
+@utility course-detail-level {
+  @apply rounded-full bg-card px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm;
+}
+
+@utility course-detail-title {
+  @apply mt-5 text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl;
+}
+
+@utility course-detail-description {
+  @apply mt-5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg;
+}
+
+@utility course-detail-rating {
+  @apply mt-6 flex flex-wrap items-center gap-2 text-sm text-muted-foreground;
+}
+
+@utility course-detail-rating-value {
+  @apply font-bold text-foreground;
+}
+
+@utility course-detail-stars {
+  @apply flex items-center gap-0.5 text-amber-500;
+}
+
+@utility course-detail-stats {
+  @apply mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3;
+}
+
+@utility course-detail-stat {
+  @apply flex items-center gap-3 rounded-2xl border border-border bg-card p-4;
+}
+
+@utility course-detail-stat-label {
+  @apply block text-xs text-muted-foreground;
+}
+
+@utility course-detail-stat-value {
+  @apply mt-0.5 block text-sm font-semibold text-foreground;
+}
+
+@utility course-detail-image-wrapper {
+  @apply relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-muted shadow-lg;
+}
+
+@utility course-detail-image {
+  @apply object-cover;
+}
+
+
+/* =========================================================
+   COURSE DETAIL CONTENT
+========================================================= */
+
+@utility course-detail-content-section {
+  @apply py-16 md:py-20;
+}
+
+@utility course-detail-section {
+  @apply border-b border-border py-10 first:pt-0 last:border-b-0;
+}
+
+@utility course-detail-section-title {
+  @apply text-2xl font-bold tracking-tight text-foreground;
+}
+
+@utility course-detail-section-text {
+  @apply mt-4 max-w-3xl text-base leading-7 text-muted-foreground;
+}
+
+@utility course-detail-learn-grid {
+  @apply mt-6 grid gap-4 sm:grid-cols-2;
+}
+
+@utility course-detail-learn-item {
+  @apply flex gap-3 rounded-2xl border border-border bg-card p-4 text-sm leading-6 text-muted-foreground;
+}
+
+@utility course-detail-learn-icon {
+  @apply mt-0.5 shrink-0 text-primary;
+}
+
+@utility course-detail-information {
+  @apply mt-6 grid gap-4 sm:grid-cols-2;
+}
+
+@utility course-detail-information-item {
+  @apply flex items-center justify-between rounded-xl bg-secondary/50 px-4 py-3;
+}
+
+@utility course-detail-information-label {
+  @apply text-sm text-muted-foreground;
+}
+
+@utility course-detail-information-value {
+  @apply text-sm font-semibold text-foreground;
+}
+
+
+/* =========================================================
+   COURSE ENROLLMENT SIDEBAR
+========================================================= */
+
+@utility course-detail-sidebar {
+  @apply lg:sticky lg:top-24 lg:self-start;
+}
+
+@utility course-detail-enroll-card {
+  @apply overflow-hidden rounded-2xl border border-border bg-card shadow-md;
+}
+
+@utility course-detail-enroll-image {
+  @apply relative aspect-video overflow-hidden bg-muted;
+}
+
+@utility course-detail-enroll-content {
+  @apply p-6;
+}
+
+@utility course-detail-enroll-label {
+  @apply text-sm text-muted-foreground;
+}
+
+@utility course-detail-price {
+  @apply mt-1 text-3xl font-bold text-primary;
+}
+
+@utility course-detail-enroll-button {
+  @apply mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-300 hover:bg-primary/90;
+}
+
+@utility course-detail-enroll-note {
+  @apply mt-4 text-center text-xs leading-5 text-muted-foreground;
+}
+
+
 
 /* =========================================================
    AUTH / OTP
@@ -911,3 +1166,507 @@ img {
 }
 
 
+
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+
+@utility contact-page {
+  @apply min-h-screen bg-background py-16 md:py-20;
+}
+
+@utility contact-container {
+  @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+}
+
+
+/* =========================================================
+   CONTACT HEADER
+========================================================= */
+
+@utility contact-header {
+  @apply mx-auto max-w-3xl text-center;
+}
+
+@utility contact-badge {
+  @apply inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary;
+}
+
+@utility contact-title {
+  @apply mt-5 text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl;
+}
+
+@utility contact-title-highlight {
+  @apply text-primary;
+}
+
+@utility contact-description {
+  @apply mt-4 text-base leading-7 text-muted-foreground sm:text-lg;
+}
+
+
+/* =========================================================
+   CONTACT INFORMATION
+========================================================= */
+
+@utility contact-info {
+  @apply grid gap-4;
+}
+
+@utility contact-info-card {
+  @apply flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md;
+}
+
+@utility contact-info-icon {
+  @apply flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary;
+}
+
+@utility contact-info-content {
+  @apply min-w-0;
+}
+
+@utility contact-info-label {
+  @apply block text-sm text-muted-foreground;
+}
+
+@utility contact-info-value {
+  @apply mt-0.5 block text-sm font-semibold text-foreground;
+}
+
+@utility contact-availability {
+  @apply flex items-start gap-3 rounded-2xl border border-primary/15 bg-primary/5 p-4 text-sm leading-6 text-muted-foreground;
+}
+
+@utility contact-availability-dot {
+  @apply mt-2 size-2 shrink-0 rounded-full bg-primary shadow-[0_0_0_4px_color-mix(in_oklch,var(--primary)_15%,transparent)];
+}
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+@utility contact-form-card {
+  @apply rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8;
+}
+
+@utility contact-form-intro {
+  @apply mb-7 space-y-1;
+}
+
+@utility contact-form-intro-title {
+  @apply text-xl font-bold tracking-tight text-foreground;
+}
+
+@utility contact-form-intro-description {
+  @apply text-sm leading-6 text-muted-foreground;
+}
+
+@utility contact-form {
+  @apply space-y-5;
+}
+
+@utility contact-form-row {
+  @apply grid gap-5 sm:grid-cols-2;
+}
+
+@utility contact-form-field {
+  @apply space-y-2;
+}
+
+@utility contact-form-label {
+  @apply text-sm font-semibold text-foreground;
+}
+
+@utility contact-form-input {
+  @apply h-12 w-full rounded-xl border-border bg-background px-4 text-sm shadow-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 aria-invalid:border-destructive aria-invalid:ring-destructive/20;
+}
+
+@utility contact-form-select {
+  @apply h-12 w-full rounded-xl border-border bg-background px-4 text-sm shadow-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20 aria-invalid:border-destructive aria-invalid:ring-destructive/20;
+}
+
+@utility contact-form-textarea {
+  @apply min-h-36 w-full resize-none rounded-xl border-border bg-background px-4 py-3 text-sm shadow-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 aria-invalid:border-destructive aria-invalid:ring-destructive/20;
+}
+
+@utility contact-form-button {
+  @apply flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-md active:translate-y-0;
+}
+
+@utility contact-form-success {
+  @apply flex items-center justify-center gap-2 rounded-xl bg-primary/10 px-4 py-3 text-center text-sm font-medium text-primary;
+}
+
+/* =========================================================
+   CONTACT LAYOUT
+========================================================= */
+
+@utility contact-layout {
+  @apply mt-12 grid gap-8 lg:grid-cols-[1fr_1.35fr] lg:items-start;
+}
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+@utility about-hero {
+  @apply overflow-hidden bg-secondary/35 pt-28 sm:pt-32;
+}
+
+@utility about-hero-grid {
+  @apply grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16;
+}
+
+@utility about-hero-content {
+  @apply relative z-10;
+}
+
+@utility about-hero-actions {
+  @apply mt-8 flex flex-wrap items-center gap-5;
+}
+
+.about-hero-actions p {
+  @apply text-sm font-medium text-muted-foreground;
+}
+
+@utility about-primary-action {
+  @apply h-12 rounded-xl px-5 font-semibold shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md;
+}
+
+@utility about-image-wrap {
+  @apply relative mx-auto w-full max-w-xl lg:mr-0;
+}
+
+@utility about-image-frame {
+  @apply relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-muted shadow-xl;
+}
+
+@utility about-image-note {
+  @apply absolute -bottom-5 -left-3 flex items-center gap-2 rounded-2xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground shadow-lg sm:left-6;
+}
+
+@utility about-story-section {
+  @apply border-y border-border bg-card;
+}
+
+@utility about-story-grid {
+  @apply grid gap-10 lg:grid-cols-2 lg:gap-20;
+}
+
+@utility about-story-copy {
+  @apply space-y-5 text-base leading-8 text-muted-foreground lg:pt-12;
+}
+
+@utility about-values-grid {
+  @apply mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+@utility about-value-card {
+  @apply rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md;
+}
+
+@utility about-value-card-accent {
+  @apply bg-primary text-primary-foreground hover:border-primary hover:bg-primary;
+}
+
+@utility about-value-icon {
+  @apply mb-5 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary;
+}
+
+.about-value-card h3 {
+  @apply text-lg font-bold tracking-tight text-foreground;
+}
+
+.about-value-card p {
+  @apply mt-2 text-sm leading-6 text-muted-foreground;
+}
+
+.about-value-card-accent .about-value-icon {
+  @apply bg-white/15 text-white;
+}
+
+.about-value-card-accent h3 {
+  @apply text-white;
+}
+
+.about-value-card-accent p {
+  @apply text-white/80;
+}
+
+@utility about-promise {
+  @apply flex items-center justify-center gap-3 rounded-2xl border border-primary/15 bg-primary/5 px-6 py-5 text-center text-sm font-semibold text-primary sm:text-base;
+}
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+@utility about-page {
+  @apply bg-background;
+}
+
+@utility about-container {
+  @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10;
+}
+
+
+/* =========================================================
+   ABOUT HERO
+========================================================= */
+
+@utility about-hero {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+@utility about-hero-content {
+  @apply mx-auto max-w-3xl text-center;
+}
+
+@utility about-badge {
+  @apply inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary;
+}
+
+@utility about-title {
+  @apply mt-5 text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl;
+}
+
+@utility about-title-highlight {
+  @apply text-primary;
+}
+
+@utility about-description {
+  @apply mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg;
+}
+
+
+/* =========================================================
+   ABOUT PLATFORM
+========================================================= */
+
+@utility about-platform {
+  @apply border-y border-border bg-secondary/30 py-16 md:py-20;
+}
+
+@utility about-platform-grid {
+  @apply grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16;
+}
+
+@utility about-platform-content {
+  @apply max-w-2xl;
+}
+
+@utility about-section-label {
+  @apply text-sm font-semibold uppercase tracking-wider text-primary;
+}
+
+@utility about-section-title {
+  @apply mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl;
+}
+
+@utility about-section-description {
+  @apply mt-4 text-base leading-7 text-muted-foreground;
+}
+
+@utility about-platform-card {
+  @apply rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8;
+}
+
+@utility about-platform-card-title {
+  @apply text-xl font-bold text-foreground;
+}
+
+@utility about-platform-card-text {
+  @apply mt-3 text-sm leading-6 text-muted-foreground;
+}
+
+
+/* =========================================================
+   MISSION & VISION
+========================================================= */
+
+@utility about-mission-vision {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+@utility about-mission-vision-grid {
+  @apply grid gap-6 md:grid-cols-2;
+}
+
+@utility about-mission-card {
+  @apply rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8;
+}
+
+@utility about-vision-card {
+  @apply rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8;
+}
+
+@utility about-card-icon {
+  @apply flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary;
+}
+
+@utility about-card-title {
+  @apply mt-5 text-2xl font-bold tracking-tight text-foreground;
+}
+
+@utility about-card-text {
+  @apply mt-4 text-sm leading-7 text-muted-foreground sm:text-base;
+}
+
+
+/* =========================================================
+   TUTORS
+========================================================= */
+
+@utility about-tutors {
+  @apply border-y border-border bg-secondary/30 py-16 md:py-20 lg:py-24;
+}
+
+@utility about-tutors-header {
+  @apply mx-auto max-w-2xl text-center;
+}
+
+@utility about-tutors-grid {
+  @apply mt-10 grid gap-6 md:grid-cols-2;
+}
+
+@utility about-tutor-card {
+  @apply rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8;
+}
+
+@utility about-tutor-header {
+  @apply flex items-center gap-4;
+}
+
+@utility about-tutor-avatar {
+  @apply flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary;
+}
+
+@utility about-tutor-name {
+  @apply text-xl font-bold text-foreground;
+}
+
+@utility about-tutor-role {
+  @apply mt-1 text-sm font-medium text-primary;
+}
+
+@utility about-tutor-description {
+  @apply mt-5 text-sm leading-7 text-muted-foreground sm:text-base;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+@utility about-services {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+@utility about-services-header {
+  @apply mx-auto max-w-2xl text-center;
+}
+
+@utility about-services-grid {
+  @apply mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+@utility about-service-card {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm transition-colors duration-200 hover:border-primary/30;
+}
+
+@utility about-service-icon {
+  @apply flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary;
+}
+
+@utility about-service-title {
+  @apply mt-4 text-base font-semibold text-foreground;
+}
+
+@utility about-service-text {
+  @apply mt-2 text-sm leading-6 text-muted-foreground;
+}
+
+
+/* =========================================================
+   STUDENTS / IMPACT
+========================================================= */
+
+@utility about-impact {
+  @apply border-y border-border bg-secondary/30 py-16 md:py-20 lg:py-24;
+}
+
+@utility about-impact-content {
+  @apply mx-auto max-w-3xl text-center;
+}
+
+@utility about-impact-number {
+  @apply text-5xl font-extrabold tracking-tight text-primary sm:text-6xl;
+}
+
+@utility about-impact-title {
+  @apply mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl;
+}
+
+@utility about-impact-description {
+  @apply mt-4 text-base leading-7 text-muted-foreground;
+}
+
+
+/* =========================================================
+   WHY DIFFERENT
+========================================================= */
+
+@utility about-different {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+@utility about-different-header {
+  @apply mx-auto max-w-2xl text-center;
+}
+
+@utility about-different-grid {
+  @apply mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+@utility about-different-card {
+  @apply rounded-2xl border border-border bg-card p-6 shadow-sm;
+}
+
+@utility about-different-number {
+  @apply flex size-10 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground;
+}
+
+@utility about-different-title {
+  @apply mt-5 text-lg font-bold text-foreground;
+}
+
+@utility about-different-text {
+  @apply mt-2 text-sm leading-6 text-muted-foreground;
+}
+
+
+/* =========================================================
+   ABOUT CTA
+========================================================= */
+
+@utility about-cta {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+@utility about-cta-card {
+  @apply overflow-hidden rounded-3xl bg-primary px-6 py-12 text-center sm:px-10 md:py-16;
+}
+
+@utility about-cta-title {
+  @apply text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl;
+}
+
+@utility about-cta-description {
+  @apply mx-auto mt-4 max-w-2xl text-sm leading-6 text-primary-foreground/80 sm:text-base;
+}
+
+@utility about-cta-button {
+  @apply mt-7 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary-foreground px-6 text-sm font-semibold text-primary transition-colors hover:bg-primary-foreground/90;
+}
