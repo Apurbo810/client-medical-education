@@ -44,7 +44,7 @@ export function LoginForm() {
     try {
       await loginRequest(parsed.data.email, parsed.data.password);
       sessionStorage.setItem("pendingLoginEmail", parsed.data.email);
-      router.push("/verify-login-otp");
+      router.replace("/verify-login-otp");
     } catch (err) {
       setFormError(
         err instanceof ApiRequestError ? err.message : "Something went wrong. Please try again."

@@ -5,10 +5,7 @@ import { HeroClient } from "./hero-client";
 
 export function Hero() {
   return (
-    <Section
-      spacing="none"
-      className="overflow-hidden pt-24 sm:pt-28 lg:pt-10"
-    >
+    <Section spacing="none" className="hero-section">
       <Container>
         <HeroClient />
       </Container>
