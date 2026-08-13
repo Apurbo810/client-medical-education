@@ -5,12 +5,16 @@ import { usePathname } from "next/navigation";
 import {
   BookOpen,
   ClipboardCheck,
+  CreditCard,
+  FileText,
   GraduationCap,
+  HelpCircle,
   LayoutDashboard,
   LogOut,
+  Bell,
   Settings,
-  User,
   Trophy,
+  User,
   X,
 } from "lucide-react";
 
@@ -29,32 +33,47 @@ const navigation = [
     icon: BookOpen,
   },
   {
-    title: "Practice",
+    title: "Course Learning",
+    href: "/student/learning",
+    icon: GraduationCap,
+  },
+  {
+    title: "Practice Questions",
     href: "/student/practice",
     icon: ClipboardCheck,
   },
   {
-    title: "Mock Tests",
-    href: "/student/mock-tests",
-    icon: GraduationCap,
+    title: "Quiz & Mock Exams",
+    href: "/student/mock-exams",
+    icon: FileText,
   },
   {
-    title: "Progress",
-    href: "/student/progress",
+    title: "Results & Grades",
+    href: "/student/results",
     icon: Trophy,
   },
 ];
 
 const secondaryNavigation = [
   {
-    title: "Profile",
-    href: "/student/profile",
-    icon: User,
+    title: "Subscription & Payments",
+    href: "/student/subscription",
+    icon: CreditCard,
   },
   {
-    title: "Settings",
-    href: "/student/settings",
+    title: "Profile & Settings",
+    href: "/student/profile",
     icon: Settings,
+  },
+  {
+    title: "Notifications",
+    href: "/student/notifications",
+    icon: Bell,
+  },
+  {
+    title: "Support / Help",
+    href: "/student/support",
+    icon: HelpCircle,
   },
 ];
 
@@ -83,24 +102,28 @@ export function StudentSidebar({
   }
 
   return (
+
     <aside
-      className={cn(
+    className={cn(
         "student-sidebar",
         collapsed
-          ? "student-sidebar-collapsed"
-          : "student-sidebar-expanded",
-        mobile && "w-full",
-      )}
+        ? "student-sidebar-collapsed"
+        : "student-sidebar-expanded",
+        mobile && "student-sidebar-mobile",
+    )}
     >
+
       {/* Brand */}
-      <div
+        <div
         className={cn(
-          "student-sidebar-brand",
-          collapsed
-            ? "student-sidebar-brand-collapsed"
-            : "student-sidebar-brand-expanded",
+            "student-sidebar-brand",
+            mobile
+            ? "student-sidebar-mobile-brand"
+            : collapsed
+                ? "student-sidebar-brand-collapsed"
+                : "student-sidebar-brand-expanded",
         )}
-      >
+        >
         {collapsed ? (
           <Logo
             href="/student"
@@ -123,14 +146,18 @@ export function StudentSidebar({
       </div>
 
       {/* Navigation */}
-      <nav
+        <nav
+        data-lenis-prevent
         className={cn(
-          "student-sidebar-nav",
-          collapsed
-            ? "student-sidebar-nav-collapsed"
-            : "student-sidebar-nav-expanded",
+            "student-sidebar-nav",
+            mobile
+            ? "student-sidebar-mobile-nav"
+            : collapsed
+                ? "student-sidebar-nav-collapsed"
+                : "student-sidebar-nav-expanded",
         )}
-      >
+        >
+        {/* Learning */}
         {!collapsed && (
           <p className="student-sidebar-section-label">
             Learning
@@ -142,30 +169,39 @@ export function StudentSidebar({
           const active = isActive(item.href);
 
           return (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={onClose}
-              title={collapsed ? item.title : undefined}
-              className={cn(
-                "student-sidebar-link",
-                collapsed
-                  ? "student-sidebar-link-collapsed"
-                  : "student-sidebar-link-expanded",
-                active
-                  ? "student-sidebar-link-active"
-                  : "student-sidebar-link-inactive",
-              )}
-            >
-              <Icon className="student-sidebar-icon" />
+                <Link
+                key={item.href}
+                href={item.href}
+                onClick={onClose}
+                title={collapsed ? item.title : undefined}
+                className={cn(
+                    mobile
+                    ? "student-sidebar-mobile-link"
+                    : [
+                        "student-sidebar-link",
+                        collapsed
+                            ? "student-sidebar-link-collapsed"
+                            : "student-sidebar-link-expanded",
+                        ],
+                    active
+                    ? "student-sidebar-link-active"
+                    : "student-sidebar-link-inactive",
+                )}
+                >
+                <Icon
+                    className={
+                    mobile
+                        ? "student-sidebar-mobile-icon"
+                        : "student-sidebar-icon"
+                    }
+                />
 
-              {!collapsed && (
-                <span>{item.title}</span>
-              )}
-            </Link>
+                {!collapsed && <span>{item.title}</span>}
+                </Link>
           );
         })}
 
+        {/* Account */}
         <div className="student-sidebar-section">
           {!collapsed && (
             <p className="student-sidebar-section-label">
@@ -182,11 +218,7 @@ export function StudentSidebar({
                 key={item.href}
                 href={item.href}
                 onClick={onClose}
-                title={
-                  collapsed
-                    ? item.title
-                    : undefined
-                }
+                title={collapsed ? item.title : undefined}
                 className={cn(
                   "student-sidebar-link",
                   collapsed
@@ -209,29 +241,39 @@ export function StudentSidebar({
       </nav>
 
       {/* Sign Out */}
-      <div
+        <div
         className={cn(
-          "student-sidebar-footer",
-          collapsed
-            ? "student-sidebar-footer-collapsed"
-            : "student-sidebar-footer-expanded",
+            "student-sidebar-footer",
+            mobile
+            ? "student-sidebar-mobile-footer"
+            : collapsed
+                ? "student-sidebar-footer-collapsed"
+                : "student-sidebar-footer-expanded",
         )}
-      >
-        <button
-          type="button"
-          title={collapsed ? "Sign out" : undefined}
-          className={cn(
-            "student-sidebar-signout",
-            collapsed
-              ? "student-sidebar-signout-collapsed"
-              : "student-sidebar-signout-expanded",
-          )}
         >
-          <LogOut className="student-sidebar-icon" />
+        <button
+        type="button"
+        title={collapsed ? "Sign out" : undefined}
+        className={cn(
+            mobile
+            ? "student-sidebar-mobile-signout"
+            : [
+                "student-sidebar-signout",
+                collapsed
+                    ? "student-sidebar-signout-collapsed"
+                    : "student-sidebar-signout-expanded",
+                ],
+        )}
+        >
+        <LogOut
+            className={
+            mobile
+                ? "student-sidebar-mobile-icon"
+                : "student-sidebar-icon"
+            }
+        />
 
-          {!collapsed && (
-            <span>Sign out</span>
-          )}
+        {!collapsed && <span>Sign out</span>}
         </button>
       </div>
     </aside>

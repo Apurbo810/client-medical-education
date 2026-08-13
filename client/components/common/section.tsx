@@ -11,7 +11,7 @@ interface SectionProps {
 
 const spacingVariants = {
   none: "",
-  sm: "py-12 md:py-16",
+  sm: "py-8 md:py-8",
   md: "py-16 md:py-20 lg:py-24",
   lg: "py-20 md:py-24 lg:py-28",
 };
