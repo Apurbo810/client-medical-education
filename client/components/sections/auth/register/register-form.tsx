@@ -47,7 +47,7 @@ export function RegisterForm() {
     try {
       await registerRequest(parsed.data.name, parsed.data.email, parsed.data.password);
       sessionStorage.setItem("pendingVerifyEmail", parsed.data.email);
-      router.push("/verify-otp");
+      router.replace("/verify-otp");
     } catch (err) {
       setFormError(
         err instanceof ApiRequestError ? err.message : "Something went wrong. Please try again."

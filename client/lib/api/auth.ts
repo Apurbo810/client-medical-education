@@ -1,4 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api";
+
+export type AuthRole = "admin" | "student";
 
 export class ApiRequestError extends Error {
   status: number;
@@ -8,6 +10,7 @@ export class ApiRequestError extends Error {
     this.status = status;
   }
 }
+
 
 async function apiRequest<T>(path: string, body: unknown): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
@@ -36,7 +39,7 @@ export function loginRequest(email: string, password: string) {
 export function verifyLoginOtpRequest(email: string, otp: string) {
   return apiRequest<{
     success: true;
-    data: { id: string; name: string; email: string; role: string; isEmailVerified: boolean };
+    data: { id: string; name: string; email: string; role: AuthRole; isEmailVerified: boolean };
   }>("/auth/verify-login-otp", { email, otp });
 }
 

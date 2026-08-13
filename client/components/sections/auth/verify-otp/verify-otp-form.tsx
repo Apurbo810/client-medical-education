@@ -116,7 +116,7 @@ export function VerifyOtpForm() {
     try {
       await verifyRegistrationOtpRequest(email, otpValue);
       sessionStorage.removeItem("pendingVerifyEmail");
-      router.push("/login");
+      router.replace("/login");
     } catch (err) {
       setFormError(
         err instanceof ApiRequestError ? err.message : "Something went wrong. Please try again."

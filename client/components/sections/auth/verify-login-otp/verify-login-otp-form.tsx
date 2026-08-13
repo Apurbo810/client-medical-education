@@ -114,10 +114,11 @@ export function VerifyLoginOtpForm() {
 
     setIsSubmitting(true);
     try {
-      await verifyLoginOtpRequest(email, otpValue);
+      const response = await verifyLoginOtpRequest(email, otpValue);
+      const destination = response.data.role === "admin" ? "/admin" : "/student";
+
       sessionStorage.removeItem("pendingLoginEmail");
-      router.push("/dashboard");
-      router.refresh();
+      router.replace(destination);
     } catch (err) {
       setFormError(
         err instanceof ApiRequestError ? err.message : "Something went wrong. Please try again."
