@@ -7,6 +7,7 @@ export interface StudentDashboardData {
     plan: string;
     daysRemaining: number;
     expiresAt: string;
+    hasCourseAccess: boolean;
   };
 
   streak: {
@@ -35,4 +36,9 @@ export interface StudentDashboardData {
     remainingMinutes: number;
     href: string;
   };
+
+  coursesProgress: {
+    id: string;
+    progress: number;
+  }[];
 }

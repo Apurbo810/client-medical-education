@@ -2173,19 +2173,21 @@ img {
 ========================================================= */
 
 @utility student-stats-section {
-  @apply py-0;
+  @apply py-4 md:py-8;
 }
 
 @utility student-stats-grid {
-  @apply grid gap-4 sm:grid-cols-2 xl:grid-cols-4;
+  @apply grid grid-cols-4 gap-2 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4;
 }
 
+
+
 @utility student-stat-card {
-  @apply rounded-2xl border border-border bg-card p-5 shadow-sm;
+  @apply aspect-square min-w-0 rounded-xl border border-border bg-card p-2.5 shadow-sm sm:aspect-auto sm:rounded-2xl sm:p-5;
 }
 
 @utility student-stat-icon {
-  @apply flex size-10 items-center justify-center rounded-xl;
+  @apply flex size-7 items-center justify-center rounded-lg sm:size-10 sm:rounded-xl;
 }
 
 @utility student-stat-icon-blue {
@@ -2205,19 +2207,20 @@ img {
 }
 
 @utility student-stat-value {
-  @apply mt-4 text-2xl font-bold leading-none tracking-tight text-foreground;
+  @apply mt-3 truncate text-base font-bold leading-none tracking-tight text-foreground sm:mt-4 sm:text-2xl;
 }
 
+
 @utility student-stat-label {
-  @apply mt-1 text-sm font-medium text-muted-foreground;
+  @apply mt-1 truncate text-[10px] font-medium text-muted-foreground sm:text-sm;
 }
 
 @utility student-stat-subtext {
-  @apply mt-0.5 text-xs font-medium text-primary;
+  @apply hidden sm:mt-0.5 sm:block sm:text-xs sm:font-medium sm:text-primary;
 }
 
 @utility student-stat-progress {
-  @apply mt-4 h-1.5 overflow-hidden rounded-full bg-muted;
+  @apply hidden sm:mt-4 sm:block sm:h-1.5 sm:overflow-hidden sm:rounded-full sm:bg-muted;
 }
 
 @utility student-stat-progress-value {
@@ -2319,3 +2322,1096 @@ img {
 @utility student-quick-action-arrow {
   @apply size-4 shrink-0 text-muted-foreground transition-transform duration-200;
 }
+
+/* =========================================================
+   STUDENT COURSES
+========================================================= */
+
+@utility student-courses-section {
+  @apply py-0;
+}
+
+@utility student-courses-header {
+  @apply mb-6 flex items-end justify-between gap-4;
+}
+
+@utility student-courses-eyebrow {
+  @apply text-sm font-semibold text-primary;
+}
+
+@utility student-courses-title {
+  @apply mt-1 text-2xl font-bold tracking-tight text-foreground;
+}
+
+@utility student-courses-description {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+@utility student-courses-view-all {
+  @apply inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80;
+}
+
+@utility student-courses-grid {
+  @apply grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-4;
+}
+
+@utility student-course-card {
+  @apply flex min-h-[470px] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+}
+
+@utility student-course-image {
+  @apply relative aspect-[16/10] shrink-0 overflow-hidden bg-muted;
+}
+
+@utility student-course-content {
+  @apply flex flex-1 flex-col p-5;
+}
+
+@utility student-course-category {
+  @apply text-xs font-semibold uppercase tracking-wide text-primary;
+}
+
+@utility student-course-title {
+  @apply mt-2 line-clamp-2 min-h-[3.5rem] text-lg font-bold leading-snug text-foreground;
+}
+
+@utility student-course-description {
+  @apply mt-2 line-clamp-3 min-h-[4.5rem] text-sm leading-6 text-muted-foreground;
+}
+
+@utility student-course-footer {
+  @apply mt-auto pt-4;
+}
+
+@utility student-course-meta {
+  @apply flex items-center justify-between gap-3 text-xs font-medium text-muted-foreground;
+}
+
+@utility student-course-progress {
+  @apply mt-3 h-1.5 w-full overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-course-progress-value {
+  @apply h-full rounded-full bg-primary transition-[width] duration-500;
+}
+
+@utility student-course-button {
+  @apply mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-all duration-200;
+}
+
+@utility student-course-button-active {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+@utility student-course-button-locked {
+  @apply cursor-not-allowed bg-muted text-muted-foreground;
+}
+
+@utility student-course-lock {
+  @apply absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background/65 text-sm font-semibold text-foreground backdrop-blur-[2px];
+}
+
+@utility student-course-lock-icon {
+  @apply flex size-11 items-center justify-center rounded-full bg-card text-muted-foreground shadow-md;
+}
+
+
+/* =========================================================
+   STUDENT COURSE ELEMENT SELECTORS
+========================================================= */
+
+.student-course-image img {
+  transition: transform 500ms ease;
+}
+
+.student-course-card:hover .student-course-image img {
+  transform: scale(1.05);
+}
+
+.student-course-meta span {
+  @apply inline-flex items-center gap-1.5;
+}
+
+.student-course-meta svg {
+  @apply text-primary;
+}
+
+.student-course-image-element {
+  transition: transform 500ms ease;
+}
+
+.student-course-card:hover .student-course-image-element {
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   STUDENT MY COURSES
+========================================================= */
+
+@utility student-my-courses {
+  @apply w-full;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+@utility student-my-courses-header {
+  @apply mb-8 flex flex-col gap-5;
+}
+
+@utility student-my-courses-header-content {
+  @apply min-w-0;
+}
+
+@utility student-my-courses-eyebrow {
+  @apply text-sm font-semibold text-primary;
+}
+
+@utility student-my-courses-title {
+  @apply mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl;
+}
+
+@utility student-my-courses-description {
+  @apply mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+
+/* =========================================================
+   SUBSCRIPTION STATUS
+========================================================= */
+
+@utility student-my-courses-subscription {
+  @apply flex w-full items-center justify-between gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm;
+}
+
+@utility student-my-courses-subscription-content {
+  @apply flex min-w-0 items-center gap-3;
+}
+
+@utility student-my-courses-subscription-icon {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary;
+}
+
+@utility student-my-courses-subscription-text {
+  @apply min-w-0;
+}
+
+@utility student-my-courses-subscription-label {
+  @apply text-xs font-medium text-muted-foreground;
+}
+
+@utility student-my-courses-subscription-value {
+  @apply mt-0.5 truncate text-sm font-semibold text-foreground;
+}
+
+@utility student-my-courses-subscription-action {
+  @apply inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90;
+}
+
+
+/* =========================================================
+   COURSE GRID
+========================================================= */
+
+@utility student-my-courses-grid {
+  @apply grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
+}
+
+
+/* =========================================================
+   COURSE CARD
+========================================================= */
+
+@utility student-my-course-card {
+  @apply flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300;
+}
+
+@utility student-my-course-image {
+  @apply relative aspect-[16/9] w-full shrink-0 overflow-hidden bg-muted;
+}
+
+@utility student-my-course-content {
+  @apply flex min-w-0 flex-1 flex-col p-5;
+}
+
+@utility student-my-course-category {
+  @apply text-xs font-semibold uppercase tracking-wider text-primary;
+}
+
+@utility student-my-course-title {
+  @apply mt-2 line-clamp-2 text-lg font-bold leading-snug text-foreground;
+}
+
+@utility student-my-course-description {
+  @apply mt-2 line-clamp-3 text-sm leading-6 text-muted-foreground;
+}
+
+
+/* =========================================================
+   COURSE META
+========================================================= */
+
+@utility student-my-course-meta {
+  @apply mt-5 flex items-center justify-between gap-3 text-xs font-medium text-muted-foreground;
+}
+
+@utility student-my-course-meta-item {
+  @apply inline-flex min-w-0 items-center gap-1.5;
+}
+
+@utility student-my-course-meta-icon {
+  @apply size-4 shrink-0 text-primary;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+@utility student-my-course-progress {
+  @apply mt-3;
+}
+
+@utility student-my-course-progress-header {
+  @apply flex items-center justify-between gap-3 text-xs;
+}
+
+@utility student-my-course-progress-label {
+  @apply font-medium text-muted-foreground;
+}
+
+@utility student-my-course-progress-value {
+  @apply font-semibold text-primary;
+}
+
+@utility student-my-course-progress-track {
+  @apply mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-my-course-progress-bar {
+  @apply h-full rounded-full bg-primary transition-[width] duration-700 ease-out;
+}
+
+
+/* =========================================================
+   COURSE ACTION
+========================================================= */
+
+@utility student-my-course-action {
+  @apply mt-5;
+}
+
+@utility student-my-course-button {
+  @apply flex h-11 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-all duration-300;
+}
+
+@utility student-my-course-button-active {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+@utility student-my-course-button-locked {
+  @apply cursor-not-allowed bg-muted text-muted-foreground;
+}
+
+@utility student-my-course-button-arrow {
+  @apply size-4 shrink-0 transition-transform duration-300;
+}
+
+
+/* =========================================================
+   LOCKED COURSE
+========================================================= */
+
+@utility student-my-course-locked {
+  @apply relative;
+}
+
+@utility student-my-course-lock-overlay {
+  @apply absolute inset-0 z-10 flex items-center justify-center bg-background/55 backdrop-blur-[2px];
+}
+
+@utility student-my-course-lock-content {
+  @apply flex flex-col items-center gap-2 text-center;
+}
+
+@utility student-my-course-lock-icon {
+  @apply flex size-11 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-md;
+}
+
+@utility student-my-course-lock-label {
+  @apply rounded-full bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-sm;
+}
+
+
+/* =========================================================
+   LOCKED IMAGE
+========================================================= */
+
+@utility student-my-course-image-locked {
+  @apply grayscale-[35%];
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+@utility student-my-courses-empty {
+  @apply flex min-h-[300px] flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card px-6 py-12 text-center;
+}
+
+@utility student-my-courses-empty-icon {
+  @apply flex size-12 items-center justify-center rounded-2xl bg-muted text-muted-foreground;
+}
+
+@utility student-my-courses-empty-title {
+  @apply mt-4 text-lg font-semibold text-foreground;
+}
+
+@utility student-my-courses-empty-description {
+  @apply mt-2 max-w-md text-sm leading-6 text-muted-foreground;
+}
+
+
+/* =========================================================
+   COURSE COUNT
+========================================================= */
+
+@utility student-my-courses-count {
+  @apply mb-4 flex items-center justify-between gap-3;
+}
+
+@utility student-my-courses-count-label {
+  @apply text-sm font-medium text-muted-foreground;
+}
+
+@utility student-my-courses-count-value {
+  @apply font-semibold text-foreground;
+}
+
+
+/* =========================================================
+   DESKTOP INTERACTION
+========================================================= */
+
+@media (min-width: 1024px) {
+  .student-my-course-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 12px 30px rgb(0 0 0 / 0.08);
+  }
+
+  .student-my-course-card:hover
+  .student-my-course-button-arrow {
+    transform: translateX(4px);
+  }
+}
+
+
+/* =========================================================
+   COURSE IMAGE INTERACTION
+========================================================= */
+
+.student-my-course-image-element {
+  transition: transform 500ms ease;
+}
+
+.student-my-course-card:hover
+.student-my-course-image-element {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .student-my-courses-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .student-my-course-card {
+    min-height: 460px;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1280px) {
+  .student-my-courses-header {
+    margin-bottom: 2rem;
+  }
+
+  .student-my-courses-grid {
+    gap: 1.5rem;
+  }
+
+  .student-my-course-content {
+    padding: 1.375rem;
+  }
+}
+
+
+/* =========================================================
+   ULTRAWIDE / LARGE DISPLAYS
+========================================================= */
+
+@media (min-width: 1536px) {
+  .student-my-courses {
+    max-width: 1800px;
+    margin-inline: auto;
+  }
+
+  .student-my-courses-grid {
+    gap: 1.5rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 639px) {
+  .student-my-courses-header {
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+  }
+
+  .student-my-courses-title {
+    font-size: 1.75rem;
+  }
+
+  .student-my-courses-description {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+
+  .student-my-courses-subscription {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .student-my-courses-subscription-content {
+    width: 100%;
+  }
+
+  .student-my-courses-subscription-action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .student-my-courses-grid {
+    gap: 1rem;
+  }
+
+  .student-my-course-card {
+    min-height: 0;
+  }
+
+  .student-my-course-content {
+    padding: 1rem;
+  }
+
+  .student-my-course-title {
+    font-size: 1rem;
+  }
+
+  .student-my-course-description {
+    font-size: 0.8125rem;
+    line-height: 1.35rem;
+  }
+
+  .student-my-course-meta {
+    margin-top: 1rem;
+  }
+
+  .student-my-course-action {
+    margin-top: 1rem;
+  }
+
+  .student-my-course-button {
+    height: 2.75rem;
+  }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+  .student-my-course-card:active {
+    transform: scale(0.985);
+  }
+
+  .student-my-course-card:active
+  .student-my-course-button-arrow {
+    transform: translateX(4px);
+  }
+}
+
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+========================================================= */
+
+.student-my-course-button:focus-visible,
+.student-my-courses-subscription-action:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .student-my-course-card,
+  .student-my-course-image-element,
+  .student-my-course-button,
+  .student-my-course-button-arrow,
+  .student-my-course-progress-bar {
+    transition: none;
+  }
+
+  .student-my-course-card:hover {
+    transform: none;
+  }
+
+  .student-my-course-card:hover
+  .student-my-course-image-element {
+    transform: none;
+  }
+}
+
+
+
+/* =========================================================
+   STUDENT COURSE LEARNING
+========================================================= */
+
+/* =========================================================
+   COURSE LEARNING PAGE
+========================================================= */
+
+@utility student-learning-page {
+  @apply w-full min-w-0;
+}
+
+@utility student-learning-container {
+  @apply mx-auto w-full max-w-[1440px] px-4 py-5 sm:px-6 sm:py-6 lg:px-8 lg:py-8 2xl:px-10;
+}
+
+
+/* =========================================================
+   COURSE HEADER
+========================================================= */
+
+@utility student-learning-header {
+  @apply overflow-hidden rounded-2xl border border-border bg-card shadow-sm;
+}
+
+@utility student-learning-header-main {
+  @apply flex flex-col gap-5 p-4 sm:p-5 lg:flex-row lg:items-center lg:justify-between lg:p-6;
+}
+
+@utility student-learning-header-info {
+  @apply min-w-0 flex-1;
+}
+
+@utility student-learning-header-top {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+@utility student-learning-course-badge {
+  @apply inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary;
+}
+
+@utility student-learning-version-badge {
+  @apply inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground;
+}
+
+@utility student-learning-title {
+  @apply mt-2 text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl;
+}
+
+@utility student-learning-description {
+  @apply mt-2 max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+@utility student-learning-header-meta {
+  @apply mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm;
+}
+
+@utility student-learning-header-meta-item {
+  @apply inline-flex items-center gap-1.5;
+}
+
+@utility student-learning-header-meta-icon {
+  @apply size-4 shrink-0;
+}
+
+@utility student-learning-header-action {
+  @apply flex shrink-0 items-center gap-3;
+}
+
+@utility student-learning-progress-box {
+  @apply min-w-[150px] rounded-xl border border-border bg-muted/40 px-4 py-3;
+}
+
+@utility student-learning-progress-header {
+  @apply flex items-center justify-between gap-3;
+}
+
+@utility student-learning-progress-label {
+  @apply text-xs font-medium text-muted-foreground;
+}
+
+@utility student-learning-progress-value {
+  @apply text-sm font-bold text-foreground;
+}
+
+@utility student-learning-progress-track {
+  @apply mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-learning-progress-fill {
+  @apply h-full rounded-full bg-primary transition-[width] duration-500 ease-out;
+}
+
+@utility student-learning-continue {
+  @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0;
+}
+
+
+/* =========================================================
+   COURSE TABS
+========================================================= */
+
+@utility student-learning-tabs {
+  @apply mt-4 flex w-full overflow-x-auto rounded-xl border border-border bg-card p-1;
+  scrollbar-width: thin;
+}
+
+@utility student-learning-tab {
+  @apply inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg px-3 text-xs font-medium text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground sm:px-4 sm:text-sm;
+}
+
+@utility student-learning-tab-active {
+  @apply bg-primary/10 text-primary;
+}
+
+
+/* =========================================================
+   COURSE CONTENT AREA
+========================================================= */
+
+@utility student-learning-content {
+  @apply mt-5 space-y-4 sm:mt-6 sm:space-y-5 lg:mt-7;
+}
+
+
+/* =========================================================
+   WEEK
+========================================================= */
+
+@utility student-learning-week {
+  @apply overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md;
+}
+
+@utility student-learning-week-locked {
+  @apply opacity-95;
+}
+
+@utility student-learning-week-header {
+  @apply flex min-w-0 items-center gap-3 p-3 sm:gap-4 sm:p-4 lg:p-5;
+}
+
+@utility student-learning-week-number {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary text-xs font-bold text-primary-foreground sm:size-11 sm:text-sm;
+}
+
+@utility student-learning-week-info {
+  @apply min-w-0 flex-1;
+}
+
+@utility student-learning-week-title-row {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+@utility student-learning-week-title {
+  @apply truncate text-sm font-bold text-foreground sm:text-base lg:text-lg;
+}
+
+@utility student-learning-week-status {
+  @apply inline-flex shrink-0 items-center rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary sm:text-xs;
+}
+
+@utility student-learning-week-description {
+  @apply mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground sm:text-sm;
+}
+
+@utility student-learning-week-progress {
+  @apply hidden shrink-0 sm:block sm:w-32 lg:w-40;
+}
+
+@utility student-learning-week-progress-header {
+  @apply flex items-center justify-between gap-2;
+}
+
+@utility student-learning-week-progress-label {
+  @apply text-[11px] font-medium text-muted-foreground;
+}
+
+@utility student-learning-week-progress-value {
+  @apply text-xs font-semibold text-foreground;
+}
+
+@utility student-learning-week-progress-track {
+  @apply mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-learning-week-progress-fill {
+  @apply h-full rounded-full bg-primary transition-[width] duration-500 ease-out;
+}
+
+@utility student-learning-week-toggle {
+  @apply flex size-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground;
+}
+
+@utility student-learning-week-toggle-icon {
+  @apply size-4 transition-transform duration-300;
+}
+
+@utility student-learning-week-toggle-open {
+  @apply rotate-180;
+}
+
+
+/* =========================================================
+   WEEK CONTENT
+========================================================= */
+
+@utility student-learning-week-content {
+  @apply border-t border-border bg-muted/20;
+}
+
+@utility student-learning-items {
+  @apply divide-y divide-border;
+}
+
+
+/* =========================================================
+   CONTENT ITEM
+========================================================= */
+
+@utility student-learning-item {
+  @apply flex min-w-0 items-center gap-3 p-3 transition-colors duration-200 hover:bg-accent/40 sm:gap-4 sm:p-4 lg:px-5;
+}
+
+@utility student-learning-item-locked {
+  @apply cursor-not-allowed opacity-60;
+}
+
+@utility student-learning-item-completed {
+  @apply bg-primary/[0.02];
+}
+
+@utility student-learning-item-icon {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-11;
+}
+
+@utility student-learning-item-icon-video {
+  @apply bg-primary/10 text-primary;
+}
+
+@utility student-learning-item-icon-slide {
+  @apply bg-blue-500/10 text-blue-600;
+}
+
+@utility student-learning-item-icon-test {
+  @apply bg-orange-500/10 text-orange-600;
+}
+
+@utility student-learning-item-icon-locked {
+  @apply bg-muted text-muted-foreground;
+}
+
+@utility student-learning-item-info {
+  @apply min-w-0 flex-1;
+}
+
+@utility student-learning-item-title-row {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+@utility student-learning-item-title {
+  @apply text-sm font-semibold text-foreground sm:text-base;
+}
+
+@utility student-learning-item-description {
+  @apply mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground sm:text-sm;
+}
+
+@utility student-learning-item-meta {
+  @apply mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground sm:text-xs;
+}
+
+@utility student-learning-item-meta-item {
+  @apply inline-flex items-center gap-1;
+}
+
+@utility student-learning-item-meta-icon {
+  @apply size-3.5;
+}
+
+
+/* =========================================================
+   CONTENT BADGES
+========================================================= */
+
+@utility student-learning-item-badge {
+  @apply inline-flex items-center rounded-md border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide sm:text-[11px];
+}
+
+@utility student-learning-item-badge-new {
+  @apply border-primary/20 bg-primary/10 text-primary;
+}
+
+@utility student-learning-item-badge-updated {
+  @apply border-amber-500/20 bg-amber-500/10 text-amber-600;
+}
+
+@utility student-learning-item-badge-completed {
+  @apply border-emerald-500/20 bg-emerald-500/10 text-emerald-600;
+}
+
+
+/* =========================================================
+   CONTENT ACTION
+========================================================= */
+
+@utility student-learning-item-action {
+  @apply flex shrink-0 items-center;
+}
+
+@utility student-learning-item-button {
+  @apply inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg px-3 text-xs font-semibold transition-all duration-200 sm:min-h-10 sm:px-4 sm:text-sm;
+}
+
+@utility student-learning-item-button-active {
+  @apply bg-primary text-primary-foreground hover:-translate-y-0.5 hover:shadow-sm;
+}
+
+@utility student-learning-item-button-completed {
+  @apply bg-primary/10 text-primary hover:bg-primary/15;
+}
+
+@utility student-learning-item-button-locked {
+  @apply cursor-not-allowed bg-muted text-muted-foreground;
+}
+
+
+/* =========================================================
+   CONTENT PROGRESS
+========================================================= */
+
+@utility student-learning-item-progress {
+  @apply mt-2 h-1 w-full max-w-[180px] overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-learning-item-progress-fill {
+  @apply h-full rounded-full bg-primary transition-[width] duration-500 ease-out;
+}
+
+
+/* =========================================================
+   LOCKED COURSE
+========================================================= */
+
+@utility student-learning-locked {
+  @apply flex min-h-[60vh] items-center justify-center px-4 py-10;
+}
+
+@utility student-learning-locked-card {
+  @apply w-full max-w-lg rounded-2xl border border-border bg-card p-6 text-center shadow-sm sm:p-8;
+}
+
+@utility student-learning-locked-icon {
+  @apply mx-auto flex size-14 items-center justify-center rounded-2xl bg-muted text-muted-foreground sm:size-16;
+}
+
+@utility student-learning-locked-title {
+  @apply mt-5 text-xl font-bold text-foreground sm:text-2xl;
+}
+
+@utility student-learning-locked-description {
+  @apply mx-auto mt-2 max-w-md text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+@utility student-learning-locked-button {
+  @apply mt-6 inline-flex min-h-10 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md;
+}
+
+
+/* =========================================================
+   EMPTY CONTENT
+========================================================= */
+
+@utility student-learning-empty {
+  @apply rounded-2xl border border-dashed border-border bg-card px-5 py-12 text-center;
+}
+
+@utility student-learning-empty-title {
+  @apply text-base font-semibold text-foreground;
+}
+
+@utility student-learning-empty-description {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 767px) {
+  .student-learning-header-action {
+    @apply w-full;
+  }
+
+  .student-learning-progress-box {
+    @apply flex-1;
+  }
+
+  .student-learning-continue {
+    @apply flex-1;
+  }
+
+  .student-learning-week-progress {
+    @apply hidden;
+  }
+
+  .student-learning-item {
+    @apply items-start;
+  }
+
+  .student-learning-item-action {
+    @apply self-center;
+  }
+
+  .student-learning-item-button {
+    @apply size-9 px-0;
+  }
+
+  .student-learning-item-button span {
+    @apply hidden;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .student-learning-container {
+    @apply px-3 py-4;
+  }
+
+  .student-learning-header-main {
+    @apply gap-4 p-4;
+  }
+
+  .student-learning-title {
+    @apply text-lg;
+  }
+
+  .student-learning-description {
+    @apply text-xs leading-5;
+  }
+
+  .student-learning-header-meta {
+    @apply gap-x-3 text-xs;
+  }
+
+  .student-learning-tabs {
+    @apply rounded-lg;
+  }
+
+  .student-learning-tab {
+    @apply px-3 text-xs;
+  }
+
+  .student-learning-week-header {
+    @apply gap-2.5 p-3;
+  }
+
+  .student-learning-week-number {
+    @apply size-9 rounded-lg text-xs;
+  }
+
+  .student-learning-week-title {
+    @apply text-sm;
+  }
+
+  .student-learning-week-description {
+    @apply text-[11px] leading-4;
+  }
+
+  .student-learning-item {
+    @apply gap-2.5 p-3;
+  }
+
+  .student-learning-item-icon {
+    @apply size-9 rounded-lg;
+  }
+
+  .student-learning-item-title {
+    @apply text-xs;
+  }
+
+  .student-learning-item-description {
+    @apply text-[11px] leading-4;
+  }
+
+  .student-learning-item-meta {
+    @apply text-[10px];
+  }
+}
+
+
+/* =========================================================
+   LARGE DISPLAYS
+========================================================= */
+
+@media (min-width: 1536px) {
+  .student-learning-container {
+    @apply max-w-[1600px] px-12 py-10;
+  }
+
+  .student-learning-header-main {
+    @apply p-7;
+  }
+
+  .student-learning-title {
+    @apply text-3xl;
+  }
+
+  .student-learning-week-header {
+    @apply p-6;
+  }
+
+  .student-learning-item {
+    @apply px-6 py-5;
+  }
+}
+
+

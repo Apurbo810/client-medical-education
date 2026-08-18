@@ -4,6 +4,7 @@ import {
   ArrowRight,
   ClipboardCheck,
   Clock3,
+  Lock,
   Play,
   Sparkles,
 } from "lucide-react";
@@ -16,10 +17,12 @@ import type { StudentDashboardData } from "@/types/student/student-dashboard";
 
 interface StudentQuickActionsProps {
   data: StudentDashboardData["continueLearning"];
+  hasCourseAccess: boolean;
 }
 
 export function StudentQuickActions({
   data,
+  hasCourseAccess,
 }: StudentQuickActionsProps) {
   const actionsRef = useStagger({
     y: 24,
@@ -46,7 +49,10 @@ export function StudentQuickActions({
           <div className="student-continue-content">
             <div className="student-continue-label">
               <Sparkles className="size-4" />
-              Continue your preparation
+
+              {hasCourseAccess
+                ? "Continue your preparation"
+                : "Start your preparation"}
             </div>
 
             <p className="student-continue-course">
@@ -57,35 +63,54 @@ export function StudentQuickActions({
               {data.lessonTitle}
             </h2>
 
-            <div className="student-continue-progress-row">
-              <div className="student-continue-progress">
-                <div
-                  className="student-continue-progress-value"
-                  style={{
-                    width: `${data.progress}%`,
-                  }}
-                />
+            {hasCourseAccess ? (
+              <>
+                <div className="student-continue-progress-row">
+                  <div className="student-continue-progress">
+                    <div
+                      className="student-continue-progress-value"
+                      style={{
+                        width: `${data.progress}%`,
+                      }}
+                    />
+                  </div>
+
+                  <span className="student-continue-progress-text">
+                    {data.progress}%
+                  </span>
+                </div>
+
+                <div className="student-continue-bottom">
+                  <span className="student-continue-time">
+                    <Clock3 className="size-4" />
+                    {data.remainingMinutes} min remaining
+                  </span>
+
+                  <Link
+                    href={data.href}
+                    className="student-continue-button"
+                  >
+                    Continue
+                    <ArrowRight className="size-4" />
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <div className="student-continue-bottom">
+                <span className="student-continue-time">
+                  <Lock className="size-4" />
+                  Subscription required
+                </span>
+
+                <Link
+                  href="/pricing"
+                  className="student-continue-button"
+                >
+                  View Courses
+                  <ArrowRight className="size-4" />
+                </Link>
               </div>
-
-              <span className="student-continue-progress-text">
-                {data.progress}%
-              </span>
-            </div>
-
-            <div className="student-continue-bottom">
-              <span className="student-continue-time">
-                <Clock3 className="size-4" />
-                {data.remainingMinutes} min remaining
-              </span>
-
-              <Link
-                href={data.href}
-                className="student-continue-button"
-              >
-                Continue
-                <ArrowRight className="size-4" />
-              </Link>
-            </div>
+            )}
           </div>
         </article>
 
@@ -93,7 +118,11 @@ export function StudentQuickActions({
         <div className="student-quick-action-grid">
           <Link
             data-animate
-            href="/student/practice"
+            href={
+              hasCourseAccess
+                ? "/student/practice"
+                : "/pricing"
+            }
             className="student-quick-action"
           >
             <span className="student-quick-action-icon student-quick-action-icon-primary">
@@ -106,7 +135,9 @@ export function StudentQuickActions({
               </span>
 
               <span className="student-quick-action-description">
-                Test your knowledge
+                {hasCourseAccess
+                  ? "Test your knowledge"
+                  : "Subscribe to practice"}
               </span>
             </span>
 
@@ -115,7 +146,11 @@ export function StudentQuickActions({
 
           <Link
             data-animate
-            href="/student/learning"
+            href={
+              hasCourseAccess
+                ? "/student/learning"
+                : "/pricing"
+            }
             className="student-quick-action"
           >
             <span className="student-quick-action-icon student-quick-action-icon-teal">
@@ -128,7 +163,9 @@ export function StudentQuickActions({
               </span>
 
               <span className="student-quick-action-description">
-                Continue learning
+                {hasCourseAccess
+                  ? "Continue learning"
+                  : "Subscribe to start"}
               </span>
             </span>
 

@@ -1,0 +1,1 @@
+export const currentStudentId = "student-1";

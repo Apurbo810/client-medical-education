@@ -1,20 +1,31 @@
 import { StudentWelcome } from "@/components/student/dashboard/student-welcome";
-import { StudentStats } from "@/components/student/dashboard/student-stats";
 import { StudentQuickActions } from "@/components/student/dashboard/student-quick-actions";
+import { StudentStats } from "@/components/student/dashboard/student-stats";
+import { StudentCourses } from "@/components/student/dashboard/student-courses";
 
 import { getStudentDashboard } from "@/services/student.service";
 
 export default async function StudentDashboardPage() {
-  const dashboard = await getStudentDashboard();
+  const data = await getStudentDashboard();
 
   return (
     <>
-      <StudentWelcome data={dashboard} />
-
-      <StudentStats stats={dashboard.stats} />
+      <StudentWelcome data={data} />
 
       <StudentQuickActions
-        data={dashboard.continueLearning}
+        data={data.continueLearning}
+        hasCourseAccess={
+          data.subscription.hasCourseAccess
+        }
+      />
+
+      <StudentStats stats={data.stats} />
+
+      <StudentCourses
+        hasCourseAccess={
+          data.subscription.hasCourseAccess
+        }
+        coursesProgress={data.coursesProgress}
       />
     </>
   );
