@@ -8,62 +8,35 @@ import {
   Lock,
   Play,
 } from "lucide-react";
+import Link from "next/link";
+
+import type { StudentCourseContent } from "@/types/student/courses/student-course";
 
 interface CourseWeekItemProps {
-  content: {
-    id: string;
-    type: "slide" | "video" | "notes" | "mock-test";
-    title: string;
-    description: string;
-
-    required: boolean;
-
-    isNew: boolean;
-    isUpdated: boolean;
-
-    file?: string;
-    videoUrl?: string;
-    youtubeId?: string;
-    href?: string;
-
-    duration?: number | string;
-
-    isUnlocked: boolean;
-
-    progress: number;
-
-    completed: boolean;
-
-    completedAt?: string | null;
-  };
+  courseId: string;
+  content: StudentCourseContent;
 }
 
 export function CourseWeekItem({
+  courseId,
   content,
 }: CourseWeekItemProps) {
   const locked = !content.isUnlocked;
 
-  function getIcon() {
-    if (locked) {
-      return Lock;
-    }
-
-    if (content.type === "video") {
-      return Play;
-    }
-
-    if (content.type === "mock-test") {
-      return ClipboardCheck;
-    }
-
-    return FileText;
-  }
-
-  const Icon = getIcon();
+  const Icon =
+    locked
+      ? Lock
+      : content.type === "video"
+        ? Play
+        : content.type === "mock-test"
+          ? ClipboardCheck
+          : FileText;
 
   const normalizedDuration =
     typeof content.duration === "number"
-      ? `${Math.floor(content.duration / 60)} min`
+      ? `${Math.floor(
+          content.duration / 60,
+        )} min`
       : content.duration;
 
   const typeLabel =
@@ -73,17 +46,21 @@ export function CourseWeekItem({
         ? "Mock Test"
         : content.type === "notes"
           ? "Notes"
-          : "PDF Slide";
+          : "Study Material";
 
   const actionLabel = locked
     ? "Locked"
     : content.completed
       ? "Completed"
-      : content.type === "video"
-        ? "Watch"
-        : content.type === "mock-test"
-          ? "Take Test"
-          : "Open";
+      : content.type === "mock-test"
+        ? "Take Test"
+        : "Open";
+
+  const fileHref =
+    !locked &&
+    content.file
+      ? `/student/learning/${courseId}/pdf/${content.id}`
+      : null;
 
   return (
     <article
@@ -95,21 +72,23 @@ export function CourseWeekItem({
         content.completed
           ? "student-learning-item-completed"
           : "",
-      ].join(" ")}
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       {/* Icon */}
       <div
         className={[
           "student-learning-item-icon",
-
           locked
             ? "student-learning-item-icon-locked"
-            : content.type === "video"
-              ? "student-learning-item-icon-video"
-              : content.type === "mock-test"
-                ? "student-learning-item-icon-test"
-                : "student-learning-item-icon-slide",
-        ].join(" ")}
+            : content.type ===
+                "mock-test"
+              ? "student-learning-item-icon-test"
+              : "student-learning-item-icon-slide",
+        ]
+          .filter(Boolean)
+          .join(" ")}
       >
         <Icon className="size-5" />
       </div>
@@ -121,23 +100,26 @@ export function CourseWeekItem({
             {content.title}
           </h3>
 
-          {content.isNew && !locked && (
-            <span className="student-learning-item-badge student-learning-item-badge-new">
-              New
-            </span>
-          )}
+          {content.isNew &&
+            !locked && (
+              <span className="student-learning-item-badge student-learning-item-badge-new">
+                New
+              </span>
+            )}
 
-          {content.isUpdated && !locked && (
-            <span className="student-learning-item-badge student-learning-item-badge-updated">
-              Updated
-            </span>
-          )}
+          {content.isUpdated &&
+            !locked && (
+              <span className="student-learning-item-badge student-learning-item-badge-updated">
+                Updated
+              </span>
+            )}
 
-          {content.completed && !locked && (
-            <span className="student-learning-item-badge student-learning-item-badge-completed">
-              Completed
-            </span>
-          )}
+          {content.completed &&
+            !locked && (
+              <span className="student-learning-item-badge student-learning-item-badge-completed">
+                Completed
+              </span>
+            )}
         </div>
 
         <p className="student-learning-item-description">
@@ -146,9 +128,8 @@ export function CourseWeekItem({
 
         <div className="student-learning-item-meta">
           <span className="student-learning-item-meta-item">
-            {content.type === "video" ? (
-              <Play className="student-learning-item-meta-icon" />
-            ) : content.type === "mock-test" ? (
+            {content.type ===
+            "mock-test" ? (
               <ClipboardCheck className="student-learning-item-meta-icon" />
             ) : (
               <FileText className="student-learning-item-meta-icon" />
@@ -171,7 +152,6 @@ export function CourseWeekItem({
           )}
         </div>
 
-        {/* Progress */}
         {!locked &&
           !content.completed &&
           content.progress > 0 && (
@@ -195,24 +175,45 @@ export function CourseWeekItem({
             className="student-learning-item-button student-learning-item-button-locked"
           >
             <Lock className="size-4" />
-
             <span>{actionLabel}</span>
           </button>
-        ) : content.completed ? (
-          <button
-            type="button"
-            className="student-learning-item-button student-learning-item-button-completed"
+        ) : fileHref ? (
+          <Link
+            href={fileHref}
+            className={[
+              "student-learning-item-button",
+              content.completed
+                ? "student-learning-item-button-completed"
+                : "student-learning-item-button-active",
+            ]
+              .filter(Boolean)
+              .join(" ")}
           >
-            <CheckCircle2 className="size-4" />
+            {content.completed ? (
+              <CheckCircle2 className="size-4" />
+            ) : (
+              <FileText className="size-4" />
+            )}
 
             <span>{actionLabel}</span>
-          </button>
+          </Link>
         ) : (
           <button
             type="button"
-            className="student-learning-item-button student-learning-item-button-active"
+            className={[
+              "student-learning-item-button",
+              content.completed
+                ? "student-learning-item-button-completed"
+                : "student-learning-item-button-active",
+            ]
+              .filter(Boolean)
+              .join(" ")}
           >
-            <Icon className="size-4" />
+            {content.completed ? (
+              <CheckCircle2 className="size-4" />
+            ) : (
+              <ClipboardCheck className="size-4" />
+            )}
 
             <span>{actionLabel}</span>
           </button>

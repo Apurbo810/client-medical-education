@@ -7,50 +7,19 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+import type { StudentCourseWeek } from "@/types/student/courses/student-course";
+
 import { useStagger } from "@/hooks/gsap";
 
 import { CourseWeekItem } from "./course-week-item";
 
 interface CourseWeekProps {
-  week: {
-    week: number;
-    title: string;
-    description?: string;
-
-    isUnlocked: boolean;
-
-    progress: number;
-
-    contents: {
-      id: string;
-      type: "slide" | "video" | "notes" | "mock-test";
-      title: string;
-      description: string;
-
-      required: boolean;
-
-      isNew: boolean;
-      isUpdated: boolean;
-
-      file?: string;
-      videoUrl?: string;
-      youtubeId?: string;
-      href?: string;
-
-      duration?: number | string;
-
-      isUnlocked: boolean;
-
-      progress: number;
-
-      completed: boolean;
-
-      completedAt?: string | null;
-    }[];
-  };
+  courseId: string;
+  week: StudentCourseWeek;
 }
 
 export function CourseWeek({
+  courseId,
   week,
 }: CourseWeekProps) {
   const [open, setOpen] = useState(
@@ -76,7 +45,9 @@ export function CourseWeek({
         !week.isUnlocked
           ? "student-learning-week-locked"
           : "",
-      ].join(" ")}
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       {/* Week Header */}
       <button
@@ -164,7 +135,9 @@ export function CourseWeek({
                 open
                   ? "student-learning-week-toggle-open"
                   : "",
-              ].join(" ")}
+              ]
+                .filter(Boolean)
+                .join(" ")}
             />
           ) : (
             <Lock className="size-4" />
@@ -175,21 +148,29 @@ export function CourseWeek({
       {/* Week Contents */}
       {week.isUnlocked && open && (
         <div className="student-learning-week-content">
-          <div
-            ref={itemsRef}
-            className="student-learning-items"
-          >
-            {week.contents.map((content) => (
-              <div
-                key={content.id}
-                data-animate
-              >
-                <CourseWeekItem
-                  content={content}
-                />
-              </div>
-            ))}
-          </div>
+          {week.contents.length > 0 ? (
+            <div
+              ref={itemsRef}
+              className="student-learning-items"
+            >
+              {week.contents.map((content) => (
+                <div
+                  key={content.id}
+                  data-animate
+                >
+                  <CourseWeekItem
+                    courseId={courseId}
+                    content={content}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="px-5 py-8 text-center text-sm text-muted-foreground">
+              No course content available
+              for this week.
+            </div>
+          )}
         </div>
       )}
 
@@ -197,8 +178,9 @@ export function CourseWeek({
       {!week.isUnlocked && (
         <div className="student-learning-week-content">
           <div className="px-4 py-4 text-center text-xs text-muted-foreground sm:px-5">
-            This week is locked. Complete the currently
-            unlocked weeks to continue.
+            This week is locked. Complete the
+            currently unlocked weeks to
+            continue.
           </div>
         </div>
       )}

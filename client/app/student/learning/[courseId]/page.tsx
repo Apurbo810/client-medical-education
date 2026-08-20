@@ -1,6 +1,6 @@
 import { getStudentCourseContent } from "@/services/student.service";
 
-import { CourseLearningPage } from "@/components/student/learning/course-learning-page";
+import { CourseLearningPage } from "@/components/student/learning/main/course-learning-page";
 
 interface StudentLearningPageProps {
   params: Promise<{

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { PdfViewer } from "@/components/student/learning/pdf-viewer";
+import { PdfViewer } from "@/components/student/learning/pdf/pdf-viewer";
 import { getStudentCourseContent } from "@/services/student.service";
 
 interface PdfPageProps {

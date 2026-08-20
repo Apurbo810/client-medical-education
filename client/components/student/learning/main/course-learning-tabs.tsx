@@ -1,16 +1,19 @@
 "use client";
 
-import { useState } from "react";
-
-type CourseTab =
+export type CourseTab =
   | "content"
-  | "progress"
-  | "notes";
+  | "notes"
+  | "videos";
 
-export function CourseLearningTabs() {
-  const [activeTab, setActiveTab] =
-    useState<CourseTab>("content");
+interface CourseLearningTabsProps {
+  activeTab: CourseTab;
+  onTabChange: (tab: CourseTab) => void;
+}
 
+export function CourseLearningTabs({
+  activeTab,
+  onTabChange,
+}: CourseLearningTabsProps) {
   const tabs: {
     id: CourseTab;
     label: string;
@@ -20,12 +23,12 @@ export function CourseLearningTabs() {
       label: "Course Content",
     },
     {
-      id: "progress",
-      label: "Progress",
-    },
-    {
       id: "notes",
       label: "Notes",
+    },
+    {
+      id: "videos",
+      label: "Videos",
     },
   ];
 
@@ -38,9 +41,7 @@ export function CourseLearningTabs() {
         <button
           key={tab.id}
           type="button"
-          onClick={() =>
-            setActiveTab(tab.id)
-          }
+          onClick={() => onTabChange(tab.id)}
           className={[
             "student-learning-tab",
             activeTab === tab.id

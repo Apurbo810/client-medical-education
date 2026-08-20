@@ -33,11 +33,6 @@ const navigation = [
     icon: BookOpen,
   },
   {
-    title: "Course Learning",
-    href: "/student/learning",
-    icon: GraduationCap,
-  },
-  {
     title: "Practice Questions",
     href: "/student/practice",
     icon: ClipboardCheck,

@@ -33,10 +33,6 @@ export interface CourseWeek {
   title: string;
   description?: string;
 
-  /**
-   * Number of days after enrollment
-   * before this week becomes available.
-   */
   unlockAfterDays: number;
 
   contents: CourseContent[];

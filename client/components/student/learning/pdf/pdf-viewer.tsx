@@ -2,9 +2,10 @@
 
 import {
   ArrowLeft,
+  Download,
+  FileText,
   Maximize2,
   Minimize2,
-  FileText,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -35,7 +36,6 @@ export function PdfViewer({
   const [isFullscreen, setIsFullscreen] =
     useState(false);
 
-
   useEffect(() => {
     function handleFullscreenChange() {
       setIsFullscreen(
@@ -56,7 +56,7 @@ export function PdfViewer({
       );
     };
   }, []);
-  
+
   async function toggleFullscreen() {
     const container = containerRef.current;
 
@@ -67,7 +67,6 @@ export function PdfViewer({
     if (!document.fullscreenElement) {
       try {
         await container.requestFullscreen();
-        setIsFullscreen(true);
       } catch (error) {
         console.error(
           "Failed to enter fullscreen:",
@@ -80,7 +79,6 @@ export function PdfViewer({
 
     try {
       await document.exitFullscreen();
-      setIsFullscreen(false);
     } catch (error) {
       console.error(
         "Failed to exit fullscreen:",
@@ -124,36 +122,60 @@ export function PdfViewer({
             </div>
           </div>
 
-          {/* Fullscreen */}
-          <button
-            type="button"
-            onClick={toggleFullscreen}
-            className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-          >
-            {isFullscreen ? (
-              <>
-                <Minimize2 className="size-4" />
-                <span>Exit Fullscreen</span>
-              </>
-            ) : (
-              <>
-                <Maximize2 className="size-4" />
-                <span>Fullscreen</span>
-              </>
-            )}
-          </button>
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            {/* Download */}
+            <a
+              href={file}
+              download
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              <Download className="size-4" />
+
+              <span>Download</span>
+            </a>
+
+            {/* Fullscreen */}
+            <button
+              type="button"
+              onClick={toggleFullscreen}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              {isFullscreen ? (
+                <>
+                  <Minimize2 className="size-4" />
+                  <span>Exit Fullscreen</span>
+                </>
+              ) : (
+                <>
+                  <Maximize2 className="size-4" />
+                  <span>Fullscreen</span>
+                </>
+              )}
+            </button>
+          </div>
         </header>
 
         {/* PDF Viewer */}
         <section
           ref={containerRef}
-          className="flex min-h-[70vh] flex-1 overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
+          className={[
+            "flex overflow-hidden rounded-2xl border border-border bg-card shadow-sm",
+            isFullscreen
+              ? "h-screen w-screen rounded-none border-0"
+              : "min-h-[70vh]",
+          ].join(" ")}
           aria-label={`PDF viewer for ${title}`}
         >
           <iframe
             src={file}
             title={title}
-            className="h-[75vh] min-h-[600px] w-full border-0"
+            className={[
+              "w-full border-0",
+              isFullscreen
+                ? "h-full min-h-0"
+                : "h-[75vh] min-h-[600px]",
+            ].join(" ")}
           />
         </section>
       </div>

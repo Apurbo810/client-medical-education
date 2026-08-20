@@ -8,17 +8,19 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import type {
+  Course,
+  CourseVersion,
+} from "@/types/course";
+
 import { useStagger } from "@/hooks/gsap";
 
 import { CourseProgress } from "./course-progress";
 
 interface CourseLearningHeaderProps {
-  course: {
-    title: string;
-    description: string;
-  };
+  course: Pick<Course, "title" | "description">;
 
-  versionId: string;
+  versionId: CourseVersion["id"];
 
   totalWeeks: number;
 

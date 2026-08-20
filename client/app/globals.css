@@ -3415,3 +3415,25 @@ img {
 }
 
 
+
+
+/* =========================================================
+   PRACTICE QUESTIONS
+========================================================= */
+
+
+@utility practice-option {
+  @apply flex w-full items-start gap-4 rounded-2xl border border-border bg-card p-4 text-left transition-all duration-200 hover:border-primary/40 hover:bg-primary/5;
+}
+
+@utility practice-option-selected {
+  @apply border-primary bg-primary/5 ring-2 ring-primary/10;
+}
+
+@utility practice-option-correct {
+  @apply border-green-500/40 bg-green-500/5;
+}
+
+@utility practice-option-wrong {
+  @apply border-destructive/40 bg-destructive/5;
+}

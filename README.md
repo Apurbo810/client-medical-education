@@ -12,6 +12,8 @@
     "**/backend": true
 }
 
+
+
 ```
 📦client-medical-education
  ┣ 📂client
@@ -52,8 +54,21 @@
  ┃ ┃ ┣ 📂student
  ┃ ┃ ┃ ┣ 📂learning
  ┃ ┃ ┃ ┃ ┗ 📂[courseId]
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂pdf
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂[contentId]
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📄page.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂video
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂[contentId]
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📄page.tsx
  ┃ ┃ ┃ ┃ ┃ ┗ 📄page.tsx
  ┃ ┃ ┃ ┣ 📂my-courses
+ ┃ ┃ ┃ ┃ ┗ 📄page.tsx
+ ┃ ┃ ┃ ┣ 📂practice
+ ┃ ┃ ┃ ┃ ┣ 📂result
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂[quizId]
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📄page.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂[quizId]
+ ┃ ┃ ┃ ┃ ┃ ┗ 📄page.tsx
  ┃ ┃ ┃ ┃ ┗ 📄page.tsx
  ┃ ┃ ┃ ┣ 📄layout.tsx
  ┃ ┃ ┃ ┗ 📄page.tsx
@@ -195,13 +210,30 @@
  ┃ ┃ ┃ ┃ ┣ 📄student-shell.tsx
  ┃ ┃ ┃ ┃ ┗ 📄student-sidebar.tsx
  ┃ ┃ ┃ ┣ 📂learning
- ┃ ┃ ┃ ┃ ┣ 📄course-learning-header.tsx
- ┃ ┃ ┃ ┃ ┣ 📄course-learning-page.tsx
- ┃ ┃ ┃ ┃ ┣ 📄course-learning-tabs.tsx
- ┃ ┃ ┃ ┃ ┣ 📄course-progress.tsx
- ┃ ┃ ┃ ┃ ┣ 📄course-week-item.tsx
- ┃ ┃ ┃ ┃ ┣ 📄course-week.tsx
- ┃ ┃ ┃ ┃ ┗ 📄locked-course.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂main
+ ┃ ┃ ┃ ┃ ┃ ┣ 📄course-learning-header.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📄course-learning-page.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📄course-learning-tabs.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📄course-progress.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📄course-week-item.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📄course-week.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂notes
+ ┃ ┃ ┃ ┃ ┃ ┣ 📄course-notes-card.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📄course-notes-grid.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂pdf
+ ┃ ┃ ┃ ┃ ┃ ┗ 📄pdf-viewer.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂shared
+ ┃ ┃ ┃ ┃ ┃ ┗ 📄locked-course.tsx
+ ┃ ┃ ┃ ┃ ┗ 📂video
+ ┃ ┃ ┃ ┃ ┃ ┣ 📄course-video-card.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📄course-video-grid.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📄video-viewer.tsx
+ ┃ ┃ ┃ ┣ 📂practice
+ ┃ ┃ ┃ ┃ ┣ 📄course-selector.tsx
+ ┃ ┃ ┃ ┃ ┣ 📄practice-page.tsx
+ ┃ ┃ ┃ ┃ ┣ 📄quiz-settings.tsx
+ ┃ ┃ ┃ ┃ ┣ 📄quiz-summary.tsx
+ ┃ ┃ ┃ ┃ ┗ 📄topic-selector.tsx
  ┃ ┃ ┃ ┗ 📂StudentStats
  ┃ ┃ ┃ ┃ ┣ 📂Average Score
  ┃ ┃ ┃ ┃ ┣ 📂Mock Exams
@@ -221,7 +253,6 @@
  ┃ ┃ ┃ ┗ 📄pricing-faq.ts
  ┃ ┃ ┣ 📂student
  ┃ ┃ ┃ ┣ 📂courses
- ┃ ┃ ┃ ┃ ┣ 📄student-course-content.ts
  ┃ ┃ ┃ ┃ ┗ 📄student-courses.ts
  ┃ ┃ ┃ ┣ 📄current-student.ts
  ┃ ┃ ┃ ┣ 📄student-courses.ts
@@ -232,6 +263,7 @@
  ┃ ┃ ┣ 📄hero.ts
  ┃ ┃ ┣ 📄learning-process.ts
  ┃ ┃ ┣ 📄navigation.ts
+ ┃ ┃ ┣ 📄practice-questions.ts
  ┃ ┃ ┣ 📄pricing.ts
  ┃ ┃ ┣ 📄socials.ts
  ┃ ┃ ┣ 📄statistics.ts
@@ -260,6 +292,8 @@
  ┃ ┃ ┃ ┗ 📄contact.ts
  ┃ ┃ ┣ 📄animation.ts
  ┃ ┃ ┣ 📄gsap.ts
+ ┃ ┃ ┣ 📄questions.ts
+ ┃ ┃ ┣ 📄quiz.ts
  ┃ ┃ ┣ 📄use-hero-animation.ts
  ┃ ┃ ┗ 📄utils.ts
  ┃ ┣ 📂public
@@ -284,12 +318,10 @@
  ┃ ┃ ┃ ┃ ┗ 📄team.webp
  ┃ ┣ 📂services
  ┃ ┃ ┣ 📄auth.service.ts
- ┃ ┃ ┣ 📄course.service.ts
  ┃ ┃ ┗ 📄student.service.ts
  ┃ ┣ 📂types
  ┃ ┃ ┣ 📂student
  ┃ ┃ ┃ ┣ 📂courses
- ┃ ┃ ┃ ┃ ┣ 📄student-course-content.ts
  ┃ ┃ ┃ ┃ ┗ 📄student-course.ts
  ┃ ┃ ┃ ┗ 📄student-dashboard.ts
  ┃ ┃ ┣ 📄course.ts
@@ -298,6 +330,7 @@
  ┃ ┃ ┣ 📄footer.ts
  ┃ ┃ ┣ 📄learning-process.ts
  ┃ ┃ ┣ 📄navigation.ts
+ ┃ ┃ ┣ 📄practice-question.ts
  ┃ ┃ ┣ 📄pricing.ts
  ┃ ┃ ┣ 📄social.ts
  ┃ ┃ ┣ 📄statistic.ts
