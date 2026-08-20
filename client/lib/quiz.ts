@@ -229,3 +229,14 @@ export function getStoredQuizQuestions(
     return [];
   }
 }
+
+
+/* =========================================================
+   CREATE FIXED EXAM
+========================================================= */
+
+export function createFixedExam(
+  questions: PracticeQuestion[],
+): PracticeQuestion[] {
+  return [...questions];
+}

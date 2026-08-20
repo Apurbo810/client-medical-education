@@ -36,3 +36,17 @@ export function getQuestionById(
       question.id === questionId,
   );
 }
+
+/* =========================================================
+   GET MOCK EXAM QUESTIONS
+========================================================= */
+
+export function getMockExamQuestions(
+  questions: PracticeQuestion[],
+  examId: string,
+): PracticeQuestion[] {
+  return questions.filter(
+    (question) =>
+      question.id.startsWith(`${examId}-`),
+  );
+}

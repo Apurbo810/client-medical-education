@@ -5,7 +5,11 @@ import { useParams } from "next/navigation";
 import { CheckCircle2, XCircle } from "lucide-react";
 
 import { QuizSummary } from "@/components/student/quiz/quiz-summary";
+
+import { mockExams } from "@/data/mock-exams";
+
 import { getQuestionById } from "@/lib/questions";
+
 import {
   getStoredQuizResult,
   getStoredQuizQuestions,
@@ -21,9 +25,22 @@ export default function QuizResultPage() {
 
   const quizId = String(params.quizId);
 
+  /*
+   * Check whether this result belongs to
+   * one of the admin-defined mock exams.
+   */
+  const isMockExam = mockExams.some(
+    (exam) => exam.id === quizId,
+  );
+
   const result = getStoredQuizResult(quizId);
+
   const questions =
     getStoredQuizQuestions(quizId);
+
+  /* =========================================================
+     RESULT NOT FOUND
+  ========================================================= */
 
   if (!result) {
     return (
@@ -50,36 +67,67 @@ export default function QuizResultPage() {
     );
   }
 
+  /* =========================================================
+     RESULT
+  ========================================================= */
+
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-background">
       <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Page Header */}
+        {/* ===================================================
+            PAGE HEADER
+        =================================================== */}
+
         <div className="mb-6">
           <p className="text-sm font-medium text-primary">
-            Practice Result
+            {isMockExam
+              ? "Mock Exam Result"
+              : "Practice Result"}
           </p>
 
           <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground">
-            Quiz Results
+            {isMockExam
+              ? "Mock Exam Results"
+              : "Quiz Results"}
           </h1>
 
           <p className="mt-2 text-sm text-muted-foreground">
-            Review your performance and the questions you answered.
+            {isMockExam
+              ? "Review your mock exam performance and the questions you answered."
+              : "Review your performance and the questions you answered."}
           </p>
         </div>
 
-        {/* Summary */}
+        {/* ===================================================
+            SUMMARY
+        =================================================== */}
+
         <QuizSummary
           totalQuestions={result.total}
           correctAnswers={result.correct}
           percentage={result.percentage}
           passChance={result.passChance}
+          isMockExam={isMockExam}
           onRetry={() => {
-            window.location.href = `/student/practice?retry=${quizId}`;
+            /*
+             * Mock exams cannot be retaken.
+             *
+             * This callback is only used by
+             * normal practice quizzes.
+             */
+            if (isMockExam) {
+              return;
+            }
+
+            window.location.href =
+              `/student/practice?retry=${quizId}`;
           }}
         />
 
-        {/* Question Review */}
+        {/* ===================================================
+            QUESTION REVIEW
+        =================================================== */}
+
         <section className="mt-8">
           <div className="mb-4">
             <h2 className="text-xl font-bold text-foreground">
@@ -87,13 +135,17 @@ export default function QuizResultPage() {
             </h2>
 
             <p className="mt-1 text-sm text-muted-foreground">
-              Review your answers and understand why each answer was correct.
+              Review your answers and understand why
+              each answer was correct.
             </p>
           </div>
 
           <div className="space-y-4">
             {result.results.map(
-              (questionResult, index) => {
+              (
+                questionResult: QuizQuestionResult,
+                index: number,
+              ) => {
                 const question =
                   getQuestionById(
                     questions,
@@ -106,9 +158,13 @@ export default function QuizResultPage() {
 
                 return (
                   <ResultQuestion
-                    key={questionResult.questionId}
+                    key={
+                      questionResult.questionId
+                    }
                     question={question}
-                    questionNumber={index + 1}
+                    questionNumber={
+                      index + 1
+                    }
                     selectedAnswer={
                       questionResult.selectedAnswer
                     }
@@ -126,10 +182,15 @@ export default function QuizResultPage() {
   );
 }
 
+/* =========================================================
+   RESULT QUESTION
+========================================================= */
+
 type ResultQuestionProps = {
   question: PracticeQuestion;
   questionNumber: number;
-  selectedAnswer: QuizQuestionResult["selectedAnswer"];
+  selectedAnswer:
+    QuizQuestionResult["selectedAnswer"];
   isCorrect: boolean;
 };
 
@@ -157,35 +218,49 @@ function ResultQuestion({
             {question.question}
           </h3>
 
+          {/* Options */}
           <div className="mt-4 space-y-2">
-            {question.options.map((option) => {
-              const isSelected = option.id === selectedAnswer;
-              const isCorrectAnswer =
-                option.id === question.correctAnswer;
+            {question.options.map(
+              (option) => {
+                const isSelected =
+                  option.id ===
+                  selectedAnswer;
 
-              return (
-                <div
-                  key={option.id}
-                  className={[
-                    "rounded-lg border px-3 py-2 text-sm",
-                    isCorrectAnswer
-                      ? "border-green-500/30 bg-green-500/10 text-green-700"
-                      : isSelected
-                        ? "border-red-500/30 bg-red-500/10 text-red-700"
-                        : "border-border text-muted-foreground",
-                  ].join(" ")}
-                >
-                  <span className="font-semibold">{option.id}.</span>{" "}
-                  {option.text}
-                </div>
-              );
-            })}
+                const isCorrectAnswer =
+                  option.id ===
+                  question.correctAnswer;
+
+                return (
+                  <div
+                    key={option.id}
+                    className={[
+                      "rounded-lg border px-3 py-2 text-sm",
+
+                      isCorrectAnswer
+                        ? "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400"
+
+                        : isSelected
+                          ? "border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-400"
+
+                          : "border-border text-muted-foreground",
+                    ].join(" ")}
+                  >
+                    <span className="font-semibold">
+                      {option.id}.
+                    </span>{" "}
+                    {option.text}
+                  </div>
+                );
+              },
+            )}
           </div>
 
+          {/* Explanation */}
           <div className="mt-4 rounded-lg bg-muted/50 p-3 text-sm text-muted-foreground">
             <span className="font-semibold text-foreground">
-              Explanation: {" "}
+              Explanation:{" "}
             </span>
+
             {question.explanation}
           </div>
         </div>

@@ -56,11 +56,20 @@ export function CourseWeekItem({
         ? "Take Test"
         : "Open";
 
-  const fileHref =
-    !locked &&
-    content.file
-      ? `/student/learning/${courseId}/pdf/${content.id}`
-      : null;
+  const contentHref =
+    locked
+      ? null
+      : content.type === "video"
+        ? `/student/learning/${courseId}/video/${content.id}`
+        : content.type === "mock-test"
+          ? `/student/practice/${
+              content.completed
+                ? `result/${content.id}`
+                : content.id
+            }`
+          : content.file
+            ? `/student/learning/${courseId}/pdf/${content.id}`
+            : null;
 
   return (
     <article
@@ -177,9 +186,9 @@ export function CourseWeekItem({
             <Lock className="size-4" />
             <span>{actionLabel}</span>
           </button>
-        ) : fileHref ? (
+        ) : contentHref ? (
           <Link
-            href={fileHref}
+            href={contentHref}
             className={[
               "student-learning-item-button",
               content.completed

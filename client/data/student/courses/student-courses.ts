@@ -115,4 +115,56 @@ export const studentCourseEnrollments: StudentCourseEnrollment[] = [
 
     contentProgress: [],
   },
+
+
+
+
+  {
+  userId: "student-4",
+
+  courseId: "nclex-complete",
+
+  courseVersionId: "nclex-complete-v1",
+
+  hasActiveSubscription: true,
+
+  enrolledAt: "2026-08-01",
+
+  unlockedWeek: 3,
+
+  contentProgress: [
+    {
+      contentId: "nclex-v1-w1-slide-1",
+      progress: 100,
+      completed: true,
+      completedAt: "2026-08-02",
+    },
+
+    {
+      contentId: "nclex-v1-w2-slide-1",
+      progress: 100,
+      completed: true,
+      completedAt: "2026-08-08",
+    },
+
+    {
+      contentId: "nclex-v1-w2-video-1",
+      progress: 100,
+      completed: true,
+      completedAt: "2026-08-09",
+    },
+
+    {
+      contentId: "nclex-v1-w3-slide-1",
+      progress: 40,
+      completed: false,
+    },
+
+    {
+      contentId: "nclex-v1-w3-mock-1",
+      progress: 0,
+      completed: false,
+    },
+  ],
+},
 ];

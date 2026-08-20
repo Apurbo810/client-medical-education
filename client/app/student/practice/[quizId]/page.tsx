@@ -1,282 +1,190 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-
-import type {
-  PracticeQuestion,
-  QuestionOption,
-} from "@/types/practice-question";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { practiceQuestions } from "@/data/practice-questions";
-
+import { mockExamQuestions } from "@/data/mock-exam-questions";
+import { mockExams } from "@/data/mock-exams";
+import { getMockExamQuestions, getQuestions } from "@/lib/questions";
 import {
   calculateQuizResult,
   createQuiz,
+  createFixedExam,
   saveQuizResult,
 } from "@/lib/quiz";
+import type {
+  PracticeQuestion,
+  QuestionOption,
+  QuizAnswer,
+} from "@/types/practice-question";
 
 import { QuizNavigation } from "@/components/student/quiz/quiz-navigation";
-import { QuizProgress } from "@/components/student/quiz/quiz-progress";
 import { QuizQuestion } from "@/components/student/quiz/quiz-question";
 
-interface QuizPageProps {
-  params: Promise<{
-    quizId: string;
-  }>;
-}
+type PracticeConfig = {
+  courseId: string;
+  topic: string;
+  questionCount: number;
+};
 
-export default function QuizPage({
-  params,
-}: QuizPageProps) {
+export default function QuizPage() {
+  const params = useParams();
   const router = useRouter();
+  const quizId = String(params.quizId);
+  const isMockExam = mockExams.some((exam) => exam.id === quizId);
 
-  const [quizId, setQuizId] = useState<string | null>(
-    null,
-  );
-
-  const [questions, setQuestions] = useState<
-    PracticeQuestion[]
-  >([]);
-
-  const [currentQuestion, setCurrentQuestion] =
-    useState(0);
-
-  const [answers, setAnswers] = useState<
-    Record<string, QuestionOption["id"]>
-  >({});
-
-  const [isSubmitting, setIsSubmitting] =
-    useState(false);
-
-  /* =========================================================
-     LOAD QUIZ
-  ========================================================= */
+  const [questions, setQuestions] = useState<PracticeQuestion[]>([]);
+  const [answers, setAnswers] = useState<QuizAnswer[]>([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function loadQuiz() {
-      const resolvedParams = await params;
+    const loadQuiz = () => {
+      if (isMockExam) {
+        const exam = mockExams.find((item) => item.id === quizId);
+        const mockQuestions = getMockExamQuestions(
+          mockExamQuestions,
+          quizId,
+        );
+        const courseQuestions = getQuestions(
+          practiceQuestions,
+          { courseId: exam?.courseId },
+        );
 
-      const id = resolvedParams.quizId;
+        setQuestions(
+          createFixedExam(
+            (mockQuestions.length > 0
+              ? mockQuestions
+              : courseQuestions
+            ).slice(0, exam?.questions ?? courseQuestions.length),
+          ),
+        );
+        setIsLoading(false);
+        return;
+      }
 
-      setQuizId(id);
+      try {
+        const stored = sessionStorage.getItem(`practice:${quizId}`);
+        const config = stored
+          ? (JSON.parse(stored) as PracticeConfig)
+          : null;
 
-      /*
-       * For now:
-       * Practice uses the practice question bank.
-       *
-       * Later:
-       * CAT / Weekly Mock can load their own
-       * question source based on quizId/type.
-       */
+        if (!config) {
+          setIsLoading(false);
+          return;
+        }
 
-      const quizQuestions = createQuiz(
-        practiceQuestions,
-        10,
+        const availableQuestions = getQuestions(practiceQuestions, {
+          courseId: config.courseId,
+          category: config.topic === "all" ? undefined : config.topic,
+        });
+
+        setQuestions(createQuiz(availableQuestions, config.questionCount));
+      } catch (error) {
+        console.error("Failed to load quiz:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    const timer = window.setTimeout(loadQuiz, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [isMockExam, quizId]);
+
+  function handleAnswerChange(answer: QuestionOption["id"]) {
+    const question = questions[currentQuestion];
+
+    setAnswers((current) => {
+      const withoutCurrent = current.filter(
+        (item) => item.questionId !== question.id,
       );
 
-      setQuestions(quizQuestions);
-    }
-
-    loadQuiz();
-  }, [params]);
-
-  /* =========================================================
-     CURRENT QUESTION
-  ========================================================= */
-
-  const question = useMemo(() => {
-    return questions[currentQuestion];
-  }, [questions, currentQuestion]);
-
-  /* =========================================================
-     ANSWER
-  ========================================================= */
-
-  function handleAnswerChange(
-    answer: QuestionOption["id"],
-  ) {
-    if (!question || isSubmitting) {
-      return;
-    }
-
-    setAnswers((previous) => ({
-      ...previous,
-      [question.id]: answer,
-    }));
+      return [...withoutCurrent, { questionId: question.id, answer }];
+    });
   }
-
-  /* =========================================================
-     NEXT
-  ========================================================= */
-
-  function handleNext() {
-    if (
-      isSubmitting ||
-      currentQuestion >= questions.length - 1
-    ) {
-      return;
-    }
-
-    setCurrentQuestion(
-      (previous) => previous + 1,
-    );
-  }
-
-  /* =========================================================
-     PREVIOUS
-  ========================================================= */
-
-  function handlePrevious() {
-    if (
-      isSubmitting ||
-      currentQuestion <= 0
-    ) {
-      return;
-    }
-
-    setCurrentQuestion(
-      (previous) => previous - 1,
-    );
-  }
-
-  /* =========================================================
-     SUBMIT
-  ========================================================= */
 
   function handleFinish() {
-    if (
-      !quizId ||
-      !questions.length ||
-      isSubmitting
-    ) {
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    /*
-     * Convert the student's selected answers
-     * into the format expected by calculateQuizResult().
-     */
-    const quizAnswers = questions.map(
-      (item) => ({
-        questionId: item.id,
-        answer: answers[item.id],
-      }),
+    const currentAnswer = answers.find(
+      (answer) =>
+        answer.questionId === questions[currentQuestion].id,
     );
 
-    /*
-     * Calculate the result.
-     *
-     * IMPORTANT:
-     * The correct answer comes from the question data.
-     * The frontend only sends/uses the student's answer.
-     */
-    const result = calculateQuizResult(
-      questions,
-      quizAnswers,
-    );
+    const finalAnswers = currentAnswer
+      ? answers
+      : [
+          ...answers,
+          {
+            questionId: questions[currentQuestion].id,
+            answer: selectedAnswer ?? undefined,
+          },
+        ];
 
-    /*
-     * Save the result temporarily.
-     *
-     * Later this will be replaced with
-     * a backend API request.
-     */
     saveQuizResult(
       quizId,
-      result,
+      calculateQuizResult(questions, finalAnswers),
       questions,
     );
-
-    /*
-     * Move to the separate result page.
-     */
-    router.push(
-      `/student/practice/result/${quizId}`,
-    );
+    router.push(`/student/practice/result/${quizId}`);
   }
 
-  /* =========================================================
-     LOADING
-  ========================================================= */
+  if (isLoading) {
+    return <main className="p-8 text-center">Loading quiz...</main>;
+  }
 
-  if (!quizId || questions.length === 0) {
+  if (questions.length === 0) {
     return (
-      <main className="min-h-[calc(100vh-4rem)] bg-background">
-        <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-border bg-card p-8 text-center shadow-sm">
-            <p className="text-sm text-muted-foreground">
-              Loading practice questions...
-            </p>
-          </div>
+      <main className="mx-auto flex min-h-[60vh] max-w-4xl items-center justify-center px-4">
+        <div className="w-full rounded-2xl border border-border bg-card p-8 text-center">
+          <h1 className="text-2xl font-bold text-foreground">Quiz Not Found</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            This quiz is no longer available.
+          </p>
+          <Link
+            href={isMockExam ? "/student/mock-exams" : "/student/practice"}
+            className="mt-6 inline-flex rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
+          >
+            Back to {isMockExam ? "Mock Exams" : "Practice"}
+          </Link>
         </div>
       </main>
     );
   }
 
-  /* =========================================================
-     QUIZ
-  ========================================================= */
-
+  const question = questions[currentQuestion];
   const selectedAnswer =
-    question && answers[question.id]
-      ? answers[question.id]
-      : null;
+    answers.find((answer) => answer.questionId === question.id)?.answer ?? null;
 
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-background">
-      <div className="mx-auto w-full max-w-5xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-        {/* Header */}
+      <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
         <header className="mb-6">
           <p className="text-sm font-medium text-primary">
-            Practice Questions
+            {isMockExam ? "Mock Exam" : "Practice Quiz"}
           </p>
-
-          <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            Practice Quiz
+          <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground">
+            Question {currentQuestion + 1} of {questions.length}
           </h1>
-
-          <p className="mt-1 text-sm text-muted-foreground">
-            Answer each question and submit when you
-            are finished.
-          </p>
         </header>
 
-        {/* Progress */}
-        <QuizProgress
-          currentQuestion={currentQuestion + 1}
-          totalQuestions={questions.length}
+        <QuizQuestion
+          question={question}
+          selectedAnswer={selectedAnswer}
+          onAnswerChange={handleAnswerChange}
         />
 
-        {/* Question */}
-        <div className="mt-5">
-          <QuizQuestion
-            question={question}
-            selectedAnswer={selectedAnswer}
-            onAnswerChange={handleAnswerChange}
-          />
-        </div>
-
-        {/* Navigation */}
-        <div className="mt-5">
+        <div className="mt-6">
           <QuizNavigation
             currentQuestion={currentQuestion}
             totalQuestions={questions.length}
-            hasAnswer={Boolean(selectedAnswer)}
-            onPrevious={handlePrevious}
-            onNext={handleNext}
+            hasAnswer={selectedAnswer !== null}
+            onPrevious={() => setCurrentQuestion((current) => current - 1)}
+            onNext={() => setCurrentQuestion((current) => current + 1)}
             onFinish={handleFinish}
           />
         </div>
-
-        {/* Submitting */}
-        {isSubmitting && (
-          <p className="mt-4 text-center text-sm text-muted-foreground">
-            Calculating your result...
-          </p>
-        )}
       </div>
     </main>
   );

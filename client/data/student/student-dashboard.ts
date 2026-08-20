@@ -179,4 +179,51 @@ export const studentDashboardData: Record<
       },
     ],
   },
+
+  "student-4": {
+    student: {
+      name: "Alex",
+    },
+
+    subscription: {
+      plan: "6-Month Access",
+      daysRemaining: 165,
+      expiresAt: "2027-02-01",
+      hasCourseAccess: true,
+    },
+
+    streak: {
+      days: 3,
+    },
+
+    readiness: {
+      level: "In Progress",
+    },
+
+    stats: {
+      questionsSolved: 24,
+      questionsTotal: 12500,
+      averageScore: 0,
+      scoreChange: 0,
+      mockExamsCompleted: 0,
+      mockExamsTotal: 5,
+      readiness: "In Progress",
+      readinessStatus: "Not Assessed",
+    },
+
+    continueLearning: {
+      courseTitle: "NCLEX-RN Complete Course",
+      lessonTitle: "NCLEX-RN Fundamentals",
+      progress: 40,
+      remainingMinutes: 15,
+      href: "/student/learning",
+    },
+
+    coursesProgress: [
+      {
+        id: "nclex-complete",
+        progress: 40,
+      },
+    ],
+  },
 };

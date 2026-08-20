@@ -6,12 +6,10 @@ export interface StudentCourseAccess {
 
   unlockedWeeks: number;
 }
-
 export const studentCourseAccess: StudentCourseAccess[] = [
   {
     studentId: "student-1",
     courseId: "nclex-complete",
-
     hasAccess: true,
     unlockedWeeks: 3,
   },
@@ -19,7 +17,6 @@ export const studentCourseAccess: StudentCourseAccess[] = [
   {
     studentId: "student-2",
     courseId: "nclex-complete",
-
     hasAccess: true,
     unlockedWeeks: 1,
   },
@@ -27,8 +24,14 @@ export const studentCourseAccess: StudentCourseAccess[] = [
   {
     studentId: "student-3",
     courseId: "nclex-complete",
-
     hasAccess: false,
     unlockedWeeks: 0,
+  },
+
+  {
+    studentId: "student-4",
+    courseId: "nclex-complete",
+    hasAccess: true,
+    unlockedWeeks: 3,
   },
 ];
