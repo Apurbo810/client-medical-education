@@ -17,7 +17,7 @@ export function Pricing() {
   });
 
   return (
-    <Section spacing="lg">
+    <Section spacing="sm">
       <Container>
         <SectionHeading
           badge="Pricing"

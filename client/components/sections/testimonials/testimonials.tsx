@@ -17,7 +17,7 @@ export function Testimonials() {
   });
 
   return (
-    <Section spacing="lg">
+    <Section spacing="sm">
       <Container>
         <SectionHeading
           animated
