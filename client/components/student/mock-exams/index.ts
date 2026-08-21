@@ -10,7 +10,7 @@ export type {
   MockExam,
   MockExamType,
   MockExamStatus,
-} from "./mock-exam-card";
+} from "@/types/mock-exam";
 
 export { MockExamGrid } from "./mock-exam-grid";
 

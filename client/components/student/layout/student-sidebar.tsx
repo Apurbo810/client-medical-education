@@ -61,11 +61,6 @@ const secondaryNavigation = [
     icon: Settings,
   },
   {
-    title: "Notifications",
-    href: "/student/notifications",
-    icon: Bell,
-  },
-  {
     title: "Support / Help",
     href: "/student/support",
     icon: HelpCircle,
