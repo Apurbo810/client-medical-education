@@ -17,15 +17,17 @@ export function useLenis() {
     });
     lenisRef.current = lenis;
 
+    let frameId = 0;
+
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      frameId = requestAnimationFrame(raf);
     }
 
-    const id = requestAnimationFrame(raf);
+    frameId = requestAnimationFrame(raf);
 
     return () => {
-      cancelAnimationFrame(id);
+      cancelAnimationFrame(frameId);
       lenis.destroy();
       lenisRef.current = null;
     };
