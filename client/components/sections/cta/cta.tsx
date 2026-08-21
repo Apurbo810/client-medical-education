@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function CTA() {
   return (
-    <Section>
+    <Section spacing="lg">
       <Container>
         <div className="cta-wrapper">
           <div className="cta-pattern" />

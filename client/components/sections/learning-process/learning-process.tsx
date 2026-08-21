@@ -17,7 +17,7 @@ export function LearningProcess() {
   });
 
   return (
-    <Section>
+    <Section spacing="lg">
       <Container>
         <SectionHeading
           animated

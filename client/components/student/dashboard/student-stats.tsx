@@ -49,7 +49,7 @@ export function StudentStats({
 
   return (
     <Section
-      spacing="sm"
+      spacing="none"
       className="student-stats-section"
     >
       <div

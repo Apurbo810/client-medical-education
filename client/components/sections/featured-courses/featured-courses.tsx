@@ -18,7 +18,7 @@ export function FeaturedCourses() {
     });
 
   return (
-    <Section id="courses">
+    <Section id="courses" spacing="lg">
       <Container>
         <SectionHeading
           badge="Courses"

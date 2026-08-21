@@ -6,7 +6,7 @@ import { WhyChooseUsImage } from "./why-choose-us-image";
 
 export function WhyChooseUs() {
   return (
-    <Section>
+    <Section spacing="lg">
       <Container>
         <div className="why-grid">
           <WhyChooseUsContent />

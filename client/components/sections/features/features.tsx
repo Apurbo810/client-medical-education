@@ -17,7 +17,7 @@ export function Features() {
   });
 
   return (
-    <Section id="features">
+    <Section id="features" spacing="lg">
       <Container>
         <SectionHeading
           animated

@@ -34,7 +34,7 @@ export function StudentQuickActions({
 
   return (
     <Section
-      spacing="sm"
+      spacing="none"
       className="student-quick-actions-section"
     >
       <div
