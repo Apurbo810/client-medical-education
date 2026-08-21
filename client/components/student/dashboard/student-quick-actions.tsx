@@ -5,8 +5,8 @@ import {
   ClipboardCheck,
   Clock3,
   Lock,
-  Play,
   Sparkles,
+  Trophy,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -146,26 +146,20 @@ export function StudentQuickActions({
 
           <Link
             data-animate
-            href={
-              hasCourseAccess
-                ? "/student/learning"
-                : "/pricing"
-            }
+            href="/student/results"
             className="student-quick-action"
           >
-            <span className="student-quick-action-icon student-quick-action-icon-teal">
-              <Play className="size-5" />
+            <span className="student-quick-action-icon student-quick-action-icon-primary">
+              <Trophy className="size-5" />
             </span>
 
             <span className="student-quick-action-content">
               <span className="student-quick-action-title">
-                Watch Lectures
+                View Grades
               </span>
 
               <span className="student-quick-action-description">
-                {hasCourseAccess
-                  ? "Continue learning"
-                  : "Subscribe to start"}
+                Review your performance
               </span>
             </span>
 

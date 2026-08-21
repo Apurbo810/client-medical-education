@@ -75,7 +75,7 @@ export default function CoursesPage() {
   }
 
   return (
-    <Section>
+    <Section spacing="md">
       <Container>
         <SectionHeading
           title="Explore Our Courses"

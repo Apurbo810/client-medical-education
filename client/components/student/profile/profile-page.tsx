@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import type { StudentProfile } from "@/types/student/profile";
 import type { StudentSubscription } from "@/types/student/subscription";
 
@@ -18,8 +20,10 @@ export function ProfilePage({
   profile,
   subscription,
 }: ProfilePageProps) {
+  const router = useRouter();
+
   function handleChangePassword() {
-    console.log("Change password");
+    router.push("/forgot-password");
   }
 
   function handleManageSessions() {

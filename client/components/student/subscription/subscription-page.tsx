@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import type {
   PaymentRecord,
   SubscriptionPlan,
@@ -21,17 +23,16 @@ export function SubscriptionPage({
   plans,
   payments,
 }: SubscriptionPageProps) {
+  const router = useRouter();
+
   function handleRenew() {
-    console.log("Renew subscription");
+    router.push("/pricing");
   }
 
   function handleUpgrade(
     plan: SubscriptionPlan,
   ) {
-    console.log(
-      "Upgrade to:",
-      plan.id,
-    );
+    router.push(`/pricing?plan=${plan.id}`);
   }
 
   function handleExportPayments() {
