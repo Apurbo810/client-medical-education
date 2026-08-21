@@ -2093,7 +2093,7 @@ img {
 }
 
 @utility student-content {
-  @apply flex-1 p-5 sm:p-6 lg:p-7;
+  @apply flex-1 p-5;
 }
 
 /* =========================================================
@@ -2173,19 +2173,21 @@ img {
 ========================================================= */
 
 @utility student-stats-section {
-  @apply py-0;
+  @apply py-4 md:py-8;
 }
 
 @utility student-stats-grid {
-  @apply grid gap-4 sm:grid-cols-2 xl:grid-cols-4;
+  @apply grid grid-cols-4 gap-2 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4;
 }
 
+
+
 @utility student-stat-card {
-  @apply rounded-2xl border border-border bg-card p-5 shadow-sm;
+  @apply aspect-square min-w-0 rounded-xl border border-border bg-card p-2.5 shadow-sm sm:aspect-auto sm:rounded-2xl sm:p-5;
 }
 
 @utility student-stat-icon {
-  @apply flex size-10 items-center justify-center rounded-xl;
+  @apply flex size-7 items-center justify-center rounded-lg sm:size-10 sm:rounded-xl;
 }
 
 @utility student-stat-icon-blue {
@@ -2205,19 +2207,20 @@ img {
 }
 
 @utility student-stat-value {
-  @apply mt-4 text-2xl font-bold leading-none tracking-tight text-foreground;
+  @apply mt-3 truncate text-base font-bold leading-none tracking-tight text-foreground sm:mt-4 sm:text-2xl;
 }
 
+
 @utility student-stat-label {
-  @apply mt-1 text-sm font-medium text-muted-foreground;
+  @apply mt-1 truncate text-[10px] font-medium text-muted-foreground sm:text-sm;
 }
 
 @utility student-stat-subtext {
-  @apply mt-0.5 text-xs font-medium text-primary;
+  @apply hidden sm:mt-0.5 sm:block sm:text-xs sm:font-medium sm:text-primary;
 }
 
 @utility student-stat-progress {
-  @apply mt-4 h-1.5 overflow-hidden rounded-full bg-muted;
+  @apply hidden sm:mt-4 sm:block sm:h-1.5 sm:overflow-hidden sm:rounded-full sm:bg-muted;
 }
 
 @utility student-stat-progress-value {
@@ -2319,3 +2322,2509 @@ img {
 @utility student-quick-action-arrow {
   @apply size-4 shrink-0 text-muted-foreground transition-transform duration-200;
 }
+
+/* =========================================================
+   STUDENT COURSES
+========================================================= */
+
+@utility student-courses-section {
+  @apply py-0;
+}
+
+@utility student-courses-header {
+  @apply mb-6 flex items-end justify-between gap-4;
+}
+
+@utility student-courses-eyebrow {
+  @apply text-sm font-semibold text-primary;
+}
+
+@utility student-courses-title {
+  @apply mt-1 text-2xl font-bold tracking-tight text-foreground;
+}
+
+@utility student-courses-description {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+@utility student-courses-view-all {
+  @apply inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80;
+}
+
+@utility student-courses-grid {
+  @apply grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-4;
+}
+
+@utility student-course-card {
+  @apply flex min-h-[470px] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+}
+
+@utility student-course-image {
+  @apply relative aspect-[16/10] shrink-0 overflow-hidden bg-muted;
+}
+
+@utility student-course-content {
+  @apply flex flex-1 flex-col p-5;
+}
+
+@utility student-course-category {
+  @apply text-xs font-semibold uppercase tracking-wide text-primary;
+}
+
+@utility student-course-title {
+  @apply mt-2 line-clamp-2 min-h-[3.5rem] text-lg font-bold leading-snug text-foreground;
+}
+
+@utility student-course-description {
+  @apply mt-2 line-clamp-3 min-h-[4.5rem] text-sm leading-6 text-muted-foreground;
+}
+
+@utility student-course-footer {
+  @apply mt-auto pt-4;
+}
+
+@utility student-course-meta {
+  @apply flex items-center justify-between gap-3 text-xs font-medium text-muted-foreground;
+}
+
+@utility student-course-progress {
+  @apply mt-3 h-1.5 w-full overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-course-progress-value {
+  @apply h-full rounded-full bg-primary transition-[width] duration-500;
+}
+
+@utility student-course-button {
+  @apply mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-all duration-200;
+}
+
+@utility student-course-button-active {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+@utility student-course-button-locked {
+  @apply cursor-not-allowed bg-muted text-muted-foreground;
+}
+
+@utility student-course-lock {
+  @apply absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background/65 text-sm font-semibold text-foreground backdrop-blur-[2px];
+}
+
+@utility student-course-lock-icon {
+  @apply flex size-11 items-center justify-center rounded-full bg-card text-muted-foreground shadow-md;
+}
+
+
+/* =========================================================
+   STUDENT COURSE ELEMENT SELECTORS
+========================================================= */
+
+.student-course-image img {
+  transition: transform 500ms ease;
+}
+
+.student-course-card:hover .student-course-image img {
+  transform: scale(1.05);
+}
+
+.student-course-meta span {
+  @apply inline-flex items-center gap-1.5;
+}
+
+.student-course-meta svg {
+  @apply text-primary;
+}
+
+.student-course-image-element {
+  transition: transform 500ms ease;
+}
+
+.student-course-card:hover .student-course-image-element {
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   STUDENT MY COURSES
+========================================================= */
+
+@utility student-my-courses {
+  @apply w-full;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+@utility student-my-courses-header {
+  @apply mb-8 flex flex-col gap-5;
+}
+
+@utility student-my-courses-header-content {
+  @apply min-w-0;
+}
+
+@utility student-my-courses-eyebrow {
+  @apply text-sm font-semibold text-primary;
+}
+
+@utility student-my-courses-title {
+  @apply mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl;
+}
+
+@utility student-my-courses-description {
+  @apply mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+
+/* =========================================================
+   SUBSCRIPTION STATUS
+========================================================= */
+
+@utility student-my-courses-subscription {
+  @apply flex w-full items-center justify-between gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm;
+}
+
+@utility student-my-courses-subscription-content {
+  @apply flex min-w-0 items-center gap-3;
+}
+
+@utility student-my-courses-subscription-icon {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary;
+}
+
+@utility student-my-courses-subscription-text {
+  @apply min-w-0;
+}
+
+@utility student-my-courses-subscription-label {
+  @apply text-xs font-medium text-muted-foreground;
+}
+
+@utility student-my-courses-subscription-value {
+  @apply mt-0.5 truncate text-sm font-semibold text-foreground;
+}
+
+@utility student-my-courses-subscription-action {
+  @apply inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90;
+}
+
+
+/* =========================================================
+   COURSE GRID
+========================================================= */
+
+@utility student-my-courses-grid {
+  @apply grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
+}
+
+
+/* =========================================================
+   COURSE CARD
+========================================================= */
+
+@utility student-my-course-card {
+  @apply flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300;
+}
+
+@utility student-my-course-image {
+  @apply relative aspect-[16/9] w-full shrink-0 overflow-hidden bg-muted;
+}
+
+@utility student-my-course-content {
+  @apply flex min-w-0 flex-1 flex-col p-5;
+}
+
+@utility student-my-course-category {
+  @apply text-xs font-semibold uppercase tracking-wider text-primary;
+}
+
+@utility student-my-course-title {
+  @apply mt-2 line-clamp-2 text-lg font-bold leading-snug text-foreground;
+}
+
+@utility student-my-course-description {
+  @apply mt-2 line-clamp-3 text-sm leading-6 text-muted-foreground;
+}
+
+
+/* =========================================================
+   COURSE META
+========================================================= */
+
+@utility student-my-course-meta {
+  @apply mt-5 flex items-center justify-between gap-3 text-xs font-medium text-muted-foreground;
+}
+
+@utility student-my-course-meta-item {
+  @apply inline-flex min-w-0 items-center gap-1.5;
+}
+
+@utility student-my-course-meta-icon {
+  @apply size-4 shrink-0 text-primary;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+@utility student-my-course-progress {
+  @apply mt-3;
+}
+
+@utility student-my-course-progress-header {
+  @apply flex items-center justify-between gap-3 text-xs;
+}
+
+@utility student-my-course-progress-label {
+  @apply font-medium text-muted-foreground;
+}
+
+@utility student-my-course-progress-value {
+  @apply font-semibold text-primary;
+}
+
+@utility student-my-course-progress-track {
+  @apply mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-my-course-progress-bar {
+  @apply h-full rounded-full bg-primary transition-[width] duration-700 ease-out;
+}
+
+
+/* =========================================================
+   COURSE ACTION
+========================================================= */
+
+@utility student-my-course-action {
+  @apply mt-5;
+}
+
+@utility student-my-course-button {
+  @apply flex h-11 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-all duration-300;
+}
+
+@utility student-my-course-button-active {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+@utility student-my-course-button-locked {
+  @apply cursor-not-allowed bg-muted text-muted-foreground;
+}
+
+@utility student-my-course-button-arrow {
+  @apply size-4 shrink-0 transition-transform duration-300;
+}
+
+
+/* =========================================================
+   LOCKED COURSE
+========================================================= */
+
+@utility student-my-course-locked {
+  @apply relative;
+}
+
+@utility student-my-course-lock-overlay {
+  @apply absolute inset-0 z-10 flex items-center justify-center bg-background/55 backdrop-blur-[2px];
+}
+
+@utility student-my-course-lock-content {
+  @apply flex flex-col items-center gap-2 text-center;
+}
+
+@utility student-my-course-lock-icon {
+  @apply flex size-11 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-md;
+}
+
+@utility student-my-course-lock-label {
+  @apply rounded-full bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-sm;
+}
+
+
+/* =========================================================
+   LOCKED IMAGE
+========================================================= */
+
+@utility student-my-course-image-locked {
+  @apply grayscale-[35%];
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+@utility student-my-courses-empty {
+  @apply flex min-h-[300px] flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card px-6 py-12 text-center;
+}
+
+@utility student-my-courses-empty-icon {
+  @apply flex size-12 items-center justify-center rounded-2xl bg-muted text-muted-foreground;
+}
+
+@utility student-my-courses-empty-title {
+  @apply mt-4 text-lg font-semibold text-foreground;
+}
+
+@utility student-my-courses-empty-description {
+  @apply mt-2 max-w-md text-sm leading-6 text-muted-foreground;
+}
+
+
+/* =========================================================
+   COURSE COUNT
+========================================================= */
+
+@utility student-my-courses-count {
+  @apply mb-4 flex items-center justify-between gap-3;
+}
+
+@utility student-my-courses-count-label {
+  @apply text-sm font-medium text-muted-foreground;
+}
+
+@utility student-my-courses-count-value {
+  @apply font-semibold text-foreground;
+}
+
+
+/* =========================================================
+   DESKTOP INTERACTION
+========================================================= */
+
+@media (min-width: 1024px) {
+  .student-my-course-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 12px 30px rgb(0 0 0 / 0.08);
+  }
+
+  .student-my-course-card:hover
+  .student-my-course-button-arrow {
+    transform: translateX(4px);
+  }
+}
+
+
+/* =========================================================
+   COURSE IMAGE INTERACTION
+========================================================= */
+
+.student-my-course-image-element {
+  transition: transform 500ms ease;
+}
+
+.student-my-course-card:hover
+.student-my-course-image-element {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .student-my-courses-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .student-my-course-card {
+    min-height: 460px;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1280px) {
+  .student-my-courses-header {
+    margin-bottom: 2rem;
+  }
+
+  .student-my-courses-grid {
+    gap: 1.5rem;
+  }
+
+  .student-my-course-content {
+    padding: 1.375rem;
+  }
+}
+
+
+/* =========================================================
+   ULTRAWIDE / LARGE DISPLAYS
+========================================================= */
+
+@media (min-width: 1536px) {
+  .student-my-courses {
+    max-width: 1800px;
+    margin-inline: auto;
+  }
+
+  .student-my-courses-grid {
+    gap: 1.5rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 639px) {
+  .student-my-courses-header {
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+  }
+
+  .student-my-courses-title {
+    font-size: 1.75rem;
+  }
+
+  .student-my-courses-description {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+
+  .student-my-courses-subscription {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .student-my-courses-subscription-content {
+    width: 100%;
+  }
+
+  .student-my-courses-subscription-action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .student-my-courses-grid {
+    gap: 1rem;
+  }
+
+  .student-my-course-card {
+    min-height: 0;
+  }
+
+  .student-my-course-content {
+    padding: 1rem;
+  }
+
+  .student-my-course-title {
+    font-size: 1rem;
+  }
+
+  .student-my-course-description {
+    font-size: 0.8125rem;
+    line-height: 1.35rem;
+  }
+
+  .student-my-course-meta {
+    margin-top: 1rem;
+  }
+
+  .student-my-course-action {
+    margin-top: 1rem;
+  }
+
+  .student-my-course-button {
+    height: 2.75rem;
+  }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+  .student-my-course-card:active {
+    transform: scale(0.985);
+  }
+
+  .student-my-course-card:active
+  .student-my-course-button-arrow {
+    transform: translateX(4px);
+  }
+}
+
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+========================================================= */
+
+.student-my-course-button:focus-visible,
+.student-my-courses-subscription-action:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .student-my-course-card,
+  .student-my-course-image-element,
+  .student-my-course-button,
+  .student-my-course-button-arrow,
+  .student-my-course-progress-bar {
+    transition: none;
+  }
+
+  .student-my-course-card:hover {
+    transform: none;
+  }
+
+  .student-my-course-card:hover
+  .student-my-course-image-element {
+    transform: none;
+  }
+}
+
+
+
+/* =========================================================
+   STUDENT COURSE LEARNING
+========================================================= */
+
+/* =========================================================
+   COURSE LEARNING PAGE
+========================================================= */
+
+@utility student-learning-page {
+  @apply w-full min-w-0;
+}
+
+@utility student-learning-container {
+  @apply mx-auto w-full max-w-[1440px] px-4 py-5 sm:px-6 sm:py-6 lg:px-8 lg:py-8 2xl:px-10;
+}
+
+
+/* =========================================================
+   COURSE HEADER
+========================================================= */
+
+@utility student-learning-header {
+  @apply overflow-hidden rounded-2xl border border-border bg-card shadow-sm;
+}
+
+@utility student-learning-header-main {
+  @apply flex flex-col gap-5 p-4 sm:p-5 lg:flex-row lg:items-center lg:justify-between lg:p-6;
+}
+
+@utility student-learning-header-info {
+  @apply min-w-0 flex-1;
+}
+
+@utility student-learning-header-top {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+@utility student-learning-course-badge {
+  @apply inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary;
+}
+
+@utility student-learning-version-badge {
+  @apply inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground;
+}
+
+@utility student-learning-title {
+  @apply mt-2 text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl;
+}
+
+@utility student-learning-description {
+  @apply mt-2 max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+@utility student-learning-header-meta {
+  @apply mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm;
+}
+
+@utility student-learning-header-meta-item {
+  @apply inline-flex items-center gap-1.5;
+}
+
+@utility student-learning-header-meta-icon {
+  @apply size-4 shrink-0;
+}
+
+@utility student-learning-header-action {
+  @apply flex shrink-0 items-center gap-3;
+}
+
+@utility student-learning-progress-box {
+  @apply min-w-[150px] rounded-xl border border-border bg-muted/40 px-4 py-3;
+}
+
+@utility student-learning-progress-header {
+  @apply flex items-center justify-between gap-3;
+}
+
+@utility student-learning-progress-label {
+  @apply text-xs font-medium text-muted-foreground;
+}
+
+@utility student-learning-progress-value {
+  @apply text-sm font-bold text-foreground;
+}
+
+@utility student-learning-progress-track {
+  @apply mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-learning-progress-fill {
+  @apply h-full rounded-full bg-primary transition-[width] duration-500 ease-out;
+}
+
+@utility student-learning-continue {
+  @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0;
+}
+
+
+/* =========================================================
+   COURSE TABS
+========================================================= */
+
+@utility student-learning-tabs {
+  @apply mt-4 flex w-full overflow-x-auto rounded-xl border border-border bg-card p-1;
+  scrollbar-width: thin;
+}
+
+@utility student-learning-tab {
+  @apply inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg px-3 text-xs font-medium text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground sm:px-4 sm:text-sm;
+}
+
+@utility student-learning-tab-active {
+  @apply bg-primary/10 text-primary;
+}
+
+
+/* =========================================================
+   COURSE CONTENT AREA
+========================================================= */
+
+@utility student-learning-content {
+  @apply mt-5 space-y-4 sm:mt-6 sm:space-y-5 lg:mt-7;
+}
+
+
+/* =========================================================
+   WEEK
+========================================================= */
+
+@utility student-learning-week {
+  @apply overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md;
+}
+
+@utility student-learning-week-locked {
+  @apply opacity-95;
+}
+
+@utility student-learning-week-header {
+  @apply flex min-w-0 items-center gap-3 p-3 sm:gap-4 sm:p-4 lg:p-5;
+}
+
+@utility student-learning-week-number {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary text-xs font-bold text-primary-foreground sm:size-11 sm:text-sm;
+}
+
+@utility student-learning-week-info {
+  @apply min-w-0 flex-1;
+}
+
+@utility student-learning-week-title-row {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+@utility student-learning-week-title {
+  @apply truncate text-sm font-bold text-foreground sm:text-base lg:text-lg;
+}
+
+@utility student-learning-week-status {
+  @apply inline-flex shrink-0 items-center rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary sm:text-xs;
+}
+
+@utility student-learning-week-description {
+  @apply mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground sm:text-sm;
+}
+
+@utility student-learning-week-progress {
+  @apply hidden shrink-0 sm:block sm:w-32 lg:w-40;
+}
+
+@utility student-learning-week-progress-header {
+  @apply flex items-center justify-between gap-2;
+}
+
+@utility student-learning-week-progress-label {
+  @apply text-[11px] font-medium text-muted-foreground;
+}
+
+@utility student-learning-week-progress-value {
+  @apply text-xs font-semibold text-foreground;
+}
+
+@utility student-learning-week-progress-track {
+  @apply mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-learning-week-progress-fill {
+  @apply h-full rounded-full bg-primary transition-[width] duration-500 ease-out;
+}
+
+@utility student-learning-week-toggle {
+  @apply flex size-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors duration-200 hover:bg-accent hover:text-foreground;
+}
+
+@utility student-learning-week-toggle-icon {
+  @apply size-4 transition-transform duration-300;
+}
+
+@utility student-learning-week-toggle-open {
+  @apply rotate-180;
+}
+
+
+/* =========================================================
+   WEEK CONTENT
+========================================================= */
+
+@utility student-learning-week-content {
+  @apply border-t border-border bg-muted/20;
+}
+
+@utility student-learning-items {
+  @apply divide-y divide-border;
+}
+
+
+/* =========================================================
+   CONTENT ITEM
+========================================================= */
+
+@utility student-learning-item {
+  @apply flex min-w-0 items-center gap-3 p-3 transition-colors duration-200 hover:bg-accent/40 sm:gap-4 sm:p-4 lg:px-5;
+}
+
+@utility student-learning-item-locked {
+  @apply cursor-not-allowed opacity-60;
+}
+
+@utility student-learning-item-completed {
+  @apply bg-primary/[0.02];
+}
+
+@utility student-learning-item-icon {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-11;
+}
+
+@utility student-learning-item-icon-video {
+  @apply bg-primary/10 text-primary;
+}
+
+@utility student-learning-item-icon-slide {
+  @apply bg-blue-500/10 text-blue-600;
+}
+
+@utility student-learning-item-icon-test {
+  @apply bg-orange-500/10 text-orange-600;
+}
+
+@utility student-learning-item-icon-locked {
+  @apply bg-muted text-muted-foreground;
+}
+
+@utility student-learning-item-info {
+  @apply min-w-0 flex-1;
+}
+
+@utility student-learning-item-title-row {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+@utility student-learning-item-title {
+  @apply text-sm font-semibold text-foreground sm:text-base;
+}
+
+@utility student-learning-item-description {
+  @apply mt-1 line-clamp-2 text-xs leading-5 text-muted-foreground sm:text-sm;
+}
+
+@utility student-learning-item-meta {
+  @apply mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground sm:text-xs;
+}
+
+@utility student-learning-item-meta-item {
+  @apply inline-flex items-center gap-1;
+}
+
+@utility student-learning-item-meta-icon {
+  @apply size-3.5;
+}
+
+
+/* =========================================================
+   CONTENT BADGES
+========================================================= */
+
+@utility student-learning-item-badge {
+  @apply inline-flex items-center rounded-md border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide sm:text-[11px];
+}
+
+@utility student-learning-item-badge-new {
+  @apply border-primary/20 bg-primary/10 text-primary;
+}
+
+@utility student-learning-item-badge-updated {
+  @apply border-amber-500/20 bg-amber-500/10 text-amber-600;
+}
+
+@utility student-learning-item-badge-completed {
+  @apply border-emerald-500/20 bg-emerald-500/10 text-emerald-600;
+}
+
+
+/* =========================================================
+   CONTENT ACTION
+========================================================= */
+
+@utility student-learning-item-action {
+  @apply flex shrink-0 items-center;
+}
+
+@utility student-learning-item-button {
+  @apply inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg px-3 text-xs font-semibold transition-all duration-200 sm:min-h-10 sm:px-4 sm:text-sm;
+}
+
+@utility student-learning-item-button-active {
+  @apply bg-primary text-primary-foreground hover:-translate-y-0.5 hover:shadow-sm;
+}
+
+@utility student-learning-item-button-completed {
+  @apply bg-primary/10 text-primary hover:bg-primary/15;
+}
+
+@utility student-learning-item-button-locked {
+  @apply cursor-not-allowed bg-muted text-muted-foreground;
+}
+
+
+/* =========================================================
+   CONTENT PROGRESS
+========================================================= */
+
+@utility student-learning-item-progress {
+  @apply mt-2 h-1 w-full max-w-[180px] overflow-hidden rounded-full bg-muted;
+}
+
+@utility student-learning-item-progress-fill {
+  @apply h-full rounded-full bg-primary transition-[width] duration-500 ease-out;
+}
+
+
+/* =========================================================
+   LOCKED COURSE
+========================================================= */
+
+@utility student-learning-locked {
+  @apply flex min-h-[60vh] items-center justify-center px-4 py-10;
+}
+
+@utility student-learning-locked-card {
+  @apply w-full max-w-lg rounded-2xl border border-border bg-card p-6 text-center shadow-sm sm:p-8;
+}
+
+@utility student-learning-locked-icon {
+  @apply mx-auto flex size-14 items-center justify-center rounded-2xl bg-muted text-muted-foreground sm:size-16;
+}
+
+@utility student-learning-locked-title {
+  @apply mt-5 text-xl font-bold text-foreground sm:text-2xl;
+}
+
+@utility student-learning-locked-description {
+  @apply mx-auto mt-2 max-w-md text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+@utility student-learning-locked-button {
+  @apply mt-6 inline-flex min-h-10 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md;
+}
+
+
+/* =========================================================
+   EMPTY CONTENT
+========================================================= */
+
+@utility student-learning-empty {
+  @apply rounded-2xl border border-dashed border-border bg-card px-5 py-12 text-center;
+}
+
+@utility student-learning-empty-title {
+  @apply text-base font-semibold text-foreground;
+}
+
+@utility student-learning-empty-description {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 767px) {
+  .student-learning-header-action {
+    @apply w-full;
+  }
+
+  .student-learning-progress-box {
+    @apply flex-1;
+  }
+
+  .student-learning-continue {
+    @apply flex-1;
+  }
+
+  .student-learning-week-progress {
+    @apply hidden;
+  }
+
+  .student-learning-item {
+    @apply items-start;
+  }
+
+  .student-learning-item-action {
+    @apply self-center;
+  }
+
+  .student-learning-item-button {
+    @apply size-9 px-0;
+  }
+
+  .student-learning-item-button span {
+    @apply hidden;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .student-learning-container {
+    @apply px-3 py-4;
+  }
+
+  .student-learning-header-main {
+    @apply gap-4 p-4;
+  }
+
+  .student-learning-title {
+    @apply text-lg;
+  }
+
+  .student-learning-description {
+    @apply text-xs leading-5;
+  }
+
+  .student-learning-header-meta {
+    @apply gap-x-3 text-xs;
+  }
+
+  .student-learning-tabs {
+    @apply rounded-lg;
+  }
+
+  .student-learning-tab {
+    @apply px-3 text-xs;
+  }
+
+  .student-learning-week-header {
+    @apply gap-2.5 p-3;
+  }
+
+  .student-learning-week-number {
+    @apply size-9 rounded-lg text-xs;
+  }
+
+  .student-learning-week-title {
+    @apply text-sm;
+  }
+
+  .student-learning-week-description {
+    @apply text-[11px] leading-4;
+  }
+
+  .student-learning-item {
+    @apply gap-2.5 p-3;
+  }
+
+  .student-learning-item-icon {
+    @apply size-9 rounded-lg;
+  }
+
+  .student-learning-item-title {
+    @apply text-xs;
+  }
+
+  .student-learning-item-description {
+    @apply text-[11px] leading-4;
+  }
+
+  .student-learning-item-meta {
+    @apply text-[10px];
+  }
+}
+
+
+/* =========================================================
+   LARGE DISPLAYS
+========================================================= */
+
+@media (min-width: 1536px) {
+  .student-learning-container {
+    @apply max-w-[1600px] px-12 py-10;
+  }
+
+  .student-learning-header-main {
+    @apply p-7;
+  }
+
+  .student-learning-title {
+    @apply text-3xl;
+  }
+
+  .student-learning-week-header {
+    @apply p-6;
+  }
+
+  .student-learning-item {
+    @apply px-6 py-5;
+  }
+}
+
+
+
+
+/* =========================================================
+   PRACTICE QUESTIONS
+========================================================= */
+
+
+@utility practice-option {
+  @apply flex w-full items-start gap-4 rounded-2xl border border-border bg-card p-4 text-left transition-all duration-200 hover:border-primary/40 hover:bg-primary/5;
+}
+
+@utility practice-option-selected {
+  @apply border-primary bg-primary/5 ring-2 ring-primary/10;
+}
+
+@utility practice-option-correct {
+  @apply border-green-500/40 bg-green-500/5;
+}
+
+@utility practice-option-wrong {
+  @apply border-destructive/40 bg-destructive/5;
+}
+
+
+
+/* =========================================================
+   MOCK EXAMS
+========================================================= */
+
+@utility mock-exams-page {
+  @apply min-h-screen bg-background;
+}
+
+@utility mock-exams-container {
+  @apply mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8;
+}
+
+/* =========================================================
+   MOCK EXAMS HEADER
+========================================================= */
+
+@utility mock-exams-header {
+  @apply mb-8;
+}
+
+@utility mock-exams-header-content {
+  @apply max-w-3xl;
+}
+
+@utility mock-exams-badge {
+  @apply inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary;
+}
+
+@utility mock-exams-title {
+  @apply mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl;
+}
+
+@utility mock-exams-description {
+  @apply mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+/* =========================================================
+   MOCK EXAMS FILTER
+========================================================= */
+
+@utility mock-exams-filter {
+  @apply mb-8 flex flex-wrap items-center gap-2;
+}
+
+@utility mock-exams-filter-button {
+  @apply rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary;
+}
+
+@utility mock-exams-filter-button-active {
+  @apply border-primary bg-primary text-primary-foreground hover:border-primary hover:bg-primary hover:text-primary-foreground;
+}
+
+/* =========================================================
+   MOCK EXAMS GRID
+========================================================= */
+
+@utility mock-exams-grid {
+  @apply grid gap-5 md:grid-cols-2 xl:grid-cols-3;
+}
+
+/* =========================================================
+   MOCK EXAM CARD
+========================================================= */
+
+@utility mock-exam-card {
+  @apply flex h-full flex-col rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-lg;
+}
+
+@utility mock-exam-card-header {
+  @apply flex items-start justify-between gap-4;
+}
+
+@utility mock-exam-icon {
+  @apply flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-300;
+} 
+@utility mock-exam-type {
+  @apply rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-muted-foreground;
+}
+
+@utility mock-exam-title {
+  @apply mt-5 text-xl font-bold leading-tight text-foreground;
+}
+
+@utility mock-exam-description {
+  @apply mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground;
+}
+
+/* =========================================================
+   MOCK EXAM META
+========================================================= */
+
+@utility mock-exam-meta {
+  @apply mt-5 grid grid-cols-2 gap-3;
+}
+
+@utility mock-exam-meta-item {
+  @apply rounded-xl bg-muted/50 p-3;
+}
+
+@utility mock-exam-meta-label {
+  @apply block text-xs text-muted-foreground;
+}
+
+@utility mock-exam-meta-value {
+  @apply mt-1 block text-sm font-semibold text-foreground;
+}
+
+/* =========================================================
+   MOCK EXAM STATUS
+========================================================= */
+
+@utility mock-exam-status {
+  @apply mt-5 flex items-center justify-between gap-3 border-t border-border pt-4;
+}
+
+@utility mock-exam-status-upcoming {
+  @apply text-sm font-medium text-primary;
+}
+
+@utility mock-exam-status-completed {
+  @apply inline-flex items-center gap-1.5 text-sm font-medium text-green-600 dark:text-green-400;
+}
+
+@utility mock-exam-status-pending {
+  @apply inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 dark:text-amber-400;
+}
+
+/* =========================================================
+   MOCK EXAM ACTION
+========================================================= */
+
+@utility mock-exam-action {
+  @apply mt-5 inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md active:scale-[0.98];
+}
+
+@utility mock-exam-action-secondary {
+  @apply border border-border bg-background text-foreground hover:border-primary/30 hover:bg-primary/5 hover:text-primary;
+}
+
+/* =========================================================
+   MOCK EXAM EMPTY STATE
+========================================================= */
+
+@utility mock-exams-empty {
+  @apply rounded-2xl border border-dashed border-border bg-card px-6 py-14 text-center;
+}
+
+@utility mock-exams-empty-icon {
+  @apply mx-auto flex size-12 items-center justify-center rounded-full bg-muted text-muted-foreground;
+}
+
+@utility mock-exams-empty-title {
+  @apply mt-4 text-lg font-semibold text-foreground;
+}
+
+@utility mock-exams-empty-description {
+  @apply mx-auto mt-1 max-w-md text-sm leading-6 text-muted-foreground;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   RESULTS & GRADES
+========================================================= */
+
+@utility results-page {
+  @apply min-h-screen bg-background;
+}
+
+@utility results-container {
+  @apply mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+@utility results-header {
+  @apply mb-8;
+}
+
+@utility results-header-content {
+  @apply flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between;
+}
+
+@utility results-header-main {
+  @apply max-w-3xl;
+}
+
+@utility results-header-badge {
+  @apply inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary;
+}
+
+@utility results-title {
+  @apply mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl;
+}
+
+@utility results-description {
+  @apply mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base;
+}
+
+/* =========================================================
+   MOTIVATION CARD
+========================================================= */
+
+@utility results-motivation {
+  @apply flex items-center gap-3 rounded-2xl border border-primary/20 bg-primary/5 px-5 py-4;
+}
+
+@utility results-motivation-icon {
+  @apply flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary;
+}
+
+@utility results-motivation-content {
+  @apply min-w-0;
+}
+
+@utility results-motivation-title {
+  @apply text-sm font-semibold text-foreground;
+}
+
+@utility results-motivation-description {
+  @apply mt-0.5 text-xs text-muted-foreground;
+}
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+@utility results-stats {
+  @apply grid gap-4 sm:grid-cols-2 xl:grid-cols-4;
+}
+
+@utility results-stat-card {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm;
+}
+
+@utility results-stat-header {
+  @apply flex items-start justify-between gap-3;
+}
+
+@utility results-stat-label {
+  @apply text-sm font-medium text-muted-foreground;
+}
+
+@utility results-stat-value {
+  @apply mt-2 text-2xl font-bold tracking-tight text-foreground;
+}
+
+@utility results-stat-description {
+  @apply mt-1 text-xs text-muted-foreground;
+}
+
+@utility results-stat-icon {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary;
+}
+
+/* =========================================================
+   OVERALL PERFORMANCE
+========================================================= */
+
+@utility results-overall-card {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm;
+}
+
+@utility results-overall-content {
+  @apply flex items-center gap-4;
+}
+
+@utility results-score-ring {
+  @apply relative flex size-16 shrink-0 items-center justify-center rounded-full bg-primary/10;
+}
+
+@utility results-score-ring-inner {
+  @apply absolute inset-1 flex items-center justify-center rounded-full bg-card;
+}
+
+@utility results-score-value {
+  @apply text-sm font-bold text-foreground;
+}
+
+@utility results-overall-info {
+  @apply min-w-0;
+}
+
+@utility results-overall-label {
+  @apply text-sm font-medium text-muted-foreground;
+}
+
+@utility results-overall-grade {
+  @apply mt-1 text-xl font-bold text-foreground;
+}
+
+@utility results-overall-status {
+  @apply mt-1 text-sm font-medium text-green-600 dark:text-green-400;
+}
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+@utility results-toolbar {
+  @apply mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between;
+}
+
+@utility results-filters {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+@utility results-filter-button {
+  @apply rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary;
+}
+
+@utility results-filter-button-active {
+  @apply border-primary bg-primary text-primary-foreground hover:border-primary hover:bg-primary hover:text-primary-foreground;
+}
+
+@utility results-sort {
+  @apply inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground;
+}
+
+@utility results-sort-label {
+  @apply text-muted-foreground;
+}
+
+/* =========================================================
+   CONTENT LAYOUT
+========================================================= */
+
+@utility results-content {
+  @apply mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px];
+}
+
+@utility results-main {
+  @apply min-w-0;
+}
+
+@utility results-sidebar {
+  @apply space-y-6;
+}
+
+/* =========================================================
+   RESULT LIST
+========================================================= */
+
+@utility results-list {
+  @apply space-y-4;
+}
+
+/* =========================================================
+   RESULT CARD
+========================================================= */
+
+@utility result-card {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-200 hover:border-primary/25 hover:shadow-md sm:p-6;
+}
+
+@utility result-card-content {
+  @apply flex flex-col gap-5 lg:flex-row lg:items-center;
+}
+
+/* =========================================================
+   RESULT CARD ICON
+========================================================= */
+
+@utility result-card-icon {
+  @apply flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary;
+}
+
+@utility result-card-icon-practice {
+  @apply bg-blue-500/10 text-blue-600 dark:text-blue-400;
+}
+
+@utility result-card-icon-mock {
+  @apply bg-amber-500/10 text-amber-600 dark:text-amber-400;
+}
+
+@utility result-card-icon-cat {
+  @apply bg-violet-500/10 text-violet-600 dark:text-violet-400;
+}
+
+/* =========================================================
+   RESULT CARD INFORMATION
+========================================================= */
+
+@utility result-card-main {
+  @apply min-w-0 flex-1;
+}
+
+@utility result-card-type {
+  @apply inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide;
+}
+
+@utility result-card-type-practice {
+  @apply bg-blue-500/10 text-blue-600 dark:text-blue-400;
+}
+
+@utility result-card-type-mock {
+  @apply bg-amber-500/10 text-amber-600 dark:text-amber-400;
+}
+
+@utility result-card-type-cat {
+  @apply bg-violet-500/10 text-violet-600 dark:text-violet-400;
+}
+
+@utility result-card-title {
+  @apply mt-2 text-lg font-bold leading-tight text-foreground;
+}
+
+@utility result-card-meta {
+  @apply mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground;
+}
+
+@utility result-card-meta-separator {
+  @apply text-border;
+}
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+@utility result-card-score {
+  @apply flex shrink-0 items-center gap-3;
+}
+
+@utility result-score-ring {
+  @apply relative flex size-16 items-center justify-center rounded-full;
+}
+
+@utility result-score-ring-inner {
+  @apply absolute inset-1 flex items-center justify-center rounded-full bg-card;
+}
+
+@utility result-score-value {
+  @apply text-sm font-bold text-foreground;
+}
+
+/* =========================================================
+   CORRECT / INCORRECT
+========================================================= */
+
+@utility result-answer-stats {
+  @apply flex flex-col gap-1.5 text-sm;
+}
+
+@utility result-correct {
+  @apply flex items-center gap-1.5 font-medium text-green-600 dark:text-green-400;
+}
+
+@utility result-incorrect {
+  @apply flex items-center gap-1.5 font-medium text-red-600 dark:text-red-400;
+}
+
+/* =========================================================
+   GRADE
+========================================================= */
+
+@utility result-grade {
+  @apply flex min-w-16 flex-col items-center justify-center rounded-xl px-3 py-2;
+}
+
+@utility result-grade-label {
+  @apply text-2xl font-bold leading-none;
+}
+
+@utility result-grade-text {
+  @apply mt-1 text-[11px] font-medium;
+}
+
+@utility result-grade-a {
+  @apply bg-green-500/10 text-green-600 dark:text-green-400;
+}
+
+@utility result-grade-b {
+  @apply bg-emerald-500/10 text-emerald-600 dark:text-emerald-400;
+}
+
+@utility result-grade-c {
+  @apply bg-amber-500/10 text-amber-600 dark:text-amber-400;
+}
+
+@utility result-grade-d {
+  @apply bg-orange-500/10 text-orange-600 dark:text-orange-400;
+}
+
+@utility result-grade-f {
+  @apply bg-red-500/10 text-red-600 dark:text-red-400;
+}
+
+/* =========================================================
+   PASS CHANCE
+========================================================= */
+
+@utility result-pass-chance {
+  @apply flex min-w-28 flex-col items-center justify-center rounded-xl px-3 py-2 text-center;
+}
+
+@utility result-pass-chance-label {
+  @apply text-xs font-semibold;
+}
+
+@utility result-pass-chance-description {
+  @apply mt-1 text-[11px];
+}
+
+@utility result-pass-high {
+  @apply bg-green-500/10 text-green-600 dark:text-green-400;
+}
+
+@utility result-pass-borderline {
+  @apply bg-amber-500/10 text-amber-600 dark:text-amber-400;
+}
+
+@utility result-pass-low {
+  @apply bg-red-500/10 text-red-600 dark:text-red-400;
+}
+
+/* =========================================================
+   RESULT ACTION
+========================================================= */
+
+@utility result-action {
+  @apply inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 text-sm font-semibold text-foreground transition-all duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary;
+}
+
+/* =========================================================
+   SIDEBAR CARDS
+========================================================= */
+
+@utility results-sidebar-card {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm;
+}
+
+@utility results-sidebar-title {
+  @apply text-lg font-bold text-foreground;
+}
+
+@utility results-sidebar-description {
+  @apply mt-1 text-xs leading-5 text-muted-foreground;
+}
+
+/* =========================================================
+   PERFORMANCE TREND
+========================================================= */
+
+@utility results-trend {
+  @apply mt-5;
+}
+
+@utility results-trend-placeholder {
+  @apply flex h-48 items-center justify-center rounded-xl bg-muted/30;
+}
+
+@utility results-trend-placeholder-text {
+  @apply text-xs text-muted-foreground;
+}
+
+/* =========================================================
+   GRADE DISTRIBUTION
+========================================================= */
+
+@utility results-grade-list {
+  @apply mt-5 space-y-3;
+}
+
+@utility results-grade-row {
+  @apply flex items-center gap-3;
+}
+
+@utility results-grade-row-label {
+  @apply w-5 text-sm font-semibold text-foreground;
+}
+
+@utility results-grade-row-track {
+  @apply h-2 flex-1 overflow-hidden rounded-full bg-muted;
+}
+
+@utility results-grade-row-progress {
+  @apply h-full rounded-full;
+}
+
+@utility results-grade-row-value {
+  @apply w-10 text-right text-xs font-medium text-muted-foreground;
+}
+
+/* =========================================================
+   GRADE DISTRIBUTION COLORS
+========================================================= */
+
+@utility results-grade-progress-a {
+  @apply bg-green-500;
+}
+
+@utility results-grade-progress-b {
+  @apply bg-emerald-500;
+}
+
+@utility results-grade-progress-c {
+  @apply bg-amber-500;
+}
+
+@utility results-grade-progress-d {
+  @apply bg-orange-500;
+}
+
+@utility results-grade-progress-f {
+  @apply bg-red-500;
+}
+
+/* =========================================================
+   STUDY TIPS
+========================================================= */
+
+@utility results-tips {
+  @apply mt-5 space-y-3;
+}
+
+@utility results-tip {
+  @apply flex items-start gap-2.5;
+}
+
+@utility results-tip-icon {
+  @apply mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-green-500/10 text-green-600 dark:text-green-400;
+}
+
+@utility results-tip-text {
+  @apply text-sm leading-5 text-muted-foreground;
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+@utility results-empty {
+  @apply rounded-2xl border border-dashed border-border bg-card px-6 py-16 text-center;
+}
+
+@utility results-empty-icon {
+  @apply mx-auto flex size-14 items-center justify-center rounded-full bg-muted text-muted-foreground;
+}
+
+@utility results-empty-title {
+  @apply mt-4 text-lg font-semibold text-foreground;
+}
+
+@utility results-empty-description {
+  @apply mx-auto mt-1 max-w-md text-sm leading-6 text-muted-foreground;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1023px) {
+  .result-card-content {
+    @apply items-start;
+  }
+
+  .result-card-score {
+    @apply w-full;
+  }
+}
+
+@media (max-width: 639px) {
+  .results-container {
+    @apply px-4 py-6;
+  }
+
+  .results-title {
+    @apply text-2xl;
+  }
+
+  .results-toolbar {
+    @apply items-stretch;
+  }
+
+  .results-filters {
+    @apply w-full;
+  }
+
+  .results-filter-button {
+    @apply flex-1;
+  }
+
+  .result-card-content {
+    @apply gap-4;
+  }
+
+  .result-card-score {
+    @apply flex-wrap;
+  }
+
+  .result-action {
+    @apply w-full;
+  }
+}
+
+
+
+
+
+
+/* =========================================================
+   SUBSCRIPTION PAGE
+========================================================= */
+
+@utility subscription-page {
+  @apply min-h-screen bg-background;
+}
+
+@utility subscription-container {
+  @apply mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+@utility subscription-header {
+  @apply mb-8;
+}
+
+@utility subscription-title {
+  @apply text-3xl font-bold tracking-tight text-foreground sm:text-4xl;
+}
+
+@utility subscription-description {
+  @apply mt-2 text-sm text-muted-foreground sm:text-base;
+}
+
+/* =========================================================
+   TOP SECTION
+========================================================= */
+
+@utility subscription-top-grid {
+  @apply grid items-start gap-5 lg:grid-cols-[minmax(0,1.8fr)_minmax(280px,0.8fr)];
+}
+
+/* =========================================================
+   CURRENT PLAN
+========================================================= */
+
+@utility current-plan {
+  @apply relative overflow-hidden rounded-2xl border border-primary/20 bg-primary/10 p-6 shadow-sm sm:p-7;
+}
+
+@utility current-plan-content {
+  @apply relative z-10;
+}
+
+@utility current-plan-header {
+  @apply flex items-start justify-between gap-4;
+}
+
+@utility current-plan-badge {
+  @apply inline-flex rounded-full bg-background/70 px-3 py-1 text-xs font-semibold text-primary;
+}
+
+@utility current-plan-status {
+  @apply inline-flex rounded-full bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-600 dark:text-green-400;
+}
+
+@utility current-plan-title {
+  @apply mt-5 text-2xl font-bold tracking-tight text-foreground sm:text-3xl;
+}
+
+@utility current-plan-description {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+/* =========================================================
+   PLAN META
+========================================================= */
+
+@utility current-plan-meta {
+  @apply mt-7 grid grid-cols-1 gap-5 sm:grid-cols-3;
+}
+
+@utility current-plan-meta-item {
+  @apply min-w-0;
+}
+
+@utility current-plan-meta-label {
+  @apply flex items-center gap-1.5 text-xs text-muted-foreground;
+}
+
+@utility current-plan-meta-value {
+  @apply mt-1 text-sm font-semibold text-foreground;
+}
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+@utility subscription-progress {
+  @apply mt-7;
+}
+
+@utility subscription-progress-header {
+  @apply mb-2 flex items-center justify-between gap-3;
+}
+
+@utility subscription-progress-label {
+  @apply text-xs font-medium text-muted-foreground;
+}
+
+@utility subscription-progress-value {
+  @apply text-xs font-semibold text-foreground;
+}
+
+@utility subscription-progress-track {
+  @apply h-2 overflow-hidden rounded-full bg-muted;
+}
+
+@utility subscription-progress-bar {
+  @apply h-full rounded-full bg-primary transition-all duration-500;
+}
+
+/* =========================================================
+   PLAN ACTIONS
+========================================================= */
+
+@utility current-plan-actions {
+  @apply mt-6 flex flex-wrap gap-3;
+}
+
+@utility current-plan-action {
+  @apply inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md active:scale-[0.98];
+}
+
+@utility current-plan-action-secondary {
+  @apply inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border bg-background/60 px-4 text-sm font-semibold text-foreground transition-all duration-200 hover:border-primary/30 hover:bg-background;
+}
+
+/* =========================================================
+   PLAN COMPARISON
+========================================================= */
+
+@utility plan-comparison {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6;
+}
+
+@utility plan-comparison-title {
+  @apply text-lg font-bold text-foreground;
+}
+
+@utility plan-list {
+  @apply mt-5 space-y-3;
+}
+
+@utility plan-option {
+  @apply rounded-xl border border-border bg-background p-4 transition-all duration-200;
+}
+
+@utility plan-option-current {
+  @apply border-primary/50 bg-primary/5 ring-1 ring-primary/10;
+}
+
+@utility plan-option-header {
+  @apply flex items-start justify-between gap-3;
+}
+
+@utility plan-option-name {
+  @apply text-sm font-semibold text-foreground;
+}
+
+@utility plan-option-price {
+  @apply mt-1 text-lg font-bold text-foreground;
+}
+
+@utility plan-option-current-badge {
+  @apply rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary;
+}
+
+/* =========================================================
+   PAYMENT HISTORY
+========================================================= */
+
+@utility payment-history {
+  @apply mt-5 rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6;
+}
+
+@utility payment-history-header {
+  @apply flex items-start justify-between gap-4;
+}
+
+@utility payment-history-title {
+  @apply text-lg font-bold text-foreground;
+}
+
+@utility payment-history-description {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+@utility payment-export {
+  @apply inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/5;
+}
+
+/* =========================================================
+   PAYMENT TABLE
+========================================================= */
+
+@utility payment-table-wrapper {
+  @apply mt-6 overflow-x-auto;
+}
+
+@utility payment-table {
+  @apply w-full min-w-[700px] text-left;
+}
+
+@utility payment-table-head {
+  @apply border-b border-border text-xs font-medium text-muted-foreground;
+}
+
+@utility payment-table-header-cell {
+  @apply px-3 pb-3 font-medium;
+}
+
+@utility payment-table-row {
+  @apply border-b border-border last:border-0;
+}
+
+@utility payment-table-cell {
+  @apply px-3 py-4 text-sm;
+}
+
+@utility payment-invoice {
+  @apply font-medium text-muted-foreground;
+}
+
+@utility payment-date {
+  @apply text-muted-foreground;
+}
+
+@utility payment-description {
+  @apply font-medium text-foreground;
+}
+
+@utility payment-amount {
+  @apply font-semibold text-foreground;
+}
+
+/* =========================================================
+   PAYMENT STATUS
+========================================================= */
+
+@utility payment-status {
+  @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+}
+
+@utility payment-status-paid {
+  @apply bg-green-500/10 text-green-600 dark:text-green-400;
+}
+
+@utility payment-status-pending {
+  @apply bg-amber-500/10 text-amber-600 dark:text-amber-400;
+}
+
+@utility payment-status-failed {
+  @apply bg-red-500/10 text-red-600 dark:text-red-400;
+}
+
+/* =========================================================
+   EMPTY PAYMENT HISTORY
+========================================================= */
+
+@utility payment-history-empty {
+  @apply rounded-xl border border-dashed border-border bg-muted/20 px-6 py-12 text-center;
+}
+
+@utility payment-history-empty-title {
+  @apply mt-3 text-sm font-semibold text-foreground;
+}
+
+@utility payment-history-empty-description {
+  @apply mx-auto mt-1 max-w-md text-sm text-muted-foreground;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 640px) {
+  .current-plan-actions {
+    @apply flex-col;
+  }
+
+  .current-plan-action,
+  .current-plan-action-secondary {
+    @apply w-full;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PROFILE & SETTINGS
+========================================================= */
+
+@utility profile-page {
+  @apply min-h-screen bg-background;
+}
+
+@utility profile-container {
+  @apply mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+@utility profile-header {
+  @apply mb-8;
+}
+
+@utility profile-title {
+  @apply text-3xl font-bold tracking-tight text-foreground;
+}
+
+@utility profile-description {
+  @apply mt-2 text-sm text-muted-foreground sm:text-base;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+@utility profile-layout {
+  @apply grid items-start gap-5 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,0.8fr)];
+}
+
+@utility profile-main {
+  @apply min-w-0 space-y-5;
+}
+
+@utility profile-sidebar {
+  @apply min-w-0 space-y-5;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+@utility profile-card {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6;
+}
+
+@utility profile-card-header {
+  @apply mb-5 flex items-start justify-between gap-4;
+}
+
+@utility profile-card-title {
+  @apply text-lg font-bold text-foreground;
+}
+
+@utility profile-card-description {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+/* =========================================================
+   PROFILE HERO
+========================================================= */
+
+@utility profile-identity {
+  @apply flex flex-col gap-5 sm:flex-row sm:items-center;
+}
+
+@utility profile-avatar {
+  @apply flex size-20 shrink-0 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground;
+}
+
+@utility profile-identity-info {
+  @apply min-w-0;
+}
+
+@utility profile-name {
+  @apply text-2xl font-bold text-foreground;
+}
+
+@utility profile-email {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+@utility profile-member-badge {
+  @apply mt-3 inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+@utility profile-form {
+  @apply mt-6 space-y-5;
+}
+
+@utility profile-form-grid {
+  @apply grid gap-5 sm:grid-cols-2;
+}
+
+@utility profile-field {
+  @apply space-y-2;
+}
+
+@utility profile-label {
+  @apply text-sm font-medium text-foreground;
+}
+
+@utility profile-input {
+  @apply h-11 w-full rounded-xl border border-border bg-background px-3 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10;
+}
+
+@utility profile-textarea {
+  @apply min-h-28 w-full resize-y rounded-xl border border-border bg-background px-3 py-3 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10;
+}
+
+@utility profile-input-disabled {
+  @apply cursor-not-allowed bg-muted text-muted-foreground;
+}
+
+@utility profile-save {
+  @apply inline-flex h-11 items-center justify-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90 active:scale-[0.98];
+}
+
+/* =========================================================
+   SETTINGS ROW
+========================================================= */
+
+@utility profile-settings-list {
+  @apply divide-y divide-border;
+}
+
+@utility profile-setting-row {
+  @apply flex items-center justify-between gap-5 py-4 first:pt-0 last:pb-0;
+}
+
+@utility profile-setting-content {
+  @apply min-w-0;
+}
+
+@utility profile-setting-title {
+  @apply text-sm font-semibold text-foreground;
+}
+
+@utility profile-setting-description {
+  @apply mt-1 text-xs leading-5 text-muted-foreground;
+}
+
+/* =========================================================
+   TOGGLE
+========================================================= */
+
+@utility profile-toggle {
+  @apply relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full bg-muted transition;
+}
+
+@utility profile-toggle-active {
+  @apply bg-primary;
+}
+
+@utility profile-toggle-thumb {
+  @apply absolute left-1 top-1 size-4 rounded-full bg-white shadow-sm transition-transform;
+}
+
+@utility profile-toggle-thumb-active {
+  @apply translate-x-5;
+}
+
+/* =========================================================
+   ACCOUNT SUMMARY
+========================================================= */
+
+@utility profile-summary-list {
+  @apply space-y-4;
+}
+
+@utility profile-summary-item {
+  @apply flex items-center justify-between gap-4;
+}
+
+@utility profile-summary-label {
+  @apply text-sm text-muted-foreground;
+}
+
+@utility profile-summary-value {
+  @apply text-right text-sm font-semibold text-foreground;
+}
+
+@utility profile-summary-status {
+  @apply inline-flex rounded-full bg-green-500/10 px-2.5 py-1 text-xs font-semibold text-green-600 dark:text-green-400;
+}
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+@utility profile-security-list {
+  @apply space-y-3;
+}
+
+@utility profile-security-action {
+  @apply flex w-full items-center justify-between gap-4 rounded-xl border border-border bg-background p-4 text-left transition hover:border-primary/30 hover:bg-primary/5;
+}
+
+@utility profile-security-action-content {
+  @apply min-w-0;
+}
+
+@utility profile-security-action-title {
+  @apply text-sm font-semibold text-foreground;
+}
+
+@utility profile-security-action-description {
+  @apply mt-1 text-xs text-muted-foreground;
+}
+
+@utility profile-security-action-arrow {
+  @apply shrink-0 text-sm text-muted-foreground;
+}
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+@utility profile-danger {
+  @apply text-red-600 hover:border-red-500/30 hover:bg-red-500/5 dark:text-red-400;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1023px) {
+  .profile-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+
+
+
+
+/* =========================================================
+   STUDENT SUPPORT PAGE
+========================================================= */
+
+@utility support-page {
+  @apply min-h-full bg-background;
+}
+
+@utility support-container {
+  @apply mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8;
+}
+
+@utility support-header {
+  @apply mb-6;
+}
+
+@utility support-title {
+  @apply text-2xl font-bold tracking-tight text-foreground sm:text-3xl;
+}
+
+@utility support-description {
+  @apply mt-1 text-sm text-muted-foreground;
+}
+
+/* =========================================================
+   SUPPORT LAYOUT
+========================================================= */
+
+@utility support-layout {
+  @apply grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)];
+}
+
+/* =========================================================
+   SUPPORT REQUEST CARD
+========================================================= */
+
+@utility support-request-card {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6;
+}
+
+@utility support-request-header {
+  @apply mb-6;
+}
+
+@utility support-card-title {
+  @apply text-xl font-bold tracking-tight text-foreground;
+}
+
+@utility support-card-description {
+  @apply mt-1 text-sm leading-6 text-muted-foreground;
+}
+
+@utility support-request-form {
+  @apply space-y-5;
+}
+
+/* =========================================================
+   FORM FIELDS
+========================================================= */
+
+@utility support-field {
+  @apply space-y-2;
+}
+
+@utility support-label {
+  @apply text-sm font-semibold text-foreground;
+}
+
+@utility support-input {
+  @apply h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20;
+}
+
+@utility support-select {
+  @apply h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20;
+}
+
+@utility support-textarea {
+  @apply min-h-36 w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20;
+}
+
+/* =========================================================
+   IMAGE UPLOAD
+========================================================= */
+
+@utility support-upload {
+  @apply flex min-h-32 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border border-dashed border-border bg-muted/30 px-4 py-5 text-center transition-colors hover:border-primary/50 hover:bg-primary/5;
+}
+
+@utility support-upload-preview {
+  @apply flex items-center justify-between gap-3 rounded-xl border border-border bg-muted/30 p-3;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+@utility support-submit {
+  @apply flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-md active:translate-y-0;
+}
+
+/* =========================================================
+   SUPPORT FAQ
+========================================================= */
+
+@utility support-faq-card {
+  @apply rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6;
+}
+
+@utility support-faq-header {
+  @apply mb-5;
+}
+
+@utility support-faq-list {
+  @apply space-y-2;
+}
+
+@utility support-faq-link {
+  @apply mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-primary/80 hover:underline;
+}
+
+
+
+

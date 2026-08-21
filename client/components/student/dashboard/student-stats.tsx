@@ -1,14 +1,13 @@
 "use client";
 
 import {
+  Activity,
+  ClipboardCheck,
   ClipboardList,
   Trophy,
-  ClipboardCheck,
-  Activity,
 } from "lucide-react";
 
 import { Section } from "@/components/common/section";
-
 import { useStagger } from "@/hooks/gsap";
 
 import type { StudentDashboardData } from "@/types/student/student-dashboard";
@@ -29,12 +28,24 @@ export function StudentStats({
   });
 
   const questionProgress =
-    (stats.questionsSolved / stats.questionsTotal) * 100;
+    stats.questionsTotal > 0
+      ? Math.min(
+          (stats.questionsSolved /
+            stats.questionsTotal) *
+            100,
+          100,
+        )
+      : 0;
 
   const mockExamProgress =
-    (stats.mockExamsCompleted /
-      stats.mockExamsTotal) *
-    100;
+    stats.mockExamsTotal > 0
+      ? Math.min(
+          (stats.mockExamsCompleted /
+            stats.mockExamsTotal) *
+            100,
+          100,
+        )
+      : 0;
 
   return (
     <Section
@@ -63,7 +74,9 @@ export function StudentStats({
           </p>
 
           <p className="student-stat-subtext">
-            of {stats.questionsTotal.toLocaleString()}
+            {stats.questionsTotal > 0
+              ? `of ${stats.questionsTotal.toLocaleString()}`
+              : "No questions yet"}
           </p>
 
           <div className="student-stat-progress">
@@ -94,14 +107,19 @@ export function StudentStats({
           </p>
 
           <p className="student-stat-subtext">
-            +{stats.scoreChange}% this week
+            {stats.scoreChange > 0
+              ? `+${stats.scoreChange}% this week`
+              : "No change this week"}
           </p>
 
           <div className="student-stat-progress">
             <div
               className="student-stat-progress-value"
               style={{
-                width: `${stats.averageScore}%`,
+                width: `${Math.min(
+                  stats.averageScore,
+                  100,
+                )}%`,
               }}
             />
           </div>
@@ -126,7 +144,9 @@ export function StudentStats({
           </p>
 
           <p className="student-stat-subtext">
-            Completed
+            {stats.mockExamsTotal > 0
+              ? "Completed"
+              : "No exams yet"}
           </p>
 
           <div className="student-stat-progress">
@@ -163,7 +183,15 @@ export function StudentStats({
           <div className="student-stat-progress">
             <div
               className="student-stat-progress-value"
-              style={{ width: "88%" }}
+              style={{
+                width:
+                  stats.readiness === "High"
+                    ? "88%"
+                    : stats.readiness ===
+                        "Getting Started"
+                      ? "20%"
+                      : "0%",
+              }}
             />
           </div>
         </article>

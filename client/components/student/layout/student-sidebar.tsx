@@ -33,11 +33,6 @@ const navigation = [
     icon: BookOpen,
   },
   {
-    title: "Course Learning",
-    href: "/student/learning",
-    icon: GraduationCap,
-  },
-  {
     title: "Practice Questions",
     href: "/student/practice",
     icon: ClipboardCheck,
@@ -64,11 +59,6 @@ const secondaryNavigation = [
     title: "Profile & Settings",
     href: "/student/profile",
     icon: Settings,
-  },
-  {
-    title: "Notifications",
-    href: "/student/notifications",
-    icon: Bell,
   },
   {
     title: "Support / Help",
