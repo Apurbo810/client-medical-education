@@ -52,7 +52,7 @@ export const studentDashboardData: Record<
       lessonTitle: "NCLEX Mock Test",
       progress: 100,
       remainingMinutes: 0,
-      href: "/student/learning",
+      href: "/student/learning/nclex-complete",
     },
 
     coursesProgress: [
@@ -111,7 +111,7 @@ export const studentDashboardData: Record<
       lessonTitle: "NCLEX-RN Fundamentals",
       progress: 35,
       remainingMinutes: 10,
-      href: "/student/learning",
+      href: "/student/learning/nclex-complete",
     },
 
     coursesProgress: [
@@ -216,7 +216,7 @@ export const studentDashboardData: Record<
       lessonTitle: "NCLEX-RN Fundamentals",
       progress: 40,
       remainingMinutes: 15,
-      href: "/student/learning",
+      href: "/student/learning/nclex-complete",
     },
 
     coursesProgress: [

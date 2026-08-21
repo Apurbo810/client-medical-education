@@ -32,7 +32,7 @@ export function FAQ({
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <Section spacing="lg">
+    <Section spacing="sm">
       <Container>
         <SectionHeading
           title={title}

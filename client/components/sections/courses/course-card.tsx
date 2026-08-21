@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   BookOpen,
   Clock3,
@@ -77,12 +78,12 @@ export function CourseCard({
             {course.students.toLocaleString()} students
           </span>
 
-          <button
-            type="button"
+          <Link
+            href={`/pricing?course=${course.id}`}
             className="course-enroll"
           >
             Enroll
-          </button>
+          </Link>
         </div>
       </div>
     </article>
