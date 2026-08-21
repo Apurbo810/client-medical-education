@@ -9,7 +9,7 @@ export default async function StudentDashboardPage() {
   const data = await getStudentDashboard();
 
   return (
-    <>
+    <div className="student-dashboard">
       <StudentWelcome data={data} />
 
       <StudentQuickActions
@@ -27,6 +27,6 @@ export default async function StudentDashboardPage() {
         }
         coursesProgress={data.coursesProgress}
       />
-    </>
+    </div>
   );
 }

@@ -22,7 +22,7 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
       children,
       className,
       id,
-      spacing = "lg",
+      spacing = "none",
     },
     ref,
   ) => {

@@ -45,7 +45,7 @@ export function StudentCourses({
 
   return (
     <Section
-      spacing="sm"
+      spacing="none"
       className="student-courses-section"
     >
       {/* Header */}
